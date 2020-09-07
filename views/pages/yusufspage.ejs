@@ -2,6 +2,12 @@
 <html>
 <head>
   <% include ../partials/header.ejs %>
+  <style>
+    body {
+      background-image: url(https://i.pinimg.com/originals/89/e3/7d/89e37d9611818e81f65d368d0350e5c7.jpg);
+      background-size: cover;
+    }
+    </style>
 </head>
 
 <body>
@@ -11,7 +17,6 @@
   <div style="text-align: center;">
     <h2>hi ipp</h2>
     <div id="variable_here"></div>
-    <div id="cat_fact"></div>
   </div>
 
   <script>
@@ -22,9 +27,6 @@
       i++;
     }, 1000);
 
-    fetch("https://meowfacts.herokuapp.com/").then(r => r.json()).then(data => {
-      document.getElementById("cat_fact").innerHTML = data.data[0];
-    })
   </script>
 
 </body>
