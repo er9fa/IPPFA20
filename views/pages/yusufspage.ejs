@@ -20,7 +20,7 @@
       console.log(i);
       document.getElementById("variable_here").innerHTML = i;
       i++;
-    }, 1000); 
+    }, 1000);
 
     fetch("https://meowfacts.herokuapp.com/").then(r => r.json()).then(data => {
       document.getElementById("cat_fact").innerHTML = data.data[0];
