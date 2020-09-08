@@ -6,7 +6,8 @@
 
     <style>
     body {
-      background-color: lightyellow;
+      background-image: url(https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/rm252-ning-02_1.jpg?bg=transparent&con=3&cs=srgb&dpr=1&fm=jpg&ixlib=php-3.1.0&q=80&usm=15&vib=3&w=1300&s=d1a904b4ad51bd71bd89ad79a798921b);
+      background-size: cover;
     }
     </style>
 
@@ -15,6 +16,7 @@
     <% include ../partials/nav.ejs %>
     <div style="text-align: center; font-family: impact; font-weight: bolder; color: navy">
       <h1>ZOE'S PAGE</h1>
+      <div id="counter_variable"></div>
     </div>
 
     <div style="text-align: center; font-family: courier; color: hotpink">
@@ -37,5 +39,15 @@
           the unknown I lack confidence. I also hate making phone calls to strangers, even if it is just to order food.
       </p>
     </div>
+
+    <script>
+      var i = 0;
+      setInterval(() => {
+        console.log(i);
+        document.getElementById("counter_variable").innerHTML = i;
+        i++;
+      }, 1000);
+    </script>
+
   </body>
 </html>
