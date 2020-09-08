@@ -14,9 +14,43 @@
 <body>
   <% include ../partials/nav.ejs %>
 
-  <div style="text-align: center;">
-    <h2>yusuf test</h2>
+  <div style="text-align: left; font-family: monospace; font-weight: bolder; justify-content: center; margin: 2%;">
+
+    <!-- title header -->
+    <h1>yusuf's page</h1>
+
+    <!-- paragraphs of bio split into three sections -->
+    <p style="font-size: 16; font-weight: lighter; justify-content: center;">
+    How’s it going y’all. I’m Yusuf, and I’ve had quite my share of places I’ve called home. I was born in Maryland, but moved to Ohio when I was 4 for my dad’s work. A good 6 years of growing up there led to leaving for a short pit stop of 2 years in Iowa (would not recommend), and finally settling in Houston, Texas, where I graduated from high school. However, my love for my birth coast on the East seems to have never gone away, so here I am, 1500 miles away from home and multiple recollections of my dad fondly claiming that “Virginia is for [Texas] haters.” After my second year at UVA, I took a gap year in Dallas to study at an Arabic intensive program, and now I’m back with a newfound love for linguistics. My two favorite pastimes might be curating and listening to my Spotify playlists and driving horribly extensive distances, preferably at the same time. I’d like to think I beat Ned in this one; I covered 32k miles last year separate from my commute (but everything is bigger in Texas, so an unfair advantage). However, unlike Ned, I have a seething hatred for avocados that I can expand on later. I mostly watch all sorts of anime (rewatched Demon Slayer and Toradora recently, if anyone knows), but LOVE Disney movies  and shows - both animated and live-action, especially those made 10 or more years ago - and really any form of musical production (I’m on my third run through of Hamilton and second for the Greatest Showman, suggestions welcome). Disney+ has dropped my productivity through the floor.
+    </p>
+
+    <p style="font-size: 16; font-weight: lighter;">
+    Something I consider my strength is being able to look at things from many different perspectives. I don’t usually get hung up on one point of view, and that lets me work through problems and mediate issues pretty holistically, without too much conflict on either side.
+    </p>
+
+    <p style="font-size: 16; font-weight: lighter;">
+    However, that leads to a weakness of mine, which is being indecisive on topics that need whole-hearted commitment to one side of the argument. I know it can be frustrating for others around me to keep appreciating both sides, and in an effort not to hurt anyone I tend to remain silent. It is something I have been working on correcting and I am trying to be more vocal on opinions and decisions I feel are right.
+    </p>
+
+    <!-- putting counter on the page -->
+    <div id="counter_variable", style="background-image: url('https://lh3.googleusercontent.com/proxy/yiNnkCos4IjhG3X9uExI4du44Dwuut7ErTTCYemZm6m5bNixM7Mr_TeC_b-bp98XFPFR8Mdhs-xpvK5mrtLVuRNIQl0wJg');">
+    </div>
+
+    <div id="biker">
+      <
+
+
   </div>
+
+  <!-- code for counter -->
+  <script>
+    var i = 0;
+    setInterval(() => {
+      console.log(i);
+      document.getElementById("counter_variable").innerHTML = i;
+      i += 10;
+    }, 1000);
+  </script>
 
 </body>
 </html>
