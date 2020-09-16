@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html lang='en'>
+<head>
+  <% include ../partials/header.ejs %>
+  <title>Coming Soon...</title>
+</head>
+
+<body>
+  <% include ../partials/nav.ejs %>
+  <div style="text-align: center">
+    <h1>Hongze's Page</h1>
+    <h3>Under construction</h3>
+    <p>Check back again later! :)
+  </div>
+
+  <div style='text-align: center'>
+    <img src=https://media.giphy.com/media/131tNuGktpXGhy/source.gif>
+  </div>
+  <div style='text-align: center' id='counter_variable'></div>
+</body>
+
+
+<script>
+  function isPrime(n){
+    if(typeof n !== "number" || n<=1) return false;
+    for(let i=2; i<=Math.sqrt(n); i++){
+      if(n%i === 0) return false;
+    }
+    return true;
+  }
+  var count=2;
+  const counter = function() {
+    console.log(count);
+    document.getElementById("counter_variable").innerHTML = count;
+    count++;
+    while(!isPrime(count)){
+      count++;
+    }
+
+    if(count > 5000){
+      document.getElementById("counter_variable").innerHTML = 'Still here? You have too much spare time.';
+      clearInterval(myVar);
+    }
+  }
+  var handle = setInterval(counter, 500);
+</script>
+
+</html>
