@@ -6,14 +6,22 @@
       <h1>Stock Finder</h1>
     </div>
     <style>
+    .text-center {
+  	text-align: center;
+    }
     body {
       background-color: lightgrey
     }
     </style>
   </head>
   <body>
-    <div text-align: center;>
-      <button type="button">Compute</button>
+    <div class = "text-center">
+      <button type="button" onclick="getCurrentTime()">Compute</button>
     </div>
+    <script>
+    function getCurrentTime() {
+      alert(new Date());
+    }
+    </script>
   </body>
 </html>
