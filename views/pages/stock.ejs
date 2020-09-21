@@ -66,18 +66,35 @@
 
     <!-- putting slider on the page -->
     <div class="rangeslider" style="align = center;">
-      <input type="range" min="0" max="100" value ="50" class="pagesliders" id="sliderRange">
-      <p>Value: <span id="demo"></span></p>
+      <input type="range" min="0" max="100" value ="50" class="pagesliders" id="sliderRange1">
+      <p>Value: <span id="value1"></span></p>
+    </div>
+
+    <!-- putting another slider -->
+    <div class="rangeslider" style="align = center;">
+      <input type="range" min="0" max="100" value ="50" class="pagesliders" id="sliderRange2">
+      <p>Value: <span id="value2"></span></p>
     </div>
 
     <!-- script to display value of slider underneath -->
     <script>
-    var rangeslider = document.getElementById("sliderRange");
-    var output = document.getElementById("demo");
-    output.innerHTML = rangeslider.value;
+    var rangeslider1 = document.getElementById("sliderRange1");
+    var output1 = document.getElementById("value1");
+    output1.innerHTML = rangeslider1.value;
 
-    rangeslider.oninput = function() {
-      output.innerHTML = this.value;
+    rangeslider1.oninput = function() {
+      output1.innerHTML = this.value;
+    }
+    </script>
+
+    <!-- second slider display value -->
+    <script>
+    var rangeslider2 = document.getElementById("sliderRange2");
+    var output2 = document.getElementById("value2");
+    output2.innerHTML = rangeslider2.value;
+
+    rangeslider2.oninput = function() {
+      output2.innerHTML = this.value;
     }
     </script>
 
