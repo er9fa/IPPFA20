@@ -45,6 +45,11 @@
       height: 20px;
     }
 
+    .textbox {
+      width: 25px;
+      height: 10px;
+    }
+
     </style>
 
   </head>
@@ -63,7 +68,7 @@
       <input type="range" min="0" max="100" value ="50" class="pagesliders" id="sliderRange1">
       <p>Value: <span id="value1"></span></p>
       </div>
-      <div id="firstVal"></div>
+      <input type="text" id="firstVal" style="text-align:center" class = "textbox"><br>
     </div>
 
     <!-- putting another slider -->
@@ -72,7 +77,7 @@
       <input type="range" min="0" max="100" value ="50" class="pagesliders" id="sliderRange2">
       <p>Value: <span id="value2"></span></p>
       </div>
-      <div id="secondVal"></div>
+      <input type="text" id="secondVal" style="text-align:center" class = "textbox"><br>
     </div>
 
     <!-- script to display value of slider underneath -->
