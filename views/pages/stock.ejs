@@ -80,6 +80,10 @@
       <input type="text" id="secondVal" style="text-align:center" class = "textbox"><br>
     </div>
 
+    <div class="text-center">
+      <button type="button" onclick="arashAPICall()">Show Arash's Company</button>
+      <div id="appleFinancials"></div>
+    </div>
 
     <!-- script to display value of slider underneath -->
     <script>
@@ -118,24 +122,8 @@
 
     <script>
     function appleAPICall {
-      const https = require('https');
-      https.get('https://finnhub.io/api/v1/quote?symbol=AAPL&token=btnr6jn48v6p0j27hpd0', (resp) => {
-      let data = '';
-
-  // A chunk of data has been recieved.
-      resp.on('data', (chunk) => {
-        data += chunk;
-      });
-
-  // The whole response has been received. Print out the result.
-      resp.on('end', () => {
-        console.log(JSON.parse(data).explanation);
-      });
-
-      }).on("error", (err) => {
-        console.log("Error: " + err.message);
-      });}
-
+      fetch("https://finnhub.io/api/v1/quote?symbol=AAPL&token=btnr6jn48v6p0j27hpd0").then(r => r.json()).then(data => {
+      document.getElementById("appleFinancials").innerHTML = data;
     </script>
 
 
