@@ -24,8 +24,7 @@
 
     /* creating a slider class, need to center*/
     .rangeslider {
-      width: 50%;
-      margin-top: 20px;
+      text-align: center;
     }
 
     /* appearance of slider bar */
@@ -54,26 +53,26 @@
 
     <!-- adding compute button -->
     <div class = "text-center">
-      <button type="button" onclick="getCurrentTime()">Compute</button>
+      <button type="button" onclick="slider1Function(); slider2Function()">Compute</button>
     </div>
 
-    <!-- script for compute button to return current time -->
-    <script>
-    function getCurrentTime() {
-      alert(new Date());
-    }
-    </script>
 
     <!-- putting slider on the page -->
-    <div class="rangeslider" style="align = center;">
+    <div class="rangeslider">
+      <div>
       <input type="range" min="0" max="100" value ="50" class="pagesliders" id="sliderRange1">
       <p>Value: <span id="value1"></span></p>
+      </div>
+      <div id="firstVal"></div>
     </div>
 
     <!-- putting another slider -->
-    <div class="rangeslider" style="align = center;">
+    <div class="rangeslider">
+      <div>
       <input type="range" min="0" max="100" value ="50" class="pagesliders" id="sliderRange2">
       <p>Value: <span id="value2"></span></p>
+      </div>
+      <div id="secondVal"></div>
     </div>
 
     <!-- script to display value of slider underneath -->
@@ -95,6 +94,18 @@
 
     rangeslider2.oninput = function() {
       output2.innerHTML = this.value;
+    }
+    </script>
+
+    <script>
+    function slider1Function() {
+      document.getElementById("firstVal").innerHTML = document.getElementById("sliderRange1").value;
+    }
+    </script>
+
+    <script>
+    function slider2Function() {
+      document.getElementById("secondVal").innerHTML = document.getElementById("sliderRange2").value;
     }
     </script>
 
