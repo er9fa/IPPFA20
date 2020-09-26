@@ -115,6 +115,15 @@
     }
     </script>
 
+    <script>
+    const request = require('request');
+    request('https://finnhub.io/api/v1/quote?symbol=AAPL&token=btnq33v48v6p0j27hhv0', { json: true }, (err, res, body) => {
+      if (err) { return console.log(err); }
+      console.log(body.url);
+      console.log(body.explanation);
+    });
+    </script>
+
 
   </body>
 
