@@ -117,8 +117,9 @@
     </script>
 
     <script>
-    const https = require('https');
-    https.get('https://finnhub.io/api/v1/quote?symbol=AAPL&token=btnr6jn48v6p0j27hpd0', (resp) => {
+    function appleAPICall {
+      const https = require('https');
+      https.get('https://finnhub.io/api/v1/quote?symbol=AAPL&token=btnr6jn48v6p0j27hpd0', (resp) => {
       let data = '';
 
   // A chunk of data has been recieved.
@@ -127,13 +128,14 @@
       });
 
   // The whole response has been received. Print out the result.
-    resp.on('end', () => {
-      console.log(JSON.parse(data).explanation);
-    });
+      resp.on('end', () => {
+        console.log(JSON.parse(data).explanation);
+      });
 
-    }).on("error", (err) => {
-  console.log("Error: " + err.message);
-    });
+      }).on("error", (err) => {
+        console.log("Error: " + err.message);
+      });}
+
     </script>
 
 
