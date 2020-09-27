@@ -120,6 +120,11 @@
     </script>
 
     <script>
+    fetch("https://finnhub.io/api/v1/quote?symbol=AAPL&token=btnr6jn48v6p0j27hpd0").then(r => r.json()).then(data => {
+      document.getElementById("appleFinancials").innerHTML = data.data[0];
+    </script>
+
+    <script>
       fetch('https://finnhub.io/api/v1/quote?symbol=AAPL&token=btnr6jn48v6p0j27hpd0')
             .then(function (response) {
                 return response.json();
