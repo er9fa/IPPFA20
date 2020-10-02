@@ -84,10 +84,6 @@
       <div id="appleFinancials"></div>
     </div>
 
-    <div class="text-center">
-      <<div id="stock_headline"></div>
-    </div>
-
     <!-- script to display value of slider underneath -->
     <script>
     var rangeslider1 = document.getElementById("sliderRange1");
@@ -143,17 +139,6 @@
             }
       }
     </script>
-
-    <!-- stock headline news api pull -->
-    <script>
-          fetch('https://finnhub.io/api/v1/company-news?symbol=AAPL&from=2020-04-30&to=2020-05-01&token=btov32v48v6pbh1eq060${headline}'.then(r => r.json()).then(data => {
-          document.getElementById("stock_headline").innerHTML = data.data[0];
-          })
-    </script>
-
-
-
-
   </body>
 
 </html>
