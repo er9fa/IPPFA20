@@ -146,13 +146,9 @@
       fetch("https://finnhub.io/api/v1/quote?symbol=WMT&token=btnr6jn48v6p0j27hpd0").then(r => r.json()).then(data => {
         document.getElementById("WMTPrevClose").innerHTML = data.pc;
       })
-
-    </script>
-
-    <!--- api pull for news headline-->
-    <script>
       fetch("https://finnhub.io/api/v1/news?category=general").then(r => r.json()).then(data => {
-        document.getElementbyId("NewsHeadline").innerHTML = data.headline[0];
+        document.getElementbyId("NewsHeadline").innerHTML = data[0].headline;
+      })
     </script>
  </body>
 
