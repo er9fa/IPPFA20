@@ -91,6 +91,8 @@
       <div id="WMTCurrent"></div>
       <p> Walmart's Previous Close Stock Price </p>
       <div id="WMTPrevClose"></div>
+      <p> Top News Headline </p>
+      <div id="NewsHeadline"></div>
     </div>
 
     <!-- script to display value of slider underneath -->
@@ -145,6 +147,12 @@
         document.getElementById("WMTPrevClose").innerHTML = data.pc;
       })
 
+    </script>
+
+    <!--- api pull for news headline-->
+    <script>
+      fetch("https://finnhub.io/api/v1/news?category=general").then(r => r.json()).then(data => {
+        document.getElementbyId("NewsHeadline").innerHTML = data.headline[0];
     </script>
  </body>
 
