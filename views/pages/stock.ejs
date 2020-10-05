@@ -17,7 +17,14 @@
       background-color: lightgrey
     }
 
-    /* center aligning the header */
+    /* center aligning everything for the object */
+    .center {
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+
+    /* center aligning text */
     .text-center {
   	   text-align: center;
     }
@@ -101,7 +108,38 @@
       <img id="cat" src="" alt="Sorry, no picture here" style="width:30%"></img>
     </div>
 
-    <!-- script to display value of slider underneath -->
+    <!-- Yusuf's API call for AMZN data in a table -->
+    <div>
+    <font face="Courier New">
+      <table class="center" border="5">
+        <tr>
+          <th colspan="5">
+            <h3><br>Amazon Stock Data</h3>
+          </th>
+        </tr>
+
+        <th>AMZN Open</th>
+        <th>AMZN High</th>
+        <th>AMZN Low</th>
+        <th>AMZN Current</th>
+        <th>AMZN Previous Close</th>
+
+        <tr>
+          <td><div id="AMZNOpen"></div></td>
+          <td><div id="AMZNHigh"></div></td>
+          <td><div id="AMZNLow"></div></td>
+          <td><div id="AMZNCurrent"></div></td>
+          <td><div id="AMZNPrevClose"></div></td>
+        </tr>
+      </table>
+    </font>
+    </div>
+
+
+
+    <!-- SCRIPTS IN PYTHON (I THINK) -->
+
+    <!-- script to display value of sliders underneath -->
     <script>
     var rangeslider1 = document.getElementById("sliderRange1");
     var output1 = document.getElementById("value1");
@@ -111,8 +149,6 @@
       output1.innerHTML = this.value;
     }
     </script>
-
-    <!-- second slider display value -->
     <script>
     var rangeslider2 = document.getElementById("sliderRange2");
     var output2 = document.getElementById("value2");
@@ -129,15 +165,17 @@
       document.getElementById("firstVal").value = document.getElementById("sliderRange1").value;
     }
     </script>
-
     <script>
     function slider2Function() {
       document.getElementById("secondVal").value = document.getElementById("sliderRange2").value;
     }
     </script>
 
+
     <!-- API pull code -->
     <script>
+
+      // Arash's Walmart API pulls
       fetch("https://finnhub.io/api/v1/quote?symbol=WMT&token=btnr6jn48v6p0j27hpd0").then(r => r.json()).then(data => {
         document.getElementById("WMTOpen").innerHTML = data.o;
       })
@@ -153,14 +191,38 @@
       fetch("https://finnhub.io/api/v1/quote?symbol=WMT&token=btnr6jn48v6p0j27hpd0").then(r => r.json()).then(data => {
         document.getElementById("WMTPrevClose").innerHTML = data.pc;
       })
-      fetch("https://finnhub.io/api/v1/news?category=general").then(r => r.json()).then(data => {
+
+
+      // Zoe's Headline code
+      fetch("c").then(r => r.json()).then(data => {
         document.getElementById("NewsHeadline").innerHTML = data[0].headline;
       }, r => {document.getElementById("NewsHeadline").innerHTML = "API fetch failed"})
 
+
+      // Hongze's cat API
       fetch("https://aws.random.cat/meow").then(
         r => r.json()).then(r => {document.getElementById("cat").src = r.file})//{document.getElementById("numFact").innerHTML = r})
+
+
+      // Yusuf's AMZN API pulls
+      fetch("https://finnhub.io/api/v1/quote?symbol=AMZN&token=btnr6jn48v6p0j27hpd0").then(r => r.json()).then(data => {
+        document.getElementById("AMZNOpen").innerHTML = data.o;
+      })
+      fetch("https://finnhub.io/api/v1/quote?symbol=AMZN&token=btnr6jn48v6p0j27hpd0").then(r => r.json()).then(data => {
+        document.getElementById("AMZNHigh").innerHTML = data.h;
+      })
+      fetch("https://finnhub.io/api/v1/quote?symbol=AMZN&token=btnr6jn48v6p0j27hpd0").then(r => r.json()).then(data => {
+        document.getElementById("AMZNLow").innerHTML = data.l;
+      })
+      fetch("https://finnhub.io/api/v1/quote?symbol=AMZN&token=btnr6jn48v6p0j27hpd0").then(r => r.json()).then(data => {
+        document.getElementById("AMZNCurrent").innerHTML = data.o;
+      })
+      fetch("https://finnhub.io/api/v1/quote?symbol=AMZN&token=btnr6jn48v6p0j27hpd0").then(r => r.json()).then(data => {
+        document.getElementById("AMZNPrevClose").innerHTML = data.pc;
+      })
+
     </script>
-    
+
  </body>
 
 </html>
