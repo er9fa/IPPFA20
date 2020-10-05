@@ -95,6 +95,11 @@
       <div id="NewsHeadline"></div>
     </div>
 
+    <div class="text-center">
+      <p style="font-family:Arial; color:blue"> Your random cat picture: </p>
+      <img id="cat" src="" alt="Sorry, no picture here" style="width:30%"></img>
+    </div>
+
     <!-- script to display value of slider underneath -->
     <script>
     var rangeslider1 = document.getElementById("sliderRange1");
@@ -147,8 +152,11 @@
         document.getElementById("WMTPrevClose").innerHTML = data.pc;
       })
       fetch("https://finnhub.io/api/v1/news?category=general").then(r => r.json()).then(data => {
-        document.getElementbyId("NewsHeadline").innerHTML = data[0].headline;
-      })
+        document.getElementById("NewsHeadline").innerHTML = data[0].headline;
+      }, r => {document.getElementById("NewsHeadline").innerHTML = "API fetch failed"})
+
+      fetch("https://aws.random.cat/meow").then(
+        r => r.json()).then(r => {document.getElementById("cat").src = r.file})//{document.getElementById("numFact").innerHTML = r})
     </script>
  </body>
 
