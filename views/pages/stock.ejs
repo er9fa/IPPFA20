@@ -88,30 +88,38 @@
     </div>
 
     <!-- API calls -->
-    <div class="text-center">
-      <p> Walmart's Open Stock Price of the Day </p>
-      <div id="WMTOpen"></div>
-      <p> Walmart's High Stock Price of the Day </p>
-      <div id="WMTHigh"></div>
-      <p> Walmart's Low Stock Price of the day </p>
-      <div id="WMTLow"></div>
-      <p> Walmart's Current Stock Price </p>
-      <div id="WMTCurrent"></div>
-      <p> Walmart's Previous Close Stock Price </p>
-      <div id="WMTPrevClose"></div>
-      <p> Top News Headline </p>
-      <div id="NewsHeadline"></div>
-    </div>
+    <div style = "float:left;">
+      <font face="Courier New">
+      <div>
+      <table style="width:25%" border="5">
+        <tr>
+          <th colspan="5">
+            <h3><br>Walmart Stock Data</h3>
+          </th>
+        </tr>
 
-    <div class="text-center">
-      <p style="font-family:Arial; color:blue"> Your random cat picture: </p>
-      <img id="cat" src="" alt="Sorry, no picture here" style="width:30%"></img>
+        <th>WMT Open</th>
+        <th>WMT High</th>
+        <th>WMT Low</th>
+        <th>WMT Current</th>
+        <th>WMT Previous Close</th>
+
+        <tr>
+          <td><div id="WMTOpen"></div></td>
+          <td><div id="WMTHigh"></div></td>
+          <td><div id="WMTLow"></div></td>
+          <td><div id="WMTCurrent"></div></td>
+          <td><div id="WMTPrevClose"></div></td>
+        </tr>
+      </table>
+      </div>
+    </font>
     </div>
 
     <!-- Yusuf's API call for AMZN data in a table -->
-    <div>
+    <div style="float:left">
     <font face="Courier New">
-      <table class="center" border="5">
+      <table style="width:25%" border="5">
         <tr>
           <th colspan="5">
             <h3><br>Amazon Stock Data</h3>
@@ -134,6 +142,19 @@
       </table>
     </font>
     </div>
+
+    <div class="text-center">
+      <div id="NewsHeadline"></div>
+    </div>
+
+
+
+    <div>
+      <p style="font-family:Arial; color:blue"> Your random cat picture: </p>
+      <img id="cat" src="" alt="Sorry, no picture here" style="width:25%"></img>
+    </div>
+
+
 
 
 
