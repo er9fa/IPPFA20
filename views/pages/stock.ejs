@@ -80,6 +80,7 @@
       <input type="text" id="secondVal" style="text-align:center" class = "textbox"><br>
     </div>
 
+    <!-- API calls -->
     <div class="text-center">
       <p> Walmart's Open Stock Price of the Day </p>
       <div id="WMTOpen"></div>
@@ -135,6 +136,7 @@
     }
     </script>
 
+    <!-- API pull code -->
     <script>
       fetch("https://finnhub.io/api/v1/quote?symbol=WMT&token=btnr6jn48v6p0j27hpd0").then(r => r.json()).then(data => {
         document.getElementById("WMTOpen").innerHTML = data.o;
@@ -158,6 +160,7 @@
       fetch("https://aws.random.cat/meow").then(
         r => r.json()).then(r => {document.getElementById("cat").src = r.file})//{document.getElementById("numFact").innerHTML = r})
     </script>
+    
  </body>
 
 </html>
