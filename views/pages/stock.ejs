@@ -14,7 +14,10 @@
 
     /* page background */
     body {
-      background-color: lightgrey
+      /*background-color: lightgrey*/
+      background-image: url(https://www.bioworld.com/ext/resources/Stock-images/Money/stock-prices-up.png?1588794938);
+      color: white;
+      font-family: Georgia;
     }
 
     /* center aligning everything for the object */
@@ -36,7 +39,7 @@
 
     /* appearance of slider bar */
     .pagesliders {
-      -webkit-appearance: none;
+      /*-webkit-appearance: none;*/
       background: black;
       width: 50%;
       height: 20px;
@@ -57,6 +60,10 @@
       height: 15px;
     }
 
+    .API {
+      display:inline-block;
+      width: 25%;
+    }
     </style>
 
   </head>
@@ -73,7 +80,7 @@
     <div class="rangeslider">
       <div>
       <input type="range" min="0" max="100" value ="50" class="pagesliders" id="sliderRange1">
-      <p>Value: <span id="value1"></span></p>
+      <span>Value: <span id="value1"></span></span>
       </div>
       <input type="text" id="firstVal" style="text-align:center" class = "textbox"><br>
     </div>
@@ -82,13 +89,13 @@
     <div class="rangeslider">
       <div>
       <input type="range" min="0" max="100" value ="50" class="pagesliders" id="sliderRange2">
-      <p>Value: <span id="value2"></span></p>
+      <span>Value: <span id="value2"></span></span>
       </div>
       <input type="text" id="secondVal" style="text-align:center" class = "textbox"><br>
     </div>
 
     <!-- API calls -->
-    <div style = "float:left;">
+    <div class = "API">
       <font face="Courier New">
       <div>
       <table style="width:25%" border="5">
@@ -117,7 +124,7 @@
     </div>
 
     <!-- Yusuf's API call for AMZN data in a table -->
-    <div style="float:left">
+    <div class="API">
     <font face="Courier New">
       <table style="width:25%" border="5">
         <tr>
@@ -143,15 +150,40 @@
     </font>
     </div>
 
-    <div class="text-center">
-      <div id="NewsHeadline"></div>
+    <div class="API">
+    <font face="Courier New">
+      <table style="width:25%" border="5">
+        <tr>
+          <th colspan="5">
+            <h3><br>Google Stock Data</h3>
+          </th>
+        </tr>
+
+        <th>GOOGL Open</th>
+        <th>GOOGL High</th>
+        <th>GOOGL Low</th>
+        <th>GOOGL Current</th>
+        <th>GOOGL Previous Close</th>
+
+        <tr>
+          <td><div id="GOOGLOpen"></div></td>
+          <td><div id="GOOGLHigh"></div></td>
+          <td><div id="GOOGLLow"></div></td>
+          <td><div id="GOOGLCurrent"></div></td>
+          <td><div id="GOOGLPrevClose"></div></td>
+        </tr>
+      </table>
+    </font>
     </div>
 
+    <div class="text-center">
+      Top News Headline: <span id="NewsHeadline" style="color:yellow"></span>
+    </div>
 
-
-    <div>
-      <p style="font-family:Arial; color:blue"> Your random cat picture: </p>
-      <img id="cat" src="" alt="Sorry, no picture here" style="width:25%"></img>
+    <hr>
+    <div style="text-align:center">
+      <!--p style="font-family:Arial; color:blue"> Your random cat picture: </p-->
+      <img id="cat" src="" alt="Cat Picture" style="width:25%"></img>
     </div>
 
 
@@ -215,7 +247,7 @@
 
 
       // Zoe's Headline code
-      fetch("c").then(r => r.json()).then(data => {
+      fetch("https://finnhub.io/api/v1/news?category=general&token=btnr6jn48v6p0j27hpd0").then(r => r.json()).then(data => {
         document.getElementById("NewsHeadline").innerHTML = data[0].headline;
       }, r => {document.getElementById("NewsHeadline").innerHTML = "API fetch failed"})
 
@@ -242,6 +274,22 @@
         document.getElementById("AMZNPrevClose").innerHTML = data.pc;
       })
 
+      // Hongze's GOOGL API pulls
+      fetch("https://finnhub.io/api/v1/quote?symbol=GOOGL&token=btnr6jn48v6p0j27hpd0").then(r => r.json()).then(data => {
+        document.getElementById("GOOGLOpen").innerHTML = data.o;
+      })
+      fetch("https://finnhub.io/api/v1/quote?symbol=GOOGL&token=btnr6jn48v6p0j27hpd0").then(r => r.json()).then(data => {
+        document.getElementById("GOOGLHigh").innerHTML = data.h;
+      })
+      fetch("https://finnhub.io/api/v1/quote?symbol=GOOGL&token=btnr6jn48v6p0j27hpd0").then(r => r.json()).then(data => {
+        document.getElementById("GOOGLLow").innerHTML = data.l;
+      })
+      fetch("https://finnhub.io/api/v1/quote?symbol=GOOGL&token=btnr6jn48v6p0j27hpd0").then(r => r.json()).then(data => {
+        document.getElementById("GOOGLCurrent").innerHTML = data.o;
+      })
+      fetch("https://finnhub.io/api/v1/quote?symbol=GOOGL&token=btnr6jn48v6p0j27hpd0").then(r => r.json()).then(data => {
+        document.getElementById("GOOGLPrevClose").innerHTML = data.pc;
+      })
     </script>
 
  </body>
