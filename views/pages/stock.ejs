@@ -176,6 +176,33 @@
     </font>
     </div>
 
+    <!-- Zoe's API call for AAPL data in a table -->
+    <div class="API">
+    <font face="Courier New">
+      <table style="width:25%" border="5">
+        <tr>
+          <th colspan="5">
+            <h3><br>Apple Stock Data</h3>
+          </th>
+        </tr>
+
+        <th>AAPL Open</th>
+        <th>AAPL High</th>
+        <th>AAPL Low</th>
+        <th>AAPL Current</th>
+        <th>AAPL Previous Close</th>
+
+        <tr>
+          <td><div id="AAPLOpen"></div></td>
+          <td><div id="AAPLHigh"></div></td>
+          <td><div id="AAPLLow"></div></td>
+          <td><div id="AAPLCurrent"></div></td>
+          <td><div id="AAPLPrevClose"></div></td>
+        </tr>
+      </table>
+    </font>
+    </div>
+
     <div class="text-center">
       Top Market News Headline: <span id="NewsHeadline" style="color:yellow"></span>
     </div>
@@ -289,6 +316,23 @@
       })
       fetch("https://finnhub.io/api/v1/quote?symbol=GOOGL&token=btnr6jn48v6p0j27hpd0").then(r => r.json()).then(data => {
         document.getElementById("GOOGLPrevClose").innerHTML = data.pc;
+      })
+
+      // Zoe's AAPL API pulls
+      fetch("https://finnhub.io/api/v1/quote?symbol=AAPL&token=btnr6jn48v6p0j27hpd0").then(r => r.json()).then(data => {
+        document.getElementById("AAPLOpen").innerHTML = data.o;
+      })
+      fetch("https://finnhub.io/api/v1/quote?symbol=AAPL&token=btnr6jn48v6p0j27hpd0").then(r => r.json()).then(data => {
+        document.getElementById("AAPLHigh").innerHTML = data.h;
+      })
+      fetch("https://finnhub.io/api/v1/quote?symbol=AAPL&token=btnr6jn48v6p0j27hpd0").then(r => r.json()).then(data => {
+        document.getElementById("AAPLLow").innerHTML = data.l;
+      })
+      fetch("https://finnhub.io/api/v1/quote?symbol=AAPL&token=btnr6jn48v6p0j27hpd0").then(r => r.json()).then(data => {
+        document.getElementById("AAPLCurrent").innerHTML = data.o;
+      })
+      fetch("https://finnhub.io/api/v1/quote?symbol=AAPL&token=btnr6jn48v6p0j27hpd0").then(r => r.json()).then(data => {
+        document.getElementById("AAPLPrevClose").innerHTML = data.pc;
       })
     </script>
 
