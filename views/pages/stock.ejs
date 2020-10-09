@@ -257,21 +257,17 @@
 
       // Arash's Walmart API pulls
       fetch("https://finnhub.io/api/v1/quote?symbol=WMT&token=btnr6jn48v6p0j27hpd0").then(r => r.json()).then(data => {
-        document.getElementById("WMTOpen").innerHTML = data.o;
+        var open = data.o;
+        var high = data.h;
+        var low = data.l;
+        var curr = data.c;
+        var pc = data.pc;
+        document.getElementById("WMTOpen").innerHTML = open;
+        document.getElementById("WMTHigh").innerHTML = high;
+        document.getElementById("WMTLow").innerHTML = low;
+        document.getElementById("WMTCurrent").innerHTML = curr;
+        document.getElementById("WMTPrevClose").innerHTML = pc;
       })
-      fetch("https://finnhub.io/api/v1/quote?symbol=WMT&token=btnr6jn48v6p0j27hpd0").then(r => r.json()).then(data => {
-        document.getElementById("WMTHigh").innerHTML = data.h;
-      })
-      fetch("https://finnhub.io/api/v1/quote?symbol=WMT&token=btnr6jn48v6p0j27hpd0").then(r => r.json()).then(data => {
-        document.getElementById("WMTLow").innerHTML = data.l;
-      })
-      fetch("https://finnhub.io/api/v1/quote?symbol=WMT&token=btnr6jn48v6p0j27hpd0").then(r => r.json()).then(data => {
-        document.getElementById("WMTCurrent").innerHTML = data.o;
-      })
-      fetch("https://finnhub.io/api/v1/quote?symbol=WMT&token=btnr6jn48v6p0j27hpd0").then(r => r.json()).then(data => {
-        document.getElementById("WMTPrevClose").innerHTML = data.pc;
-      })
-
 
       // Zoe's Headline code
       fetch("https://finnhub.io/api/v1/news?category=general&token=btnr6jn48v6p0j27hpd0").then(r => r.json()).then(data => {
