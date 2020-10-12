@@ -283,53 +283,30 @@
       // Yusuf's AMZN API pulls
       fetch("https://finnhub.io/api/v1/quote?symbol=AMZN&token=btnr6jn48v6p0j27hpd0").then(r => r.json()).then(data => {
         document.getElementById("AMZNOpen").innerHTML = data.o;
-      })
-      fetch("https://finnhub.io/api/v1/quote?symbol=AMZN&token=btnr6jn48v6p0j27hpd0").then(r => r.json()).then(data => {
         document.getElementById("AMZNHigh").innerHTML = data.h;
-      })
-      fetch("https://finnhub.io/api/v1/quote?symbol=AMZN&token=btnr6jn48v6p0j27hpd0").then(r => r.json()).then(data => {
         document.getElementById("AMZNLow").innerHTML = data.l;
-      })
-      fetch("https://finnhub.io/api/v1/quote?symbol=AMZN&token=btnr6jn48v6p0j27hpd0").then(r => r.json()).then(data => {
-        document.getElementById("AMZNCurrent").innerHTML = data.o;
-      })
-      fetch("https://finnhub.io/api/v1/quote?symbol=AMZN&token=btnr6jn48v6p0j27hpd0").then(r => r.json()).then(data => {
+        document.getElementById("AMZNCurrent").innerHTML = data.c;
         document.getElementById("AMZNPrevClose").innerHTML = data.pc;
       })
+
 
       // Hongze's GOOGL API pulls
       fetch("https://finnhub.io/api/v1/quote?symbol=GOOGL&token=btnr6jn48v6p0j27hpd0").then(r => r.json()).then(data => {
         document.getElementById("GOOGLOpen").innerHTML = data.o;
-      })
-      fetch("https://finnhub.io/api/v1/quote?symbol=GOOGL&token=btnr6jn48v6p0j27hpd0").then(r => r.json()).then(data => {
         document.getElementById("GOOGLHigh").innerHTML = data.h;
-      })
-      fetch("https://finnhub.io/api/v1/quote?symbol=GOOGL&token=btnr6jn48v6p0j27hpd0").then(r => r.json()).then(data => {
         document.getElementById("GOOGLLow").innerHTML = data.l;
-      })
-      fetch("https://finnhub.io/api/v1/quote?symbol=GOOGL&token=btnr6jn48v6p0j27hpd0").then(r => r.json()).then(data => {
-        document.getElementById("GOOGLCurrent").innerHTML = data.o;
-      })
-      fetch("https://finnhub.io/api/v1/quote?symbol=GOOGL&token=btnr6jn48v6p0j27hpd0").then(r => r.json()).then(data => {
+        document.getElementById("GOOGLCurrent").innerHTML = data.c;
         document.getElementById("GOOGLPrevClose").innerHTML = data.pc;
-      })
+
 
       // Zoe's AAPL API pulls
       fetch("https://finnhub.io/api/v1/quote?symbol=AAPL&token=btnr6jn48v6p0j27hpd0").then(r => r.json()).then(data => {
         document.getElementById("AAPLOpen").innerHTML = data.o;
-      })
-      fetch("https://finnhub.io/api/v1/quote?symbol=AAPL&token=btnr6jn48v6p0j27hpd0").then(r => r.json()).then(data => {
         document.getElementById("AAPLHigh").innerHTML = data.h;
-      })
-      fetch("https://finnhub.io/api/v1/quote?symbol=AAPL&token=btnr6jn48v6p0j27hpd0").then(r => r.json()).then(data => {
         document.getElementById("AAPLLow").innerHTML = data.l;
-      })
-      fetch("https://finnhub.io/api/v1/quote?symbol=AAPL&token=btnr6jn48v6p0j27hpd0").then(r => r.json()).then(data => {
-        document.getElementById("AAPLCurrent").innerHTML = data.o;
-      })
-      fetch("https://finnhub.io/api/v1/quote?symbol=AAPL&token=btnr6jn48v6p0j27hpd0").then(r => r.json()).then(data => {
+        document.getElementById("AAPLCurrent").innerHTML = data.c;
         document.getElementById("AAPLPrevClose").innerHTML = data.pc;
-      })
+
     </script>
 
  </body>
