@@ -269,16 +269,6 @@
         document.getElementById("WMTPrevClose").innerHTML = pc;
       })
 
-      // Zoe's Headline code
-      fetch("https://finnhub.io/api/v1/news?category=general&token=btnr6jn48v6p0j27hpd0").then(r => r.json()).then(data => {
-        document.getElementById("NewsHeadline").innerHTML = data[0].headline;
-      }, r => {document.getElementById("NewsHeadline").innerHTML = "API fetch failed"})
-
-
-      // Hongze's cat API
-      fetch("https://aws.random.cat/meow").then(
-        r => r.json()).then(r => {document.getElementById("cat").src = r.file})//{document.getElementById("numFact").innerHTML = r})
-
 
       // Yusuf's AMZN API pulls
       fetch("https://finnhub.io/api/v1/quote?symbol=AMZN&token=btnr6jn48v6p0j27hpd0").then(r => r.json()).then(data => {
@@ -306,6 +296,17 @@
         document.getElementById("AAPLLow").innerHTML = data.l;
         document.getElementById("AAPLCurrent").innerHTML = data.c;
         document.getElementById("AAPLPrevClose").innerHTML = data.pc;
+
+
+      // Zoe's Headline code
+      fetch("https://finnhub.io/api/v1/news?category=general&token=btnr6jn48v6p0j27hpd0").then(r => r.json()).then(data => {
+        document.getElementById("NewsHeadline").innerHTML = data[0].headline;
+      }, r => {document.getElementById("NewsHeadline").innerHTML = "API fetch failed"})
+
+
+      // Hongze's cat API
+      fetch("https://aws.random.cat/meow").then(
+        r => r.json()).then(r => {document.getElementById("cat").src = r.file})//{document.getElementById("numFact").innerHTML = r})
 
     </script>
 
