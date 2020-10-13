@@ -61,8 +61,16 @@
     }
 
     .API {
-      display:inline-block;
-      width: 24%;
+      font-family:'Courier New';
+      display:flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      flex-wrap: nowrap;
+    }
+
+    table{
+      width: 300px;
+      margin: auto;
     }
     </style>
 
@@ -82,7 +90,7 @@
       <input type="range" min="0" max="100" value ="50" class="pagesliders" id="sliderRange1">
       <span>Value: <span id="value1"></span></span>
       </div>
-      <input type="text" id="firstVal" style="text-align:center" class = "textbox"><br>
+      <input type="text" id="firstVal" style="text-align:center" class = "textbox" height=300px><br>
     </div>
 
     <!-- putting another slider -->
@@ -96,8 +104,6 @@
 
     <!-- API calls -->
     <div class = "API">
-      <font face="Courier New">
-      <div>
       <table border="5">
         <tr>
           <th colspan="5">
@@ -119,13 +125,9 @@
           <td><div id="WMTPrevClose"></div></td>
         </tr>
       </table>
-      </div>
-    </font>
-    </div>
 
     <!-- Yusuf's API call for AMZN data in a table -->
-    <div class="API">
-    <font face="Courier New">
+
       <table border="5">
         <tr>
           <th colspan="5">
@@ -147,11 +149,7 @@
           <td><div id="AMZNPrevClose"></div></td>
         </tr>
       </table>
-    </font>
-    </div>
 
-    <div class="API">
-    <font face="Courier New">
       <table border="5">
         <tr>
           <th colspan="5">
@@ -173,12 +171,8 @@
           <td><div id="GOOGLPrevClose"></div></td>
         </tr>
       </table>
-    </font>
-    </div>
 
     <!-- Zoe's API call for AAPL data in a table -->
-    <div class="API">
-    <font face="Courier New">
       <table border="5">
         <tr>
           <th colspan="5">
@@ -200,7 +194,6 @@
           <td><div id="AAPLPrevClose"></div></td>
         </tr>
       </table>
-    </font>
     </div>
 
     <div class="text-center">
@@ -212,9 +205,6 @@
       <!--p style="font-family:Arial; color:blue"> Your random cat picture: </p-->
       <img id="cat" src="" alt="Cat Picture" style="width:25%"></img>
     </div>
-
-
-
 
 
     <!-- SCRIPTS IN PYTHON (I THINK) -->
