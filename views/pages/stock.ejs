@@ -56,11 +56,11 @@
     }
     /*appearance of the text boxes that comput prints to*/
     .textbox {
-      width: 25px;
+      width: 150px;
       height: 15px;
     }
 
-    .API {
+    #API {
       font-family:'Courier New';
       display:flex;
       flex-direction: row;
@@ -90,7 +90,7 @@
       <input type="range" min="0" max="100" value ="50" class="pagesliders" id="sliderRange1">
       <span>Value: <span id="value1"></span></span>
       </div>
-      <input type="text" id="firstVal" style="text-align:center" class = "textbox" height=300px><br>
+      <input type="text" id="firstVal" style="text-align:center" class = "textbox"><br>
     </div>
 
     <!-- putting another slider -->
@@ -102,100 +102,116 @@
       <input type="text" id="secondVal" style="text-align:center" class = "textbox"><br>
     </div>
 
+    <div id='stockstats'>
+      <h3 class=text-center>View Stock Info</h3>
+      <div class=text-center>
+        <label for="symbol">Stock symbol:</label> <input type=text id='symbol' size=5>
+        <button type=button id='symbolbutton' onclick="stockbutton()"
+        disabled>Fetch</button>
+        <br>
+      </div>
+
+    </div>
+
     <!-- API calls -->
-    <div class = "API">
-      <table border="5">
+    <div id = "API">
+      <table border="5" id=t1 style="display:none">
         <tr>
-          <th colspan="5">
-            <h3><br>Walmart Stock Data</h3>
+          <th colspan="5"><br>
+            <h3 id="Title1">Walmart Stock Data</h3>
           </th>
         </tr>
 
-        <th>WMT Open</th>
-        <th>WMT High</th>
-        <th>WMT Low</th>
-        <th>WMT Current</th>
-        <th>WMT Previous Close</th>
+        <th>Open</th>
+        <th>High</th>
+        <th>Low</th>
+        <th>Current</th>
+        <th>Previous Close</th>
 
         <tr>
-          <td><div id="WMTOpen"></div></td>
-          <td><div id="WMTHigh"></div></td>
-          <td><div id="WMTLow"></div></td>
-          <td><div id="WMTCurrent"></div></td>
-          <td><div id="WMTPrevClose"></div></td>
+          <td><div id="Open1"></div></td>
+          <td><div id="High1"></div></td>
+          <td><div id="Low1"></div></td>
+          <td><div id="Current1"></div></td>
+          <td><div id="PrevClose1"></div></td>
         </tr>
       </table>
 
     <!-- Yusuf's API call for AMZN data in a table -->
 
-      <table border="5">
+      <table border="5" id=t2 style="display:none">
         <tr>
-          <th colspan="5">
-            <h3><br>Amazon Stock Data</h3>
+          <th colspan="5"><br>
+            <h3 id="Title2">Amazon Stock Data</h3>
           </th>
         </tr>
 
-        <th>AMZN Open</th>
-        <th>AMZN High</th>
-        <th>AMZN Low</th>
-        <th>AMZN Current</th>
-        <th>AMZN Previous Close</th>
+        <th>Open</th>
+        <th>High</th>
+        <th>Low</th>
+        <th>Current</th>
+        <th>Previous Close</th>
 
         <tr>
-          <td><div id="AMZNOpen"></div></td>
-          <td><div id="AMZNHigh"></div></td>
-          <td><div id="AMZNLow"></div></td>
-          <td><div id="AMZNCurrent"></div></td>
-          <td><div id="AMZNPrevClose"></div></td>
+          <td><div id="Open2"></div></td>
+          <td><div id="High2"></div></td>
+          <td><div id="Low2"></div></td>
+          <td><div id="Current2"></div></td>
+          <td><div id="PrevClose2"></div></td>
         </tr>
       </table>
 
-      <table border="5">
+      <table border="5" id=t3 style="display:none">
         <tr>
-          <th colspan="5">
-            <h3><br>Google Stock Data</h3>
+          <th colspan="5"><br>
+            <h3 id="Title3">Google Stock Data</h3>
           </th>
         </tr>
 
-        <th>GOOGL Open</th>
-        <th>GOOGL High</th>
-        <th>GOOGL Low</th>
-        <th>GOOGL Current</th>
-        <th>GOOGL Previous Close</th>
+        <th>Open</th>
+        <th>High</th>
+        <th>Low</th>
+        <th>Current</th>
+        <th>Previous Close</th>
 
         <tr>
-          <td><div id="GOOGLOpen"></div></td>
-          <td><div id="GOOGLHigh"></div></td>
-          <td><div id="GOOGLLow"></div></td>
-          <td><div id="GOOGLCurrent"></div></td>
-          <td><div id="GOOGLPrevClose"></div></td>
+          <td><div id="Open3"></div></td>
+          <td><div id="High3"></div></td>
+          <td><div id="Low3"></div></td>
+          <td><div id="Current3"></div></td>
+          <td><div id="PrevClose3"></div></td>
         </tr>
       </table>
 
     <!-- Zoe's API call for AAPL data in a table -->
-      <table border="5">
+      <table border="5" id=t4 style="display:none">
         <tr>
-          <th colspan="5">
-            <h3><br>Apple Stock Data</h3>
+          <th colspan="5"><br>
+            <h3 id="Title4">Apple Stock Data</h3>
           </th>
         </tr>
 
-        <th>AAPL Open</th>
-        <th>AAPL High</th>
-        <th>AAPL Low</th>
-        <th>AAPL Current</th>
-        <th>AAPL Previous Close</th>
+        <th>Open</th>
+        <th>High</th>
+        <th>Low</th>
+        <th>Current</th>
+        <th>Previous Close</th>
 
         <tr>
-          <td><div id="AAPLOpen"></div></td>
-          <td><div id="AAPLHigh"></div></td>
-          <td><div id="AAPLLow"></div></td>
-          <td><div id="AAPLCurrent"></div></td>
-          <td><div id="AAPLPrevClose"></div></td>
+          <td><div id="Open4"></div></td>
+          <td><div id="High4"></div></td>
+          <td><div id="Low4"></div></td>
+          <td><div id="Current4"></div></td>
+          <td><div id="PrevClose4"></div></td>
         </tr>
       </table>
     </div>
-
+    <br>
+    <div id='stat_buttons' class="text-center" style='display:none'>
+      <button onclick=refresh()>Refresh</button>
+      <button onclick=tableclear()>Clear All</button>
+    </div>
+    <br>
     <div class="text-center">
       Top Market News Headline: <span id="NewsHeadline" style="color:yellow"></span>
     </div>
@@ -210,7 +226,7 @@
     <!-- SCRIPTS IN PYTHON (I THINK) -->
     <!-- Wait, we can have scripts in python?-->
     <!-- script to display value of sliders underneath -->
-    <script>
+  <script>
     var rangeslider1 = document.getElementById("sliderRange1");
     var output1 = document.getElementById("value1");
     output1.innerHTML = rangeslider1.value;
@@ -218,8 +234,6 @@
     rangeslider1.oninput = function() {
       output1.innerHTML = this.value;
     }
-    </script>
-    <script>
     var rangeslider2 = document.getElementById("sliderRange2");
     var output2 = document.getElementById("value2");
     output2.innerHTML = rangeslider2.value;
@@ -227,31 +241,73 @@
     rangeslider2.oninput = function() {
       output2.innerHTML = this.value;
     }
-    </script>
 
-    <!--- the functions for print out slider values to text boxes-->
-    <script>
+    //<!--- the functions for print out slider values to text boxes-->
     function slider1Function() {
       document.getElementById("firstVal").value = document.getElementById("sliderRange1").value;
     }
-    </script>
-    <script>
     function slider2Function() {
       document.getElementById("secondVal").value = document.getElementById("sliderRange2").value;
     }
-    </script>
+  </script>
+  <script>
+    //<!-- API pull code -->
+    var num_tables=0;
+    var table_codes = [];
+    document.getElementById("symbol").addEventListener("keyup", function() {
+        var nameInput = document.getElementById('symbol').value;
+        if (nameInput != "" && num_tables<4) {
+            document.getElementById('symbolbutton').removeAttribute("disabled");
+        } else {
+            document.getElementById('symbolbutton').setAttribute("disabled", null);
+        }
+    });
 
-
-    <!-- API pull code -->
-    <script>
-
+    function stockbutton(){
+      tablefetch(num_tables+1, document.getElementById("symbol").value.toUpperCase());
+      table_codes[num_tables] = document.getElementById("symbol").value.toUpperCase();
+      document.getElementById('symbolbutton').setAttribute('disabled', null);
+      document.getElementById('symbol').value = '';
+      num_tables++;
+      //console.log(table_codes);
+    }
+    function tablefetch(n, code){
+      //const n = num_tables+1;
+      fetch("https://finnhub.io/api/v1/quote?symbol="+code+"&token=btnr6jn48v6p0j27hpd0").then(r => r.json()).then(data=>{
+        document.getElementById("Open"+n).innerHTML = data.o;
+        document.getElementById("High"+n).innerHTML = data.h;
+        document.getElementById("Low"+n).innerHTML = data.l;
+        document.getElementById("Current"+n).innerHTML = data.c;
+        document.getElementById("PrevClose"+n).innerHTML = data.pc;
+        document.getElementById("Title"+n).innerHTML = code+" Stock Info";
+        document.getElementById('t'+n).style.display="";
+        document.getElementById('stat_buttons').style.display="";
+      });
+    }
+    function refresh(){
+      console.log(num_tables);
+      for(let i=0; i<num_tables; i++){
+        console.log(table_codes[i]);
+        tablefetch(i+1, table_codes[i]);
+      }
+    }
+    function tableclear(){
+      for(let i=0; i<num_tables; i++){
+        document.getElementById('t'+(i+1)).style.display="none";
+      }
+      document.getElementById('stat_buttons').style.display="none";
+      num_tables=0;
+      table_codes=[];
+    }
+/*
       // Arash's Walmart API pulls
       fetch("https://finnhub.io/api/v1/quote?symbol=WMT&token=btnr6jn48v6p0j27hpd0").then(r => r.json()).then(data => {
-        document.getElementById("WMTOpen").innerHTML = data.o;
-        document.getElementById("WMTHigh").innerHTML = data.h;
-        document.getElementById("WMTLow").innerHTML = data.l;
-        document.getElementById("WMTCurrent").innerHTML = data.c;
-        document.getElementById("WMTPrevClose").innerHTML = data.pc;
+        document.getElementById("Open1").innerHTML = data.o;
+        document.getElementById("High1").innerHTML = data.h;
+        document.getElementById("Low1").innerHTML = data.l;
+        document.getElementById("Current1").innerHTML = data.c;
+        document.getElementById("PrevClose1").innerHTML = data.pc;
+        //document.getElementById('t1').style.display='';
       })
 
 
@@ -282,7 +338,7 @@
         document.getElementById("AAPLCurrent").innerHTML = data.c;
         document.getElementById("AAPLPrevClose").innerHTML = data.pc;
       })
-
+*/
       // Zoe's Headline code
       fetch("https://finnhub.io/api/v1/news?category=general&token=btnr6jn48v6p0j27hpd0").then(r => r.json()).then(data => {
         document.getElementById("NewsHeadline").innerHTML = data[0].headline;
