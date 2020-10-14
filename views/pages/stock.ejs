@@ -211,7 +211,8 @@
       <button onclick=refresh()>Refresh</button>
       <button onclick=tableclear()>Clear All</button>
     </div>
-    <br>
+    <p id=tablemessage class="text-center"></p>
+
     <div class="text-center">
       Top Market News Headline: <span id="NewsHeadline" style="color:yellow"></span>
     </div>
@@ -254,9 +255,18 @@
     //<!-- API pull code -->
     var num_tables=0;
     var table_codes = [];
-    document.getElementById("symbol").addEventListener("keyup", function() {
+    document.getElementById("symbol").addEventListener("keyup", function(event) {
         var nameInput = document.getElementById('symbol').value;
-        if (nameInput != "" && num_tables<4) {
+        if (event.keyCode === 13 && nameInput != "" && num_tables<4) {
+          // Cancel the default action, if needed
+          //event.preventDefault();
+          // Trigger the button element with a click
+          document.getElementById("symbolbutton").click();/*
+          stockbutton();
+          document.getElementById('symbolbutton').setAttribute('disabled', true);
+          document.getElementById('symbol').value = '';*/
+        }
+        else if (nameInput != "" && num_tables<4) {
             document.getElementById('symbolbutton').removeAttribute("disabled");
         } else {
             document.getElementById('symbolbutton').setAttribute("disabled", null);
@@ -264,25 +274,41 @@
     });
 
     function stockbutton(){
-      tablefetch(num_tables+1, document.getElementById("symbol").value.toUpperCase());
-      table_codes[num_tables] = document.getElementById("symbol").value.toUpperCase();
+      if(num_tables==4)
+        return;
+      tablefetch(num_tables+1, document.getElementById("symbol").value.toUpperCase(), true);
       document.getElementById('symbolbutton').setAttribute('disabled', null);
       document.getElementById('symbol').value = '';
-      num_tables++;
       //console.log(table_codes);
     }
-    function tablefetch(n, code){
+    function tablefetch(n, code, increment=false){
       //const n = num_tables+1;
+      if(increment && table_codes.includes(code)){
+        document.getElementById("tablemessage").innerHTML = "Enter a different code";
+        return;
+      }
+
+      document.getElementById("tablemessage").innerHTML = "Fetching...";
       fetch("https://finnhub.io/api/v1/quote?symbol="+code+"&token=btnr6jn48v6p0j27hpd0").then(r => r.json()).then(data=>{
-        document.getElementById("Open"+n).innerHTML = data.o;
-        document.getElementById("High"+n).innerHTML = data.h;
-        document.getElementById("Low"+n).innerHTML = data.l;
-        document.getElementById("Current"+n).innerHTML = data.c;
-        document.getElementById("PrevClose"+n).innerHTML = data.pc;
-        document.getElementById("Title"+n).innerHTML = code+" Stock Info";
-        document.getElementById('t'+n).style.display="";
-        document.getElementById('stat_buttons').style.display="";
-      });
+        if(data.o==0 && data.h==0 && data.l==0 && data.c==0 && data.pc==0){
+          document.getElementById("tablemessage").innerHTML = "Invalid Stock Symbol";
+        }
+        else{
+          document.getElementById("Open"+n).innerHTML = data.o;
+          document.getElementById("High"+n).innerHTML = data.h;
+          document.getElementById("Low"+n).innerHTML = data.l;
+          document.getElementById("Current"+n).innerHTML = data.c;
+          document.getElementById("PrevClose"+n).innerHTML = data.pc;
+          document.getElementById("Title"+n).innerHTML = code+" Stock Info";
+          document.getElementById('t'+n).style.display="";
+          document.getElementById('stat_buttons').style.display="";
+          document.getElementById("tablemessage").innerHTML = "";
+          if(increment){
+            table_codes[num_tables] = code;
+            num_tables++;
+          }
+        }
+      }, error=>{document.getElementById("tablemessage").innerHTML = "Fetch Failed"});
     }
     function refresh(){
       console.log(num_tables);
@@ -298,6 +324,7 @@
       document.getElementById('stat_buttons').style.display="none";
       num_tables=0;
       table_codes=[];
+      document.getElementById("tablemessage").innerHTML = "";
     }
 /*
       // Arash's Walmart API pulls
