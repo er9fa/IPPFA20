@@ -32,16 +32,16 @@
   	   text-align: center;
     }
 
-    /* creating a slider class, need to center*/
+    /* creating a slider class */
     .rangeslider {
-      text-align: center;
+      text-align: left;
     }
 
     /* appearance of slider bar */
     .pagesliders {
       -webkit-appearance: none;
       background: #3484F0;
-      width: 50%;
+      width: 15%;
       height: 20px;
       opacity: 2;
     }
@@ -84,23 +84,59 @@
     </div>
 
 
-    <!-- putting slider on the page -->
+    <!-- ADDING SLIDERS TO PAGE -->
+    <!-- first slider -->
     <div class="rangeslider">
       <div>
-      <input type="range" min="0" max="100" value ="50" class="pagesliders" id="sliderRange1">
-      <span>Value: <span id="value1"></span></span>
+      <input type="range" min="0" max="5000" value ="0" class="pagesliders" id="sliderRange1">
+      <span>Min Stock Price: <span id="value1"></span></span>
       </div>
-      <input type="text" id="firstVal" style="text-align:center" class = "textbox"><br>
+      <!-- commented out the textbox that the compute button ties to,
+      can use the compute button for something else
+       <input type="text" id="firstVal" style="text-align:center" class = "textbox"><br> -->
     </div>
 
-    <!-- putting another slider -->
+    <!-- second slider -->
     <div class="rangeslider">
       <div>
-      <input type="range" min="0" max="100" value ="50" class="pagesliders" id="sliderRange2">
-      <span>Value: <span id="value2"></span></span>
+      <input type="range" min="0" max="5000" value ="0" class="pagesliders" id="sliderRange2">
+      <span>Max Stock Price: <span id="value2"></span></span>
       </div>
-      <input type="text" id="secondVal" style="text-align:center" class = "textbox"><br>
+      <!-- <input type="text" id="secondVal" style="text-align:center" class = "textbox"><br> -->
     </div>
+
+    <!-- third slider -->
+    <div class="rangeslider">
+      <div>
+      <input type="range" min="-50" max="50" value ="0" step="0.01" class="pagesliders" id="sliderRange5">
+      <span>Min Price-to-Earnings Ratio: <span id="value5"></span></span>
+      </div>
+    </div>
+
+    <!-- fourth slider -->
+    <div class="rangeslider">
+      <div>
+      <input type="range" min="-50" max="50" value ="0" step="0.01" class="pagesliders" id="sliderRange4">
+      <span>Max Price-to-Earnings Ratio: <span id="value4"></span></span>
+      </div>
+    </div>
+
+    <!-- fifth slider -->
+    <div class="rangeslider">
+      <div>
+      <input type="range" min="0" max="1" value ="0" class="pagesliders" id="sliderRange3">
+      <span>Stock Trend Down/Up (0=down, 1=up): <span id="value3"></span></span>
+      </div>
+    </div>
+
+    <!-- sixth slider -->
+    <div class="rangeslider">
+      <div>
+      <input type="range" min="0" max="100" value ="0" step="0.1" class="pagesliders" id="sliderRange6">
+      <span>Min Net Worth (in billions): $<span id="value6"></span></span>
+      </div>
+    </div>
+
 
     <div id='stockstats'>
       <h3 class=text-center>View Stock Info</h3>
@@ -224,9 +260,9 @@
     </div>
 
 
-    <!-- SCRIPTS IN PYTHON (I THINK) -->
-    <!-- Wait, we can have scripts in python?-->
-    <!-- script to display value of sliders underneath -->
+    <!-- SCRIPTS -->
+
+    <!-- script to display value of sliders  -->
   <script>
     var rangeslider1 = document.getElementById("sliderRange1");
     var output1 = document.getElementById("value1");
@@ -235,6 +271,7 @@
     rangeslider1.oninput = function() {
       output1.innerHTML = this.value;
     }
+
     var rangeslider2 = document.getElementById("sliderRange2");
     var output2 = document.getElementById("value2");
     output2.innerHTML = rangeslider2.value;
@@ -242,6 +279,39 @@
     rangeslider2.oninput = function() {
       output2.innerHTML = this.value;
     }
+
+    var rangeslider3 = document.getElementById("sliderRange3");
+    var output3 = document.getElementById("value3");
+    output3.innerHTML = rangeslider3.value;
+
+    rangeslider3.oninput = function() {
+      output3.innerHTML = this.value;
+    }
+
+    var rangeslider4 = document.getElementById("sliderRange4");
+    var output4 = document.getElementById("value4");
+    output4.innerHTML = rangeslider4.value;
+
+    rangeslider4.oninput = function() {
+      output4.innerHTML = this.value;
+    }
+
+    var rangeslider5 = document.getElementById("sliderRange5");
+    var output5 = document.getElementById("value5");
+    output5.innerHTML = rangeslider5.value;
+
+    rangeslider5.oninput = function() {
+      output5.innerHTML = this.value;
+    }
+
+    var rangeslider6 = document.getElementById("sliderRange6");
+    var output6 = document.getElementById("value6");
+    output6.innerHTML = rangeslider6.value;
+
+    rangeslider6.oninput = function() {
+      output6.innerHTML = this.value;
+    }
+
 
     //<!--- the functions for print out slider values to text boxes-->
     function slider1Function() {
@@ -251,6 +321,7 @@
       document.getElementById("secondVal").value = document.getElementById("sliderRange2").value;
     }
   </script>
+
   <script>
     //<!-- API pull code -->
     var num_tables=0;
