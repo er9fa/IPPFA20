@@ -80,7 +80,7 @@
 
     <!-- adding compute button -->
     <div class = "text-center">
-      <button type="button" onclick="slider1Function(); slider2Function()">Compute</button>
+      <button type="button" onclick="getStock()">Compute</button>
     </div>
 
 
@@ -248,7 +248,7 @@
       <button onclick=tableclear()>Clear All</button>
     </div>
     <p id=tablemessage class="text-center"></p>
-
+    <div>
     <div class="text-center">
       Top Market News Headline: <span id="NewsHeadline" style="color:yellow"></span>
     </div>
@@ -319,6 +319,12 @@
     }
     function slider2Function() {
       document.getElementById("secondVal").value = document.getElementById("sliderRange2").value;
+    }
+
+    function getStock() {
+      if (output1.innerHTML === 0 && output2.innerHTML === 0 && output3.innerHTML === 0 && output4.innerHTML === 0 && output5.innerHTML === 0 && output26.innerHTML === 0) {
+        tablefetch(1, AAPL,true); //if all sliders == 0, then just returns AAPL table as example
+      }
     }
   </script>
 
