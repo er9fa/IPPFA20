@@ -14,9 +14,8 @@
 
     /* page background */
     body {
-      /*background-color: lightgrey*/
-      background-image: url(https://www.bioworld.com/ext/resources/Stock-images/Money/stock-prices-up.png?1588794938);
-      color: white;
+      background-color: lightgrey;
+      color: black;
       font-family: Georgia;
     }
 
@@ -58,6 +57,15 @@
     .textbox {
       width: 150px;
       height: 15px;
+    }
+
+    /*footer news headlines*/
+    .footer {
+      width: 100%;
+      position: fixed;
+      text-align: center;
+      background-color: black;
+      color: white;
     }
 
     #API {
@@ -249,16 +257,12 @@
     </div>
     <p id=tablemessage class="text-center"></p>
     <div>
-    <div class="text-center">
-      Top Market News Headline: <span id="NewsHeadline" style="color:yellow"></span>
-    </div>
-
     <hr>
-    <div style="text-align:center">
-      <!--p style="font-family:Arial; color:blue"> Your random cat picture: </p-->
-      <img id="cat" src="" alt="Cat Picture" style="width:25%"></img>
-    </div>
 
+    <!-- adding footer news headline -->
+    <div class = "footer">
+      Top Market News Headline: <span id="NewsHeadline"></span>
+    </div>
 
     <!-- SCRIPTS -->
 
