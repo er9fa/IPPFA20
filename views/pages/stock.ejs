@@ -120,8 +120,8 @@
     <!-- third slider -->
     <div class="rangeslider">
       <div>
-      <input type="range" min="-50" max="50" value ="0" step="0.01" class="pagesliders" id="sliderRange5">
-      <span>Min Price-to-Earnings Ratio: <span id="value5"></span></span>
+      <input type="range" min="-50" max="50" value ="0" step="0.01" class="pagesliders" id="sliderRange3">
+      <span>Min Price-to-Earnings Ratio: <span id="value3"></span></span>
       </div>
     </div>
 
@@ -136,18 +136,21 @@
     <!-- fifth slider -->
     <div class="rangeslider">
       <div>
-      <input type="range" min="0" max="1" value ="0" class="pagesliders" id="sliderRange3">
-      <span>Stock Trend Down/Up (0=down, 1=up): <span id="value3"></span></span>
+      <input type="range" min="0" max="100" value ="0" step="0.1" class="pagesliders" id="sliderRange5">
+      <span>Min Net Worth (in billions): $<span id="value5"></span></span>
       </div>
     </div>
 
     <!-- sixth slider -->
     <div class="rangeslider">
       <div>
-      <input type="range" min="0" max="100" value ="0" step="0.1" class="pagesliders" id="sliderRange6">
-      <span>Min Net Worth (in billions): $<span id="value6"></span></span>
+      <input type="range" min="0" max="1" value ="0" class="pagesliders" id="sliderRange6">
+      <span>Stock Trend Down/Up (0=down, 1=up): <span id="value6"></span></span>
       </div>
     </div>
+
+    <!-- reset button for sliders -->
+    <input id="slidersReset" type="button" value="Reset">
 
 
     <div id='stockstats'>
@@ -323,6 +326,22 @@
     rangeslider6.oninput = function() {
       output6.innerHTML = this.value;
     }
+
+    // reset button for SLIDERS code
+    document.getElementById('slidersReset').onclick = function(){
+      document.getElementById('sliderRange1').value = 0;
+      document.getElementById('sliderRange2').value = 0;
+      document.getElementById('sliderRange3').value = 0;
+      document.getElementById('sliderRange4').value = 0;
+      document.getElementById('sliderRange5').value = 0;
+      document.getElementById('sliderRange6').value = 0;
+      document.getElementById('value1').innerHTML = 0;
+      document.getElementById('value2').innerHTML = 0;
+      document.getElementById('value3').innerHTML = 0;
+      document.getElementById('value4').innerHTML = 0;
+      document.getElementById('value5').innerHTML = 0;
+      document.getElementById('value6').innerHTML = 0;
+    };
 
 
     //<!--- the functions for print out slider values to text boxes-->
