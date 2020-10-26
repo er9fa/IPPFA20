@@ -149,9 +149,21 @@
       </div>
     </div>
 
-    <!-- reset button for sliders -->
-    <input id="slidersReset" type="button" value="Reset">
+    <!-- stock trend buttons -->
+    <div class='rangeslider'>
+      <text>Stock Trend Up/Down: </text>
+      <input type="radio" id="stockUp" name="stockTrend" value="up">
+      <label for="up">Up</label>
+      <input type="radio" id="stockDown" name="stockTrend" value="down">
+      <label for="down">Down</label>
+    </div>
 
+    <br>
+
+    <!-- reset button for sliders DOESNT WORK IF I REMOVE THE 6TH SLIDER-->
+    <div>
+      <input id="slidersReset" type="button" value="Reset">
+    </div>
 
     <div id='stockstats'>
       <h3 class=text-center>View Stock Info</h3>
@@ -341,6 +353,9 @@
       document.getElementById('value4').innerHTML = 0;
       document.getElementById('value5').innerHTML = 0;
       document.getElementById('value6').innerHTML = 0;
+      var ele = document.getElementsByName("stockTrend");
+      for(var i=0;i<ele.length;i++)
+        ele[i].checked = false;
     };
 
 
