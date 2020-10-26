@@ -39,6 +39,38 @@
       margin-bottom: 3px;
     }
 
+    /* nav menu for tabs */
+    .navmenu {
+      padding: 10px 40.5px;
+      background: transparent;
+      color: #ffce00;
+      font-weight: 100;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 20px;
+      text-align: center;
+      border-radius: 10px;
+      border: 3px solider #C0ECAD;
+    }
+    .navmenu: hover {
+      box-shadow: 0 0 15px 0 #C0ECAD;
+    }
+
+    #wrapper {
+      position: relative;
+      margin-left: 20px
+    }
+    #wrapper > div {
+      float: left;
+      margin-right: 15px;
+    }
+    input[name = content] {
+      display: none;
+    }
+    input[name = content]: checked + label[class="navmenu"] {
+      background: #C0ECAD;
+      color: black;
+    }
+
     /* appearance of slider bar */
     .pagesliders {
       -webkit-appearance: none;
@@ -99,6 +131,20 @@
       <button type="button" onclick="getStock()">Compute</button>
     </div>
 
+    <!-- elements of navigation menu - series of radio buttons that control each tab -->
+    <div id="wrapper" style = "margin-top: -30px">
+      <!-- instruction tab -->
+      <div> <input type = 'radio' name = 'content' id = 'ins_content' checked = 'true' onclick = "display()"/>
+      <label for='ins_content' class="navmenu">INSTRUCTIONS</label> </div>
+
+      <!-- news tab -->
+      <div> <input type = 'radio' name = 'content' id = 'news_content' checked = 'true' onclick = "display()"/>
+      <label for='news_content' class="navmenu">NEWS</label> </div>
+
+      <!-- stock finder tab -->
+      <div> <input type = 'radio' name = 'content' id = 'stk_content' checked = 'true' onclick = "display()"/>
+      <label for='stk_content' class="navmenu">STOCK FINDER</label> </div>
+    </div>
 
     <!-- ADDING SLIDERS TO PAGE -->
     <!-- first slider -->
@@ -290,6 +336,32 @@
 
     <!-- SCRIPTS -->
 
+    <!--script to control display of tabs -->
+    <script>
+      function display() {
+        var ins = document.getElementById('instructions'); // refers to content of instructions tab
+        var news = document.getElementById('news'); // refers to content of news tab
+        var stk = document.getElementById('stockfinder'); // refers to content of stock finder tab
+
+        if (document.getElementById("ins_content").checked) { // instruction tab is selected
+          ins.style.display = "block";
+          news.style.display = "none";
+          stk.style.display = "none";
+        }
+
+        if (document.getElementById("news_content").checked) { // news tab is selected
+          ins.style.display = "none";
+          news.style.display = "block";
+          stk.style.display = "none";
+        }
+
+        if (document.getElementById("stk_content").checked) { // stock finder tab is selected
+          ins.style.display = "none";
+          news.style.display = "none";
+          stk.style.display = "block";
+        }
+      }
+    </script>
     <!-- script to display value of sliders  -->
   <script>
     var rangeslider1 = document.getElementById("sliderRange1");
