@@ -103,10 +103,9 @@
     <!-- ADDING SLIDERS TO PAGE -->
     <!-- first slider -->
     <div class="rangeslider">
-      <div>
+      <span>Min Stock Price: &nbsp;</span><br>
       <input type="range" min="0" max="5000" value ="0" class="pagesliders" id="sliderRange1">
-      <span>Min Stock Price: <span id="value1"></span></span>
-      </div>
+      <span id="value1"></span><br><br>
       <!-- commented out the textbox that the compute button ties to,
       can use the compute button for something else
        <input type="text" id="firstVal" style="text-align:center" class = "textbox"><br> -->
@@ -114,43 +113,36 @@
 
     <!-- second slider -->
     <div class="rangeslider">
-      <div>
+      <span>Max Stock Price: &nbsp;</span><br>
       <input type="range" min="0" max="5000" value ="0" class="pagesliders" id="sliderRange2">
-      <span>Max Stock Price: <span id="value2"></span></span>
-      </div>
+      <span id="value2"></span><br><br>
       <!-- <input type="text" id="secondVal" style="text-align:center" class = "textbox"><br> -->
     </div>
 
     <!-- third slider -->
     <div class="rangeslider">
-      <div>
+      <span>Min Price-to-Earnings Ratio: &nbsp;</span>
       <input type="range" min="-50" max="50" value ="0" step="0.01" class="pagesliders" id="sliderRange3">
-      <span>Min Price-to-Earnings Ratio: <span id="value3"></span></span>
-      </div>
+      <span id="value3"></span><br><br>
     </div>
 
     <!-- fourth slider -->
     <div class="rangeslider">
-      <div>
+      <span>Max Price-to-Earnings Ratio: &nbsp;</span>
       <input type="range" min="-50" max="50" value ="0" step="0.01" class="pagesliders" id="sliderRange4">
-      <span>Max Price-to-Earnings Ratio: <span id="value4"></span></span>
-      </div>
+      <span id="value4"></span><br><br>
     </div>
 
     <!-- fifth slider -->
     <div class="rangeslider">
-      <div>
       <input type="range" min="0" max="100" value ="0" step="0.1" class="pagesliders" id="sliderRange5">
-      <span>Min Net Worth (in billions): $<span id="value5"></span></span>
-      </div>
+      <span>Min Net Worth (in billions): $<span id="value5"></span></span><br><br>
     </div>
 
     <!-- sixth slider -->
     <div class="rangeslider">
-      <div>
-      <input type="range" min="0" max="1" value ="0" class="pagesliders" id="sliderRange6">
-      <span>Stock Trend Down/Up (0=down, 1=up): <span id="value6"></span></span>
-      </div>
+      <input type="range" min="0" max="100" value ="0" step="0.1" class="pagesliders" id="sliderRange6">
+      <span>Max Net Worth (in billions): $<span id="value6"></span></span><br><br>
     </div>
 
     <!-- stock trend buttons -->
