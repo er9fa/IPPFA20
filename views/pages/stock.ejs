@@ -68,7 +68,7 @@
       color: white;
     }
 
-    #API {
+    #API_tables {
       font-family:'Courier New';
       display:flex;
       flex-direction: row;
@@ -151,15 +151,15 @@
       <div class=text-center>
         <label for="symbol">Stock symbol:</label> <input type=text id='symbol' size=5>
         <button type=button id='symbolbutton' onclick="stockbutton()"
-        disabled>Fetch</button>
+        disabled>Add</button>
         <br>
       </div>
 
     </div>
+    <div id = "API_tables">
+    <!-- API calls --
 
-    <!-- API calls -->
-    <div id = "API">
-      <table border="5" id=t1 style="display:none">
+      <table border="5" id=t1>
         <tr>
           <th colspan="5"><br>
             <h3 id="Title1">Walmart Stock Data</h3>
@@ -180,9 +180,13 @@
           <td><div id="PrevClose1"></div></td>
         </tr>
       </table>
-
-    <!-- Yusuf's API call for AMZN data in a table -->
-
+      <div class=text-center>
+        <button onclick=tablefetch()>Delete</button>
+        <button>Refresh</button>
+      </div>
+    </div>
+-->
+<!--
       <table border="5" id=t2 style="display:none">
         <tr>
           <th colspan="5"><br>
@@ -227,7 +231,6 @@
         </tr>
       </table>
 
-    <!-- Zoe's API call for AAPL data in a table -->
       <table border="5" id=t4 style="display:none">
         <tr>
           <th colspan="5"><br>
@@ -249,11 +252,12 @@
           <td><div id="PrevClose4"></div></td>
         </tr>
       </table>
+    -->
     </div>
     <br>
     <div id='stat_buttons' class="text-center" style='display:none'>
-      <button onclick=refresh()>Refresh</button>
       <button onclick=tableclear()>Clear All</button>
+      <button onclick=refreshAll()>Refresh All</button>
     </div>
     <p id=tablemessage class="text-center"></p>
     <div>
@@ -327,11 +331,11 @@
 
     function getStock() {
       if (output1.innerHTML === 0 && output2.innerHTML === 0 && output3.innerHTML === 0 && output4.innerHTML === 0 && output5.innerHTML === 0 && output6.innerHTML === 0) {
-        tablefetch(1, AAPL,true); //if all sliders == 0, then just returns AAPL table as example
+        addTable('AAPL'); //if all sliders == 0, then just returns AAPL table as example
       }
     }
   </script>
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script>
     //<!-- API pull code -->
     var num_tables=0;
@@ -357,11 +361,91 @@
     function stockbutton(){
       if(num_tables==4)
         return;
-      tablefetch(num_tables+1, document.getElementById("symbol").value.toUpperCase(), true);
-      document.getElementById('symbolbutton').setAttribute('disabled', null);
-      document.getElementById('symbol').value = '';
+      //tablefetch(num_tables+1, document.getElementById("symbol").value.toUpperCase(), true);
+      addTable($("#symbol").val().toUpperCase());
+      //document.getElementById('symbolbutton').setAttribute('disabled', null);
+      $('#symbolbutton').attr('disabled', null);
+      //document.getElementById('symbol').value = '';
+      $('#symbol').val("");
       //console.log(table_codes);
     }
+
+    function addTable(code){
+      if(typeof code==="undefined")
+        return;
+      if(table_codes.includes(code)){
+        $("#tablemessage").html(code+" table already exists");
+        return;
+      }
+      $("#tablemessage").html("Fetching...");
+      fetch("https://finnhub.io/api/v1/quote?symbol="+code+"&token=btnr6jn48v6p0j27hpd0").then(r => r.json()).then(data=>{
+        if(data.o==0 && data.h==0 && data.l==0 && data.c==0 && data.pc==0){
+          $("#tablemessage").html("Invalid Stock Symbol");
+        }
+        else{
+          let table_html = `
+            <div id=table${code}>
+              <table border=\"5\">
+                <tr>
+                  <th colspan=\"5\"><br>
+                    <h3>${code} Stock Data</h3>
+                  </th>
+                </tr>
+
+                <th>Open</th>
+                <th>High</th>
+                <th>Low</th>
+                <th>Current</th>
+                <th>Previous Close</th>
+
+                <tr>
+                  <td><div id=\"Open${code}\"></div></td>
+                  <td><div id=\"High${code}\"></div></td>
+                  <td><div id=\"Low${code}\"></div></td>
+                  <td><div id=\"Current${code}\"></div></td>
+                  <td><div id=\"PrevClose${code}\"></div></td>
+                </tr>
+              </table>
+              <div class=text-center>
+                <button onclick=removeTable(\"${code}\")>Delete</button>
+                <button onclick=refresh(\"${code}\")>Refresh</button>
+              </div>
+            </div>
+          `;
+          $(table_html).appendTo("#API_tables");
+          $("#Open"+code).html(data.o);
+          $("#High"+code).html(data.h);
+          $("#Low"+code).html(data.l);
+          $("#Current"+code).html(data.c);
+          $("#PrevClose"+code).html(data.pc);
+          document.getElementById('stat_buttons').style.display="";
+          $("#tablemessage").html("");
+          table_codes.push(code);
+          num_tables++;
+        }
+      }, error=>{$("tablemessage").html("Fetch Failed")});
+    }
+
+    function removeTable(code){
+      num_tables--;
+      let n = table_codes.indexOf(code);
+      table_codes.splice(n,1); //remove from table
+      $(`#table${code}`).remove();
+      if(num_tables==0)
+        document.getElementById('stat_buttons').style.display="none";
+    }
+    function refresh(code){
+      $("#tablemessage").html("Fetching...");
+      fetch("https://finnhub.io/api/v1/quote?symbol="+code+"&token=btnr6jn48v6p0j27hpd0").then(r => r.json()).then(data=>{
+        $("#Open"+code).html(data.o);
+        $("#High"+code).html(data.h);
+        $("#Low"+code).html(data.l);
+        $("#Current"+code).html(data.c);
+        $("#PrevClose"+code).html(data.pc);
+        $("#tablemessage").html("");
+      }, error=>{document.getElementById("tablemessage").innerHTML = "Fetch Failed"})
+    }
+    /*
     function tablefetch(n, code, increment=false){
       //const n = num_tables+1;
       if(increment && table_codes.includes(code)){
@@ -391,16 +475,19 @@
         }
       }, error=>{document.getElementById("tablemessage").innerHTML = "Fetch Failed"});
     }
-    function refresh(){
+    */
+    function refreshAll(){
       console.log(num_tables);
       for(let i=0; i<num_tables; i++){
         console.log(table_codes[i]);
-        tablefetch(i+1, table_codes[i]);
+        refresh(table_codes[i]);
       }
     }
     function tableclear(){
-      for(let i=0; i<num_tables; i++){
-        document.getElementById('t'+(i+1)).style.display="none";
+      console.log(table_codes);
+      for(let i=num_tables-1; i>=0; i--){
+        //document.getElementById('t'+(i+1)).style.display="none";
+        removeTable(table_codes[i]);
       }
       document.getElementById('stat_buttons').style.display="none";
       num_tables=0;
