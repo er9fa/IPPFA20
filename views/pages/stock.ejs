@@ -98,7 +98,7 @@
       width: 100%;
       position: fixed;
       text-align: center;
-      background-color: black;
+      background-color: blue;
       color: white;
     }
 
@@ -219,7 +219,7 @@
 
     </div>
     <div id = "API_tables">
-    <!-- API calls --
+    <!-- API calls
 
       <table border="5" id=t1>
         <tr>
@@ -314,6 +314,7 @@
           <td><div id="PrevClose4"></div></td>
         </tr>
       </table>
+
     -->
     </div>
     <br>
@@ -334,6 +335,18 @@
     </div>
 
     <!-- SCRIPTS -->
+    <script>// Zoe's Headline code (I'd like this to be done first)
+      fetch("https://finnhub.io/api/v1/news?category=general&token=btnr6jn48v6p0j27hpd0").then(r => r.json()).then(data => {
+        let s = "";
+        for(let i=0; i<10; i++){
+          s += data[i].headline;
+          if(i!==9)
+            s+="   ||   ";
+        }
+        console.log(s);
+        document.getElementById("NewsHeadline").innerHTML = s;
+      }, r => {document.getElementById("NewsHeadline").innerHTML = "API fetch failed"})
+    </script>
 
     <!--script to control display of tabs -->
     <script>
@@ -644,16 +657,13 @@
         document.getElementById("AAPLPrevClose").innerHTML = data.pc;
       })
 */
-      // Zoe's Headline code
-      fetch("https://finnhub.io/api/v1/news?category=general&token=btnr6jn48v6p0j27hpd0").then(r => r.json()).then(data => {
-        document.getElementById("NewsHeadline").innerHTML = data[0].headline;
-      }, r => {document.getElementById("NewsHeadline").innerHTML = "API fetch failed"})
 
 
+      /*
       // Hongze's cat API
       fetch("https://aws.random.cat/meow").then(
         r => r.json()).then(r => {document.getElementById("cat").src = r.file})//{document.getElementById("numFact").innerHTML = r})
-
+        */
     </script>
 
  </body>
