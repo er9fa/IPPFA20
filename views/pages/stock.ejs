@@ -98,13 +98,48 @@
       width: 100%;
       position: fixed;
       text-align: center;
-      background-color: blue;
+      background-color: gray;
       color: white;
       bottom: 0;
       left: 0;
-      width: 100%;
+      height: 50px;
     }
-
+    .marquee {
+      white-space: nowrap;
+      overflow: hidden;
+      width:100%
+       -moz-animation: marquee 30s linear infinite;
+       -webkit-animation: marquee 30s linear infinite;
+       animation: marquee 30s linear infinite;
+     }
+     @-moz-keyframes marquee {
+       0% {
+         transform: translateX(100%);
+       }
+       100% {
+         transform: translateX(-100%);
+       }
+     }
+     @-webkit-keyframes marquee {
+       0% {
+         transform: translateX(100%);
+       }
+       100% {
+         transform: translateX(-100%);
+       }
+     }
+     @keyframes marquee {
+       0% {
+         -moz-transform: translateX(100%);
+         -webkit-transform: translateX(100%);
+         transform: translateX(100%)
+       }
+       100% {
+         -moz-transform: translateX(-100%);
+         -webkit-transform: translateX(-100%);
+         transform: translateX(-100%);
+       }
+     }
     #API_tables {
       font-family:'Montserrat';
       font-size: small;
@@ -331,10 +366,8 @@
 
     <!-- adding footer news headline -->
     <div class = "footer">
-      Top Market News Headline:
-      <marquee behavior="scroll" direction="left">
-        <span id="NewsHeadline"></span>
-      </marquee>
+      Top Market News Headlines:
+        <div class="marquee" id="NewsHeadline"></div>
     </div>
 
     <!-- SCRIPTS -->
