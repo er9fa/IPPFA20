@@ -162,19 +162,21 @@
     <!-- elements of navigation menu - series of radio buttons that control each tab -->
     <div id="wrapper" style = "margin-top: -30px">
       <!-- instruction tab -->
-      <div> <input type = 'radio' name = 'content' id = 'ins_content' checked = 'true' onclick = "display()"/>
-      <label for='ins_content' class="navmenu">INSTRUCTIONS</label> </div>
+      <div> <input type = 'radio' name = 'content' id = 'ins_lontent' checked = 'true' onclick = "display()"/>
+      <label for='ins_lontent' class="navmenu" id=ins_l style="background-color:gray">INSTRUCTIONS</label> </div>
 
       <!-- news tab -->
-      <div> <input type = 'radio' name = 'content' id = 'news_content' checked = 'true' onclick = "display()"/>
-      <label for='news_content' class="navmenu">NEWS</label> </div>
+      <div> <input type = 'radio' name = 'content' id = 'news_lontent' checked = 'true' onclick = "display()"/>
+      <label for='news_lontent' class="navmenu" id=news_l>NEWS</label> </div>
 
       <!-- stock finder tab -->
-      <div> <input type = 'radio' name = 'content' id = 'stk_content' checked = 'true' onclick = "display()"/>
-      <label for='stk_content' class="navmenu">STOCK FINDER</label> </div>
-    </div><br>
-
-
+      <div> <input type = 'radio' name = 'content' id = 'stk_lontent' checked = 'true' onclick = "display()"/>
+      <label for='stk_lontent' class="navmenu" id=stk_l>STOCK FINDER</label> </div>
+    </div>
+    <br>
+<div id="instructions">To be added</div>
+<div id="news" style="display:none">To be added</div>
+<div id="stockfinder" style="display:none">
     <!-- adding compute button -->
     <br><br><div class = "text-center">
       <button type="button" onclick="getStock()">Compute</button>
@@ -361,9 +363,9 @@
       <button onclick=refreshAll()>Refresh All</button>
     </div>
     <p id=tablemessage class="text-center"></p>
-    <div>
-    <hr>
 
+    <hr>
+</div>
     <!-- adding footer news headline -->
     <div class = "footer">
       Top Market News Headlines:
@@ -387,26 +389,38 @@
     <!--script to control display of tabs -->
     <script>
       function display() {
-        var ins = document.getElementById('instructions'); // refers to content of instructions tab
-        var news = document.getElementById('news'); // refers to content of news tab
-        var stk = document.getElementById('stockfinder'); // refers to content of stock finder tab
+        let ins = document.getElementById('instructions'); // refers to content of instructions tab
+        let news = document.getElementById('news'); // refers to content of news tab
+        let stk = document.getElementById('stockfinder'); // refers to content of stock finder tab
 
-        if (document.getElementById("ins_content").checked) { // instruction tab is selected
+        let ins_l = document.getElementById("ins_l");
+        let news_l = document.getElementById("news_l");
+        let stk_l = document.getElementById("stk_l");
+        if (document.getElementById("ins_lontent").checked) { // instruction tab is selected
           ins.style.display = "block";
           news.style.display = "none";
           stk.style.display = "none";
+          ins_l.style["background-color"]="gray";
+          news_l.style["background-color"]="";
+          stk_l.style["background-color"]="";
         }
 
-        if (document.getElementById("news_content").checked) { // news tab is selected
+        if (document.getElementById("news_lontent").checked) { // news tab is selected
           ins.style.display = "none";
           news.style.display = "block";
           stk.style.display = "none";
+          ins_l.style["background-color"]="";
+          news_l.style["background-color"]="gray";
+          stk_l.style["background-color"]="";
         }
 
-        if (document.getElementById("stk_content").checked) { // stock finder tab is selected
+        if (document.getElementById("stk_lontent").checked) { // stock finder tab is selected
           ins.style.display = "none";
           news.style.display = "none";
           stk.style.display = "block";
+          ins_l.style["background-color"]="";
+          news_l.style["background-color"]="";
+          stk_l.style["background-color"]="gray";
         }
       }
     </script>
