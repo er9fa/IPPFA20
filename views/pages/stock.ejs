@@ -213,6 +213,18 @@
       <input id="slidersReset" type="button" value="Reset">
     </div>
 
+
+    <input
+        id="input"
+        type="range"
+        min="0"
+        max="100"
+        value="0"
+        step="1"
+      />
+      <div id="output"></div>
+
+
     <div id='stockstats'>
       <h3 class=text-center>View Stock Info</h3>
       <div class=text-center>
@@ -467,6 +479,20 @@
       for(var i=0;i<ele.length;i++)
         ele[i].checked = false;
     };
+
+    // creating exponential slider
+    transform = {
+      const transform = x => x * x; // from nonlinear to linear
+      transform.invert = x => Math.sqrt(x); // from linear to nonlinear
+      return transform;
+    }
+
+    viewof y = {
+      const form = html`<form><input name=i min=0 max=1 step=any type=range>`
+      form.i.value = transform.invert(form.value = 0.5);
+      form.i.oninput = () => form.value = transform(form.i.valueAsNumber);
+      return form;
+    }
 
 
     //<!--- the functions for print out slider values to text boxes-->
