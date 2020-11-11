@@ -257,19 +257,22 @@
           <hr>
         </div>
         <!-- adding footer news headline -->
-        <div class = "footer ticker">
+        <div class = "footer">
           <strong>Top Market News Headlines:</strong>
-          <ul id='ticker_list'></ul>
-          <!--div class="marquee" id="NewsHeadline"></div-->
+          <div id="NewsHeadline">
+          </div>
         </div>
 
         <!-- SCRIPTS -->
         <script src="jquery-3.5.1.min.js"></script>
-        <script src="jquery.ticker.js"></script>
+        <script src="jquery.marquee.min.js"></script>
         <script>// Zoe's Headline code (I'd like this to be done first)
-        $('.ticker').hide();
+
+
+        $('#NewsHeadline').hide();
         fetch("https://finnhub.io/api/v1/news?category=general&token=btnr6jn48v6p0j27hpd0").then(r => r.json()).then(data => {
           let i=0;
+          let s="";
           for(let c=0; c<10; c++){
             let h = data[i].headline;
             let u = data[i].url;
@@ -278,12 +281,17 @@
               c--;
               continue;
             }
-            $("#ticker_list").append(`<li><a href='${u}'>${h}</a></li>`);
+            $("#NewsHeadline").append(`<a href='${u}'>${h}</a>`);
+            if(c!==9)
+              $("#NewsHeadline").append("   ||   ");
           }
-          $('.ticker').ticker();
-          $('.ticker').show();
-        }, r => {document.getElementById("NewsHeadline").innerHTML = "API fetch failed"})
+          $('#NewsHeadline').marquee({
+            pauseOnHover:true,
+            speed:100
+          });
 
+        }, r => {$("#NewsHeadline").html() = "API fetch failed";})
+        $('#NewsHeadline').show();
         </script>
 
         <!--script to control display of tabs -->
