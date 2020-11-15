@@ -1,696 +1,588 @@
 <!DOCTYPE html>
 <html>
 
-  <head>
-    <!-- bringing in some fonts from https://artisanthemes.io/best-google-fonts-combinations-modern-agency-website/-->
-    <link href="https://fonts.googleapis.com/css?family=Lora:400,700|Montserrat:300" rel="stylesheet">
-    <meta charset="utf-8">
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <!-- page title -->
-    <div class='center'>
-      <h1>Stock Finder</h1>
-    </div>
+<head>
+  <!-- bringing in some fonts from https://artisanthemes.io/best-google-fonts-combinations-modern-agency-website/-->
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,700|Montserrat:300" rel="stylesheet">
+  <meta charset="utf-8">
+  <!--script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script-->
+  <!-- page title -->
+  <div class='center'>
+    <h1>Stock Finder</h1>
+  </div>
 
-    <style>
+  <style>
 
-    /* page background */
-    body {
-      background-color: #353840;
-      color: #ffce00;
-      font-family: 'Montserrat', sans-serif;
-    }
+  /* page background */
+  body {
+    background-color: #353840;
+    color: #ffce00;
+    font-family: 'Montserrat', sans-serif;
+  }
 
-    /* center aligning everything for the object */
-    .center {
-        margin-left: auto;
-        margin-right: auto;
-        text-align: center;
-    }
+  /* center aligning everything for the object */
+  .center {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
 
-    /* center aligning text */
-    .text-center {
-  	   text-align: center;
-    }
+  /* center aligning text */
+  .text-center {
+    text-align: center;
+  }
 
-    /* creating a slider class */
-    .rangeslider {
-      text-align: left;
-      font-size: small;
-      margin-bottom: 3px;
-    }
+  /* creating a slider class */
+  .rangeslider {
+    text-align: left;
+    font-size: small;
+    margin-bottom: 3px;
+  }
 
-    /* nav menu for tabs */
-    .navmenu {
-      padding: 8px 50px;
-      background: transparent;
-      color: #ffce00;
-      font-weight: 100;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 20px;
-      text-align: center;
-      border-radius: 5px;
-      border: 2px solid white;
-    }
-    #wrapper {
-      display: flex;
-      justify-content: center;
-    }
-    #wrapper > div {
-      float: left;
-      margin-right: 2%;
-    }
-    input[name = content] {
-      display: none;
-    }
-    input[name = content]: checked + label[class="navmenu"] {
-      background: black
-    }
+  /* nav menu for tabs */
+  .navmenu {
+    padding: 8px 50px;
+    background: transparent;
+    color: #ffce00;
+    font-weight: 100;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 5px;
+    border: 2px solid white;
+  }
+  #wrapper {
+    display: flex;
+    justify-content: center;
+  }
+  #wrapper > div {
+    float: left;
+    margin-right: 2%;
+  }
+  input[name = content] {
+    display: none;
+  }
+  input[name = content]: checked + label[class="navmenu"] {
+    background: black
+  }
 
-    /* appearance of slider bar */
-    .pagesliders {
-      -webkit-appearance: none;
-      background: #F48F2A;
-      width: 15%;
-      height: 5px;
-      border-radius: 100px; /* rounding the slider bars */
-      opacity: 2;
-      margin: auto;
-    }
+  /* appearance of slider bar */
+  .pagesliders {
+    -webkit-appearance: none;
+    background: #F48F2A;
+    width: 15%;
+    height: 5px;
+    border-radius: 100px; /* rounding the slider bars */
+    opacity: 2;
+    margin: auto;
+  }
 
-    /* appearance of the slider thumb thing */
-    .pagesliders::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      cursor: pointer;
-      background: white;
-      width: 15px;
-      height: 15px;
-      border-radius: 50%;
-    }
+  /* appearance of the slider thumb thing */
+  .pagesliders::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    cursor: pointer;
+    background: white;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+  }
 
-    /*appearance of the text boxes that comput prints to*/
-    .textbox {
-      width: 150px;
-      height: 15px;
-    }
+  /* appearance of box to display text in */
+  .displayBox {
+    width: 400px;
+    border-radius: 20px;
+    height: 400px;
+    margin: auto;
+    text-align: center;
+    background-color: #ffce00;
+    color: #353840;
+    border: 2px solid white;
+  }
 
-    /*footer news headlines*/
-    .footer {
-      width: 100%;
-      position: fixed;
-      text-align: center;
-      background-color: gray;
-      color: white;
-      bottom: 0;
-      left: 0;
-      height: 50px;
-    }
+  /*appearance of the text boxes that comput prints to*/
+  .textbox {
+    width: 150px;
+    height: 15px;
+  }
 
-    #API_tables {
-      font-family:'Montserrat';
-      font-size: small;
-      display:flex;
-      flex-direction: row;
-      justify-content: space-evenly;
-      flex-wrap: nowrap;
-    }
+  /*footer news headlines*/
+  .footer {
+    width: 100%;
+    position: fixed;
+    text-align: center;
+    background-color: gray;
+    color: white;
+    bottom: 0;
+    left: 0;
+    height: 50px;
+  }
 
-    table{
-      width: 300px;
-      margin: auto;
-    }
-    </style>
+  #API_tables {
+    font-family:'Montserrat';
+    font-size: small;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: nowrap;
+  }
 
-  </head>
+  table{
+    width: 300px;
+    margin: auto;
+  }
+  </style>
 
-  <body>
-    <br><br>
-    <!-- elements of navigation menu - series of radio buttons that control each tab -->
-    <div id="wrapper" style = "margin-top: -30px">
-      <!-- instruction tab -->
-      <div> <input type = 'radio' name = 'content' id = 'ins_lontent' checked = 'true' onclick = "display()"/>
+</head>
+
+<body>
+  <br><br>
+  <!-- elements of navigation menu - series of radio buttons that control each tab -->
+  <div id="wrapper" style = "margin-top: -30px">
+    <!-- instruction tab -->
+    <div> <input type = 'radio' name = 'content' id = 'ins_lontent' checked = 'true' onclick = "display()"/>
       <label for='ins_lontent' class="navmenu" id=ins_l style="background-color:gray">INSTRUCTIONS</label> </div>
 
       <!-- news tab -->
       <div> <input type = 'radio' name = 'content' id = 'news_lontent' checked = 'true' onclick = "display()"/>
-      <label for='news_lontent' class="navmenu" id=news_l>NEWS</label> </div>
+        <label for='news_lontent' class="navmenu" id=news_l>NEWS</label> </div>
 
-      <!-- stock finder tab -->
-      <div> <input type = 'radio' name = 'content' id = 'stk_lontent' checked = 'true' onclick = "display()"/>
-      <label for='stk_lontent' class="navmenu" id=stk_l>STOCK FINDER</label> </div>
-    </div>
-    <br>
-<div id="instructions"><br><br>Welcome to the Stock Finder!<br><br>Use the fields to customize your trading needs and find the best stock for you to invest in<br><br> Customize your preferred stock price, PE ratio, net worth, and stock trends to see what best fits your needs</div>
-<div id="news" style="display:none">To be added</div>
-<div id="stockfinder" style="display:none">
-    <!-- adding compute button -->
-    <br><br><div class = "text-center">
-      <button type="button" onclick="getStock()">Compute</button>
-    </div>
-
-
-
-
-    <!-- ADDING SLIDERS TO PAGE -->
-    <!-- first slider -->
-    <div class="rangeslider">
-      <span>Min Stock Price: <span id="value1"></span></span><br>
-      <input type="range" min="0" max="5000" value ="0" class="pagesliders" id="sliderRange1">
-      <br><br>
-      <!-- commented out the textbox that the compute button ties to,
-      can use the compute button for something else
-       <input type="text" id="firstVal" style="text-align:center" class = "textbox"><br> -->
-    </div>
-
-    <!-- second slider -->
-    <div class="rangeslider">
-      <span>Max Stock Price: <span id="value2"></span></span><br>
-      <input type="range" min="0" max="5000" value ="0" class="pagesliders" id="sliderRange2">
-      <br><br>
-      <!-- <input type="text" id="secondVal" style="text-align:center" class = "textbox"><br> -->
-    </div>
-
-    <!-- third slider -->
-    <div class="rangeslider">
-      <span>Min Price-to-Earnings Ratio: <span id="value3"></span></span><br>
-      <input type="range" min="-50" max="50" value ="0" step="0.01" class="pagesliders" id="sliderRange3">
-      <br><br>
-    </div>
-
-    <!-- fourth slider -->
-    <div class="rangeslider">
-      <span>Max Price-to-Earnings Ratio: <span id="value4"></span></span><br>
-      <input type="range" min="-50" max="50" value ="0" step="0.01" class="pagesliders" id="sliderRange4">
-      <br><br>
-    </div>
-
-    <!-- fifth slider -->
-    <div class="rangeslider">
-      <span>Min Net Worth (in billions): $<span id="value5"></span></span><br>
-      <input type="range" min="0" max="100" value ="0" step="0.1" class="pagesliders" id="sliderRange5">
-      <br><br>
-    </div>
-
-    <!-- sixth slider -->
-    <div class="rangeslider">
-      <span>Max Net Worth (in billions): $<span id="value6"></span></span><br>
-      <input type="range" min="0" max="100" value ="0" step="0.1" class="pagesliders" id="sliderRange6">
-      <br><br>
-    </div>
-
-    <!-- stock trend buttons -->
-    <div class='rangeslider'>
-      <text>Stock Trend Up/Down: </text>
-      <input type="radio" id="stockUp" name="stockTrend" value="up">
-      <label for="up">Up</label>
-      <input type="radio" id="stockDown" name="stockTrend" value="down">
-      <label for="down">Down</label>
-    </div>
-
-    <br>
-
-    <!-- reset button for sliders DOESNT WORK IF I REMOVE THE 6TH SLIDER-->
-    <div>
-      <input id="slidersReset" type="button" value="Reset">
-    </div>
-
-    <div id='stockstats'>
-      <h3 class=text-center>View Stock Info</h3>
-      <div class=text-center>
-        <label for="symbol">Stock symbol:</label> <input type=text id='symbol' size=5>
-        <button type=button id='symbolbutton' onclick="stockbutton()"
-        disabled>Add</button>
+        <!-- stock finder tab -->
+        <div> <input type = 'radio' name = 'content' id = 'stk_lontent' checked = 'true' onclick = "display()"/>
+          <label for='stk_lontent' class="navmenu" id=stk_l>STOCK FINDER</label> </div>
+        </div>
         <br>
-      </div>
 
-    </div>
-    <div id = "API_tables">
-    <!-- API calls
+        <div id="instructions">
+          <br><br>
+          <div class= 'displayBox'>
+            <h1>Welcome to the Stock Finder!</h1>
+            <p>Click on the "Stock Finder" tab to find the best stock to add to your investment portfolio. Customize your preferred stock price, PE ratio and net worth that align with your trading needs.
+              Use the "Stock Search" tab to view data on your favorite stocks, and compare to top competitors or other potential investments.
+              See what's happening in the Stock Market today with the "News" tab. View the top news stories affecting market trends before making your next investment.
+            </p>
+          </div>
+        </div>
+        <div id="news" style="display:none">To be added</div>
+        <div id="stockfinder" style="display:none">
+          <!-- adding compute button -->
+          <br><br><div class = "text-center">
+            <button type="button" onclick="getStock()">Compute</button>
+          </div>
 
-      <table border="5" id=t1>
-        <tr>
-          <th colspan="5"><br>
-            <h3 id="Title1">Walmart Stock Data</h3>
-          </th>
-        </tr>
 
-        <th>Open</th>
-        <th>High</th>
-        <th>Low</th>
-        <th>Current</th>
-        <th>Previous Close</th>
 
-        <tr>
-          <td><div id="Open1"></div></td>
-          <td><div id="High1"></div></td>
-          <td><div id="Low1"></div></td>
-          <td><div id="Current1"></div></td>
-          <td><div id="PrevClose1"></div></td>
-        </tr>
-      </table>
-      <div class=text-center>
-        <button onclick=tablefetch()>Delete</button>
-        <button>Refresh</button>
-      </div>
-    </div>
--->
-<!--
-      <table border="5" id=t2 style="display:none">
-        <tr>
-          <th colspan="5"><br>
-            <h3 id="Title2">Amazon Stock Data</h3>
-          </th>
-        </tr>
 
-        <th>Open</th>
-        <th>High</th>
-        <th>Low</th>
-        <th>Current</th>
-        <th>Previous Close</th>
+          <!-- ADDING SLIDERS TO PAGE -->
+          <!-- first slider -->
+          <div class="rangeslider">
+            <span>Min Stock Price: <span id="value1"></span></span><br>
+            <input type="range" min="0" max="5000" value ="0" class="pagesliders" id="sliderRange1">
+            <br><br>
+            <!-- commented out the textbox that the compute button ties to,
+            can use the compute button for something else
+            <input type="text" id="firstVal" style="text-align:center" class = "textbox"><br> -->
+          </div>
 
-        <tr>
-          <td><div id="Open2"></div></td>
-          <td><div id="High2"></div></td>
-          <td><div id="Low2"></div></td>
-          <td><div id="Current2"></div></td>
-          <td><div id="PrevClose2"></div></td>
-        </tr>
-      </table>
+          <!-- second slider -->
+          <div class="rangeslider">
+            <span>Max Stock Price: <span id="value2"></span></span><br>
+            <input type="range" min="0" max="5000" value ="0" class="pagesliders" id="sliderRange2">
+            <br><br>
+            <!-- <input type="text" id="secondVal" style="text-align:center" class = "textbox"><br> -->
+          </div>
 
-      <table border="5" id=t3 style="display:none">
-        <tr>
-          <th colspan="5"><br>
-            <h3 id="Title3">Google Stock Data</h3>
-          </th>
-        </tr>
+          <!-- third slider -->
+          <div class="rangeslider">
+            <span>Min Price-to-Earnings Ratio: <span id="value3"></span></span><br>
+            <input type="range" min="-50" max="50" value ="0" step="0.01" class="pagesliders" id="sliderRange3">
+            <br><br>
+          </div>
 
-        <th>Open</th>
-        <th>High</th>
-        <th>Low</th>
-        <th>Current</th>
-        <th>Previous Close</th>
+          <!-- fourth slider -->
+          <div class="rangeslider">
+            <span>Max Price-to-Earnings Ratio: <span id="value4"></span></span><br>
+            <input type="range" min="-50" max="50" value ="0" step="0.01" class="pagesliders" id="sliderRange4">
+            <br><br>
+          </div>
 
-        <tr>
-          <td><div id="Open3"></div></td>
-          <td><div id="High3"></div></td>
-          <td><div id="Low3"></div></td>
-          <td><div id="Current3"></div></td>
-          <td><div id="PrevClose3"></div></td>
-        </tr>
-      </table>
+          <!-- fifth slider -->
+          <div class="rangeslider">
+            <span>Min Net Worth (in billions): $<span id="value5"></span></span><br>
+            <input type="range" min="0" max="100" value ="0" step="0.1" class="pagesliders" id="sliderRange5">
+            <br><br>
+          </div>
 
-      <table border="5" id=t4 style="display:none">
-        <tr>
-          <th colspan="5"><br>
-            <h3 id="Title4">Apple Stock Data</h3>
-          </th>
-        </tr>
+          <!-- sixth slider -->
+          <div class="rangeslider">
+            <span>Max Net Worth (in billions): $<span id="value6"></span></span><br>
+            <input type="range" min="0" max="100" value ="0" step="0.1" class="pagesliders" id="sliderRange6">
+            <br><br>
+          </div>
 
-        <th>Open</th>
-        <th>High</th>
-        <th>Low</th>
-        <th>Current</th>
-        <th>Previous Close</th>
+          <!-- stock trend buttons -->
+          <div class='rangeslider'>
+            <text>Stock Trend Up/Down: </text>
+            <input type="radio" id="stockUp" name="stockTrend" value="up">
+            <label for="up">Up</label>
+            <input type="radio" id="stockDown" name="stockTrend" value="down">
+            <label for="down">Down</label>
+          </div>
 
-        <tr>
-          <td><div id="Open4"></div></td>
-          <td><div id="High4"></div></td>
-          <td><div id="Low4"></div></td>
-          <td><div id="Current4"></div></td>
-          <td><div id="PrevClose4"></div></td>
-        </tr>
-      </table>
+          <br>
 
-    -->
-    </div>
-    <br>
-    <div id='stat_buttons' class="text-center" style='display:none'>
-      <button onclick=tableclear()>Clear All</button>
-      <button onclick=refreshAll()>Refresh All</button>
-    </div>
-    <p id=tablemessage class="text-center"></p>
+          <!-- reset button for sliders DOESNT WORK IF I REMOVE THE 6TH SLIDER-->
+          <div>
+            <input id="slidersReset" type="button" value="Reset">
+          </div>
 
-    <hr>
-</div>
-    <!-- adding footer news headline -->
-    <div class = "footer ticker">
-      <strong>Top Market News Headlines:</strong>
-      <ul id='ticker_list'></ul>
-        <!--div class="marquee" id="NewsHeadline"></div-->
-    </div>
 
-    <!-- SCRIPTS -->
-    <script src="jquery-3.5.1.min.js"></script>
-    <script src="jquery.ticker.js"></script>
-    <script>// Zoe's Headline code (I'd like this to be done first)
-      $('.ticker').hide();
-      fetch("https://finnhub.io/api/v1/news?category=general&token=btnr6jn48v6p0j27hpd0").then(r => r.json()).then(data => {
-        let i=0;
-        for(let c=0; c<10; c++){
-          let h = data[i].headline;
-          let u = data[i].url;
-          i++;
-          if(h===""){
-            c--;
-            continue;
+          <div id='stockstats'>
+            <h3 class=text-center>View Stock Info</h3>
+            <div class=text-center>
+              <label for="symbol">Stock symbol:</label> <input type=text id='symbol' size=5>
+              <button type=button id='symbolbutton' onclick="stockbutton()"
+              disabled>Add</button>
+              <br>
+            </div>
+
+          </div>
+          <div id = "API_tables"> </div>
+          <br>
+          <div id='stat_buttons' class="text-center" style='display:none'>
+            <button onclick=tableclear()>Clear All</button>
+            <button onclick=refreshAll()>Refresh All</button>
+          </div>
+          <p id=tablemessage class="text-center"></p>
+
+          <hr>
+        </div>
+        <!-- adding footer news headline -->
+        <div class = "footer">
+          <strong>Top Market News Headlines:</strong>
+          <div id="NewsHeadline">
+          </div>
+        </div>
+
+        <!-- SCRIPTS -->
+        <script src="jquery-3.5.1.min.js"></script>
+        <script src="jquery.marquee.min.js"></script>
+        <script>// Zoe's Headline code (I'd like this to be done first)
+
+
+        $('#NewsHeadline').hide();
+        fetch("https://finnhub.io/api/v1/news?category=general&token=btnr6jn48v6p0j27hpd0").then(r => r.json()).then(data => {
+          let i=0;
+          let s="";
+          for(let c=0; c<10; c++){
+            let h = data[i].headline;
+            let u = data[i].url;
+            i++;
+            if(h===""){
+              c--;
+              continue;
+            }
+            $("#NewsHeadline").append(`<a href='${u}' target=_blank>${h}</a>`);
+            if(c!==9)
+              $("#NewsHeadline").append("   ||   ");
           }
-          $("#ticker_list").append(`<li><a href='${u}'>${h}</a></li>`);
+          $('#NewsHeadline').marquee({
+            pauseOnHover:true,
+            speed:100
+          });
+
+        }, r => {$("#NewsHeadline").html() = "API fetch failed";})
+        $('#NewsHeadline').show();
+        </script>
+
+        <!--script to control display of tabs -->
+        <script>
+        function display() {
+          let ins = document.getElementById('instructions'); // refers to content of instructions tab
+          let news = document.getElementById('news'); // refers to content of news tab
+          let stk = document.getElementById('stockfinder'); // refers to content of stock finder tab
+
+          let ins_l = document.getElementById("ins_l");
+          let news_l = document.getElementById("news_l");
+          let stk_l = document.getElementById("stk_l");
+          if (document.getElementById("ins_lontent").checked) { // instruction tab is selected
+            ins.style.display = "block";
+            news.style.display = "none";
+            stk.style.display = "none";
+            ins_l.style["background-color"]="gray";
+            news_l.style["background-color"]="";
+            stk_l.style["background-color"]="";
+          }
+
+          if (document.getElementById("news_lontent").checked) { // news tab is selected
+            ins.style.display = "none";
+            news.style.display = "block";
+            stk.style.display = "none";
+            ins_l.style["background-color"]="";
+            news_l.style["background-color"]="gray";
+            stk_l.style["background-color"]="";
+          }
+
+          if (document.getElementById("stk_lontent").checked) { // stock finder tab is selected
+            ins.style.display = "none";
+            news.style.display = "none";
+            stk.style.display = "block";
+            ins_l.style["background-color"]="";
+            news_l.style["background-color"]="";
+            stk_l.style["background-color"]="gray";
+          }
         }
-        $('.ticker').ticker();
-        $('.ticker').show();
-      }, r => {document.getElementById("NewsHeadline").innerHTML = "API fetch failed"})
+        </script>
+        <!-- script to display value of sliders  -->
+        <script>
+        var rangeslider1 = document.getElementById("sliderRange1");
+        var output1 = document.getElementById("value1");
+        output1.innerHTML = rangeslider1.value;
 
-    </script>
-
-    <!--script to control display of tabs -->
-    <script>
-      function display() {
-        let ins = document.getElementById('instructions'); // refers to content of instructions tab
-        let news = document.getElementById('news'); // refers to content of news tab
-        let stk = document.getElementById('stockfinder'); // refers to content of stock finder tab
-
-        let ins_l = document.getElementById("ins_l");
-        let news_l = document.getElementById("news_l");
-        let stk_l = document.getElementById("stk_l");
-        if (document.getElementById("ins_lontent").checked) { // instruction tab is selected
-          ins.style.display = "block";
-          news.style.display = "none";
-          stk.style.display = "none";
-          ins_l.style["background-color"]="gray";
-          news_l.style["background-color"]="";
-          stk_l.style["background-color"]="";
+        rangeslider1.oninput = function() {
+          output1.innerHTML = this.value;
         }
 
-        if (document.getElementById("news_lontent").checked) { // news tab is selected
-          ins.style.display = "none";
-          news.style.display = "block";
-          stk.style.display = "none";
-          ins_l.style["background-color"]="";
-          news_l.style["background-color"]="gray";
-          stk_l.style["background-color"]="";
+        var rangeslider2 = document.getElementById("sliderRange2");
+        var output2 = document.getElementById("value2");
+        output2.innerHTML = rangeslider2.value;
+
+        rangeslider2.oninput = function() {
+          output2.innerHTML = this.value;
         }
 
-        if (document.getElementById("stk_lontent").checked) { // stock finder tab is selected
-          ins.style.display = "none";
-          news.style.display = "none";
-          stk.style.display = "block";
-          ins_l.style["background-color"]="";
-          news_l.style["background-color"]="";
-          stk_l.style["background-color"]="gray";
+        var rangeslider3 = document.getElementById("sliderRange3");
+        var output3 = document.getElementById("value3");
+        output3.innerHTML = rangeslider3.value;
+
+        rangeslider3.oninput = function() {
+          output3.innerHTML = this.value;
         }
-      }
-    </script>
-    <!-- script to display value of sliders  -->
-  <script>
-    var rangeslider1 = document.getElementById("sliderRange1");
-    var output1 = document.getElementById("value1");
-    output1.innerHTML = rangeslider1.value;
 
-    rangeslider1.oninput = function() {
-      output1.innerHTML = this.value;
-    }
+        var rangeslider4 = document.getElementById("sliderRange4");
+        var output4 = document.getElementById("value4");
+        output4.innerHTML = rangeslider4.value;
 
-    var rangeslider2 = document.getElementById("sliderRange2");
-    var output2 = document.getElementById("value2");
-    output2.innerHTML = rangeslider2.value;
-
-    rangeslider2.oninput = function() {
-      output2.innerHTML = this.value;
-    }
-
-    var rangeslider3 = document.getElementById("sliderRange3");
-    var output3 = document.getElementById("value3");
-    output3.innerHTML = rangeslider3.value;
-
-    rangeslider3.oninput = function() {
-      output3.innerHTML = this.value;
-    }
-
-    var rangeslider4 = document.getElementById("sliderRange4");
-    var output4 = document.getElementById("value4");
-    output4.innerHTML = rangeslider4.value;
-
-    rangeslider4.oninput = function() {
-      output4.innerHTML = this.value;
-    }
-
-    var rangeslider5 = document.getElementById("sliderRange5");
-    var output5 = document.getElementById("value5");
-    output5.innerHTML = rangeslider5.value;
-
-    rangeslider5.oninput = function() {
-      output5.innerHTML = this.value;
-    }
-
-    var rangeslider6 = document.getElementById("sliderRange6");
-    var output6 = document.getElementById("value6");
-    output6.innerHTML = rangeslider6.value;
-
-    rangeslider6.oninput = function() {
-      output6.innerHTML = this.value;
-    }
-
-    // reset button for SLIDERS code
-    document.getElementById('slidersReset').onclick = function(){
-      document.getElementById('sliderRange1').value = 0;
-      document.getElementById('sliderRange2').value = 0;
-      document.getElementById('sliderRange3').value = 0;
-      document.getElementById('sliderRange4').value = 0;
-      document.getElementById('sliderRange5').value = 0;
-      document.getElementById('sliderRange6').value = 0;
-      document.getElementById('value1').innerHTML = 0;
-      document.getElementById('value2').innerHTML = 0;
-      document.getElementById('value3').innerHTML = 0;
-      document.getElementById('value4').innerHTML = 0;
-      document.getElementById('value5').innerHTML = 0;
-      document.getElementById('value6').innerHTML = 0;
-      var ele = document.getElementsByName("stockTrend");
-      for(var i=0;i<ele.length;i++)
-        ele[i].checked = false;
-    };
-
-
-    //<!--- the functions for print out slider values to text boxes-->
-    function slider1Function() {
-      document.getElementById("firstVal").value = document.getElementById("sliderRange1").value;
-    }
-    function slider2Function() {
-      document.getElementById("secondVal").value = document.getElementById("sliderRange2").value;
-    }
-
-    function getStock() {
-      if (output1.innerHTML === 0 && output2.innerHTML === 0 && output3.innerHTML === 0 && output4.innerHTML === 0 && output5.innerHTML === 0 && output6.innerHTML === 0) {
-        addTable('AAPL'); //if all sliders == 0, then just returns AAPL table as example
-      }
-    }
-  </script>
-
-  <script>
-    //<!-- API pull code -->
-    var num_tables=0;
-    var table_codes = [];
-    document.getElementById("symbol").addEventListener("keyup", function(event) {
-        var nameInput = document.getElementById('symbol').value;
-        if (event.keyCode === 13 && nameInput != "" && num_tables<4) {
-          // Cancel the default action, if needed
-          //event.preventDefault();
-          // Trigger the button element with a click
-          document.getElementById("symbolbutton").click();/*
-          stockbutton();
-          document.getElementById('symbolbutton').setAttribute('disabled', true);
-          document.getElementById('symbol').value = '';*/
+        rangeslider4.oninput = function() {
+          output4.innerHTML = this.value;
         }
-        else if (nameInput != "" && num_tables<4) {
+
+        var rangeslider5 = document.getElementById("sliderRange5");
+        var output5 = document.getElementById("value5");
+        output5.innerHTML = rangeslider5.value;
+
+        rangeslider5.oninput = function() {
+          output5.innerHTML = this.value;
+        }
+
+        var rangeslider6 = document.getElementById("sliderRange6");
+        var output6 = document.getElementById("value6");
+        output6.innerHTML = rangeslider6.value;
+
+        rangeslider6.oninput = function() {
+          output6.innerHTML = this.value;
+        }
+
+        // reset button for SLIDERS code
+        document.getElementById('slidersReset').onclick = function(){
+          document.getElementById('sliderRange1').value = 0;
+          document.getElementById('sliderRange2').value = 0;
+          document.getElementById('sliderRange3').value = 0;
+          document.getElementById('sliderRange4').value = 0;
+          document.getElementById('sliderRange5').value = 0;
+          document.getElementById('sliderRange6').value = 0;
+          document.getElementById('value1').innerHTML = 0;
+          document.getElementById('value2').innerHTML = 0;
+          document.getElementById('value3').innerHTML = 0;
+          document.getElementById('value4').innerHTML = 0;
+          document.getElementById('value5').innerHTML = 0;
+          document.getElementById('value6').innerHTML = 0;
+          var ele = document.getElementsByName("stockTrend");
+          for(var i=0;i<ele.length;i++)
+          ele[i].checked = false;
+        };
+
+
+        //<!--- the functions for print out slider values to text boxes-->
+        function slider1Function() {
+          document.getElementById("firstVal").value = document.getElementById("sliderRange1").value;
+        }
+        function slider2Function() {
+          document.getElementById("secondVal").value = document.getElementById("sliderRange2").value;
+        }
+
+        function getStock() {
+          if (output1.innerHTML === 0 && output2.innerHTML === 0 && output3.innerHTML === 0 && output4.innerHTML === 0 && output5.innerHTML === 0 && output6.innerHTML === 0) {
+            addTable('AAPL'); //if all sliders == 0, then just returns AAPL table as example
+          }
+        }
+        </script>
+
+        <script>
+        //<!-- API pull code -->
+        var num_tables=0;
+        var table_codes = [];
+        document.getElementById("symbol").addEventListener("keyup", function(event) {
+          var nameInput = document.getElementById('symbol').value;
+          if (event.keyCode === 13 && nameInput != "" && num_tables<4) {
+            // Cancel the default action, if needed
+            //event.preventDefault();
+            // Trigger the button element with a click
+            document.getElementById("symbolbutton").click();/*
+            stockbutton();
+            document.getElementById('symbolbutton').setAttribute('disabled', true);
+            document.getElementById('symbol').value = '';*/
+          }
+          else if (nameInput != "" && num_tables<4) {
             document.getElementById('symbolbutton').removeAttribute("disabled");
-        } else {
+          } else {
             document.getElementById('symbolbutton').setAttribute("disabled", null);
-        }
-    });
+          }
+        });
 
-    function stockbutton(){
-      if(num_tables==4)
-        return;
-      //tablefetch(num_tables+1, document.getElementById("symbol").value.toUpperCase(), true);
-      addTable($("#symbol").val().toUpperCase());
-      //document.getElementById('symbolbutton').setAttribute('disabled', null);
-      $('#symbolbutton').attr('disabled', null);
-      //document.getElementById('symbol').value = '';
-      $('#symbol').val("");
-      //console.log(table_codes);
-    }
-
-    function addTable(code){
-      if(typeof code==="undefined")
-        return;
-      if(table_codes.includes(code)){
-        $("#tablemessage").html(code+" table already exists");
-        return;
-      }
-      $("#tablemessage").html("Fetching...");
-      fetch("https://finnhub.io/api/v1/quote?symbol="+code+"&token=btnr6jn48v6p0j27hpd0").then(r => r.json()).then(data=>{
-        if(data.o==0 && data.h==0 && data.l==0 && data.c==0 && data.pc==0){
-          $("#tablemessage").html("Invalid Stock Symbol");
+        function stockbutton(){
+          if(num_tables==4)
+          return;
+          //tablefetch(num_tables+1, document.getElementById("symbol").value.toUpperCase(), true);
+          addTable($("#symbol").val().toUpperCase());
+          //document.getElementById('symbolbutton').setAttribute('disabled', null);
+          $('#symbolbutton').attr('disabled', null);
+          //document.getElementById('symbol').value = '';
+          $('#symbol').val("");
+          //console.log(table_codes);
         }
-        else{
-          let table_html = `
-            <div id=table${code}>
+
+        function addTable(code){
+          if(typeof code==="undefined")
+          return;
+          if(table_codes.includes(code)){
+            $("#tablemessage").html(code+" table already exists");
+            return;
+          }
+          $("#tablemessage").html("Fetching...");
+          fetch("https://finnhub.io/api/v1/quote?symbol="+code+"&token=btnr6jn48v6p0j27hpd0").then(r => r.json()).then(data=>{
+            if(data.o==0 && data.h==0 && data.l==0 && data.c==0 && data.pc==0){
+              $("#tablemessage").html("Invalid Stock Symbol");
+            }
+            else{
+              let table_html = `
+              <div id=table${code}>
               <table border=\"5\">
-                <tr>
-                  <th colspan=\"5\"><br>
-                    <h3>${code} Stock Data</h3>
-                  </th>
-                </tr>
+              <tr>
+              <th colspan=\"5\"><br>
+              <h3>${code} Stock Data</h3>
+              </th>
+              </tr>
 
-                <th>Open</th>
-                <th>High</th>
-                <th>Low</th>
-                <th>Current</th>
-                <th>Previous Close</th>
+              <th>Open</th>
+              <th>High</th>
+              <th>Low</th>
+              <th>Current</th>
+              <th>Previous Close</th>
 
-                <tr>
-                  <td><div id=\"Open${code}\"></div></td>
-                  <td><div id=\"High${code}\"></div></td>
-                  <td><div id=\"Low${code}\"></div></td>
-                  <td><div id=\"Current${code}\"></div></td>
-                  <td><div id=\"PrevClose${code}\"></div></td>
-                </tr>
+              <tr>
+              <td><div id=\"Open${code}\"></div></td>
+              <td><div id=\"High${code}\"></div></td>
+              <td><div id=\"Low${code}\"></div></td>
+              <td><div id=\"Current${code}\"></div></td>
+              <td><div id=\"PrevClose${code}\"></div></td>
+              </tr>
               </table>
               <div class=text-center>
-                <button onclick=removeTable(\"${code}\")>Delete</button>
-                <button onclick=refresh(\"${code}\")>Refresh</button>
+              <button onclick=removeTable(\"${code}\")>Delete</button>
+              <button onclick=refresh(\"${code}\")>Refresh</button>
               </div>
-            </div>
-          `;
-          $(table_html).appendTo("#API_tables");
-          $("#Open"+code).html(data.o);
-          $("#High"+code).html(data.h);
-          $("#Low"+code).html(data.l);
-          $("#Current"+code).html(data.c);
-          $("#PrevClose"+code).html(data.pc);
-          document.getElementById('stat_buttons').style.display="";
-          $("#tablemessage").html("");
-          table_codes.push(code);
-          num_tables++;
+              </div>
+              `;
+              $(table_html).appendTo("#API_tables");
+              $("#Open"+code).html(data.o);
+              $("#High"+code).html(data.h);
+              $("#Low"+code).html(data.l);
+              $("#Current"+code).html(data.c);
+              $("#PrevClose"+code).html(data.pc);
+              document.getElementById('stat_buttons').style.display="";
+              $("#tablemessage").html("");
+              table_codes.push(code);
+              num_tables++;
+            }
+          }, error=>{$("tablemessage").html("Fetch Failed")});
         }
-      }, error=>{$("tablemessage").html("Fetch Failed")});
-    }
 
-    function removeTable(code){
-      num_tables--;
-      let n = table_codes.indexOf(code);
-      table_codes.splice(n,1); //remove from table
-      $(`#table${code}`).remove();
-      if(num_tables==0)
-        document.getElementById('stat_buttons').style.display="none";
-    }
-    function refresh(code){
-      $("#tablemessage").html("Fetching...");
-      fetch("https://finnhub.io/api/v1/quote?symbol="+code+"&token=btnr6jn48v6p0j27hpd0").then(r => r.json()).then(data=>{
-        $("#Open"+code).html(data.o);
-        $("#High"+code).html(data.h);
-        $("#Low"+code).html(data.l);
-        $("#Current"+code).html(data.c);
-        $("#PrevClose"+code).html(data.pc);
-        $("#tablemessage").html("");
-      }, error=>{document.getElementById("tablemessage").innerHTML = "Fetch Failed"})
-    }
-    /*
-    function tablefetch(n, code, increment=false){
-      //const n = num_tables+1;
-      if(increment && table_codes.includes(code)){
+        function removeTable(code){
+          num_tables--;
+          let n = table_codes.indexOf(code);
+          table_codes.splice(n,1); //remove from table
+          $(`#table${code}`).remove();
+          if(num_tables==0)
+          document.getElementById('stat_buttons').style.display="none";
+        }
+        function refresh(code){
+          $("#tablemessage").html("Fetching...");
+          fetch("https://finnhub.io/api/v1/quote?symbol="+code+"&token=btnr6jn48v6p0j27hpd0").then(r => r.json()).then(data=>{
+            $("#Open"+code).html(data.o);
+            $("#High"+code).html(data.h);
+            $("#Low"+code).html(data.l);
+            $("#Current"+code).html(data.c);
+            $("#PrevClose"+code).html(data.pc);
+            $("#tablemessage").html("");
+          }, error=>{document.getElementById("tablemessage").innerHTML = "Fetch Failed"})
+        }
+        /*
+        function tablefetch(n, code, increment=false){
+        //const n = num_tables+1;
+        if(increment && table_codes.includes(code)){
         document.getElementById("tablemessage").innerHTML = "Enter a different code";
         return;
       }
 
       document.getElementById("tablemessage").innerHTML = "Fetching...";
       fetch("https://finnhub.io/api/v1/quote?symbol="+code+"&token=btnr6jn48v6p0j27hpd0").then(r => r.json()).then(data=>{
-        if(data.o==0 && data.h==0 && data.l==0 && data.c==0 && data.pc==0){
-          document.getElementById("tablemessage").innerHTML = "Invalid Stock Symbol";
-        }
-        else{
-          document.getElementById("Open"+n).innerHTML = data.o;
-          document.getElementById("High"+n).innerHTML = data.h;
-          document.getElementById("Low"+n).innerHTML = data.l;
-          document.getElementById("Current"+n).innerHTML = data.c;
-          document.getElementById("PrevClose"+n).innerHTML = data.pc;
-          document.getElementById("Title"+n).innerHTML = code+" Stock Info";
-          document.getElementById('t'+n).style.display="";
-          document.getElementById('stat_buttons').style.display="";
-          document.getElementById("tablemessage").innerHTML = "";
-          if(increment){
-            table_codes[num_tables] = code;
-            num_tables++;
-          }
-        }
-      }, error=>{document.getElementById("tablemessage").innerHTML = "Fetch Failed"});
+      if(data.o==0 && data.h==0 && data.l==0 && data.c==0 && data.pc==0){
+      document.getElementById("tablemessage").innerHTML = "Invalid Stock Symbol";
     }
-    */
-    function refreshAll(){
-      console.log(num_tables);
-      for(let i=0; i<num_tables; i++){
-        console.log(table_codes[i]);
-        refresh(table_codes[i]);
-      }
-    }
-    function tableclear(){
-      console.log(table_codes);
-      for(let i=num_tables-1; i>=0; i--){
-        //document.getElementById('t'+(i+1)).style.display="none";
-        removeTable(table_codes[i]);
-      }
-      document.getElementById('stat_buttons').style.display="none";
-      num_tables=0;
-      table_codes=[];
-      document.getElementById("tablemessage").innerHTML = "";
-    }
-/*
-      // Arash's Walmart API pulls
-      fetch("https://finnhub.io/api/v1/quote?symbol=WMT&token=btnr6jn48v6p0j27hpd0").then(r => r.json()).then(data => {
-        document.getElementById("Open1").innerHTML = data.o;
-        document.getElementById("High1").innerHTML = data.h;
-        document.getElementById("Low1").innerHTML = data.l;
-        document.getElementById("Current1").innerHTML = data.c;
-        document.getElementById("PrevClose1").innerHTML = data.pc;
-        //document.getElementById('t1').style.display='';
-      })
-
-
-      // Yusuf's AMZN API pulls
-      fetch("https://finnhub.io/api/v1/quote?symbol=AMZN&token=btnr6jn48v6p0j27hpd0").then(r => r.json()).then(data => {
-        document.getElementById("AMZNOpen").innerHTML = data.o;
-        document.getElementById("AMZNHigh").innerHTML = data.h;
-        document.getElementById("AMZNLow").innerHTML = data.l;
-        document.getElementById("AMZNCurrent").innerHTML = data.c;
-        document.getElementById("AMZNPrevClose").innerHTML = data.pc;
-      })
-
-
-      // Hongze's GOOGL API pulls
-      fetch("https://finnhub.io/api/v1/quote?symbol=GOOGL&token=btnr6jn48v6p0j27hpd0").then(r => r.json()).then(data => {
-        document.getElementById("GOOGLOpen").innerHTML = data.o;
-        document.getElementById("GOOGLHigh").innerHTML = data.h;
-        document.getElementById("GOOGLLow").innerHTML = data.l;
-        document.getElementById("GOOGLCurrent").innerHTML = data.c;
-        document.getElementById("GOOGLPrevClose").innerHTML = data.pc;
-      })
-
-      // Zoe's AAPL API pulls
-      fetch("https://finnhub.io/api/v1/quote?symbol=AAPL&token=btnr6jn48v6p0j27hpd0").then(r => r.json()).then(data => {
-        document.getElementById("AAPLOpen").innerHTML = data.o;
-        document.getElementById("AAPLHigh").innerHTML = data.h;
-        document.getElementById("AAPLLow").innerHTML = data.l;
-        document.getElementById("AAPLCurrent").innerHTML = data.c;
-        document.getElementById("AAPLPrevClose").innerHTML = data.pc;
-      })
+    else{
+    document.getElementById("Open"+n).innerHTML = data.o;
+    document.getElementById("High"+n).innerHTML = data.h;
+    document.getElementById("Low"+n).innerHTML = data.l;
+    document.getElementById("Current"+n).innerHTML = data.c;
+    document.getElementById("PrevClose"+n).innerHTML = data.pc;
+    document.getElementById("Title"+n).innerHTML = code+" Stock Info";
+    document.getElementById('t'+n).style.display="";
+    document.getElementById('stat_buttons').style.display="";
+    document.getElementById("tablemessage").innerHTML = "";
+    if(increment){
+    table_codes[num_tables] = code;
+    num_tables++;
+  }
+}
+}, error=>{document.getElementById("tablemessage").innerHTML = "Fetch Failed"});
+}
 */
+function refreshAll(){
+  console.log(num_tables);
+  for(let i=0; i<num_tables; i++){
+    console.log(table_codes[i]);
+    refresh(table_codes[i]);
+  }
+}
+function tableclear(){
+  console.log(table_codes);
+  for(let i=num_tables-1; i>=0; i--){
+    //document.getElementById('t'+(i+1)).style.display="none";
+    removeTable(table_codes[i]);
+  }
+  document.getElementById('stat_buttons').style.display="none";
+  num_tables=0;
+  table_codes=[];
+  document.getElementById("tablemessage").innerHTML = "";
+}
 
+/*
+// Hongze's cat API
+fetch("https://aws.random.cat/meow").then(
+r => r.json()).then(r => {document.getElementById("cat").src = r.file})//{document.getElementById("numFact").innerHTML = r})
+*/
+</script>
 
-      /*
-      // Hongze's cat API
-      fetch("https://aws.random.cat/meow").then(
-        r => r.json()).then(r => {document.getElementById("cat").src = r.file})//{document.getElementById("numFact").innerHTML = r})
-        */
-    </script>
-
- </body>
+</body>
 
 </html>
