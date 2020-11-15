@@ -207,14 +207,14 @@
 
           <!-- fifth slider -->
           <div class="rangeslider">
-            <span>Min Net Worth (in billions): $<span id="value5"></span></span><br>
+            <span>Min Market Cap (in Trillions): $<span id="value5"></span></span><br>
             <input type="range" min="0" max="100" value ="0" step="0.1" class="pagesliders" id="sliderRange5">
             <br><br>
           </div>
 
           <!-- sixth slider -->
           <div class="rangeslider">
-            <span>Max Net Worth (in billions): $<span id="value6"></span></span><br>
+            <span>Max Market Cap (in Trillions): $<span id="value6"></span></span><br>
             <input type="range" min="0" max="100" value ="0" step="0.1" class="pagesliders" id="sliderRange6">
             <br><br>
           </div>
@@ -411,8 +411,8 @@
         }
 
         function getStock() {
-          if (output1.innerHTML === 0 && output2.innerHTML === 0 && output3.innerHTML === 0 && output4.innerHTML === 0 && output5.innerHTML === 0 && output6.innerHTML === 0) {
-            addTable('AAPL'); //if all sliders == 0, then just returns AAPL table as example
+          fetch("https://financialmodelingprep.com/api/v3/stock-screener?marketCapMoreThan="+ rangeslider5 +"0000000000&marketCapLessThan="+ rangeslider6 + "000000000000&sector=Technology&exchange=NASDAQ&dividendMoreThan=0&limit=100&apikey=83de5b39af0c5c7e1b5c156e8bc04eaf").then(r => r.json()).then(data=>{
+           //if all sliders == 0, then just returns AAPL table as example
           }
         }
         </script>
