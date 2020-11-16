@@ -167,7 +167,55 @@
             </p>
           </div>
         </div>
-        <div id="news" style="display:none">To be added</div>
+
+        <div id="news">
+          <br><br>
+          <div class="column">
+            <div id="title1"></div>
+            <img src=image1>
+            <div id="text1"></div>
+            <br><br>
+            <div id="title2"></div>
+            <img src=image2>
+            <div id="text2"></div>
+            <br><br>
+            <div id="title3"></div>
+            <img src=image3>
+            <div id="text3"></div>
+            <br><br>
+            <div id="title4"></div>
+            <img src=image4>
+            <div id="text4"></div>
+            <br><br>
+            <div id="title5"></div>
+            <img src=image5>
+            <div id="text5"></div>
+          </div>
+
+
+        </div>
+        <script>
+        fetch("https://financialmodelingprep.com/api/v3/stock_news?tickers=AAPL,FB,GOOG,AMZN&limit=50&apikey=ed2250092ff052db5573e965cb9c49c0").then(r => r.json()).then(data => {
+          document.getElementById("title1").innerHTML = data[0].title
+          document.getElementById("title2").innerHTML = data[1].title
+          document.getElementById("title3").innerHTML = data[2].title
+          document.getElementById("title4").innerHTML = data[3].title
+          document.getElementById("title5").innerHTML = data[4].title
+
+          document.getElementById("image1").innerHTML = data[0].image
+          document.getElementById("image2").innerHTML = data[1].image
+          document.getElementById("image3").innerHTML = data[2].image
+          document.getElementById("image4").innerHTML = data[3].image
+          document.getElementById("image5").innerHTML = data[4].image
+
+          document.getElementById("text1").innerHTML = data[0].text
+          document.getElementById("text2").innerHTML = data[1].text
+          document.getElementById("text3").innerHTML = data[2].text
+          document.getElementById("text4").innerHTML = data[3].text
+          document.getElementById("text5").innerHTML = data[4].text
+
+        });
+        </script>
         <div id="stockfinder" style="display:none">
           <!-- adding compute button -->
           <br><br>
