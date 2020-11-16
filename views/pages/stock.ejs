@@ -11,6 +11,10 @@
     <h1>Stock Finder</h1>
   </div>
 
+  <link rel="stylesheet" href="jquery-ui.min.css">
+  <script src="jquery-3.5.1.min.js"></script>
+  <script src="jquery.marquee.min.js"></script>
+  <script src="jquery-ui.min.js"></script>
   <style>
 
   /* page background */
@@ -35,7 +39,7 @@
   /* creating a slider class */
   .rangeslider {
     text-align: left;
-    font-size: small;
+    font-size: medium;
     margin-bottom: 3px;
   }
 
@@ -70,11 +74,11 @@
   .pagesliders {
     -webkit-appearance: none;
     background: #F48F2A;
-    width: 15%;
-    height: 5px;
+    /*width: 15%;*/
+    height: 10px;
     border-radius: 100px; /* rounding the slider bars */
     opacity: 2;
-    margin: auto;
+    /*margin: auto;*/
   }
 
   /* appearance of the slider thumb thing */
@@ -130,6 +134,7 @@
     width: 300px;
     margin: auto;
   }
+
   </style>
 
 </head>
@@ -173,67 +178,168 @@
 
 
           <!-- ADDING SLIDERS TO PAGE -->
-          <!-- first slider -->
+          <!-- first slider >
           <div class="rangeslider">
             <span>Min Stock Price: <span id="value1"></span></span><br>
             <input type="range" min="0" max="5000" value ="0" class="pagesliders" id="sliderRange1">
             <br><br>
-            <!-- commented out the textbox that the compute button ties to,
+            <! commented out the textbox that the compute button ties to,
             can use the compute button for something else
-            <input type="text" id="firstVal" style="text-align:center" class = "textbox"><br> -->
-          </div>
+            <input type="text" id="firstVal" style="text-align:center" class = "textbox"><br> >
+          </div-->
 
-          <!-- second slider -->
+          <!-- second slider
           <div class="rangeslider">
             <span>Max Stock Price: <span id="value2"></span></span><br>
             <input type="range" min="0" max="5000" value ="0" class="pagesliders" id="sliderRange2">
             <br><br>
-            <!-- <input type="text" id="secondVal" style="text-align:center" class = "textbox"><br> -->
-          </div>
+            <! <input type="text" id="secondVal" style="text-align:center" class = "textbox"><br> >
+          </div-->
 
-          <!-- third slider -->
+          <!-- third slider
           <div class="rangeslider">
             <span>Min Price-to-Earnings Ratio: <span id="value3"></span></span><br>
             <input type="range" min="-50" max="50" value ="0" step="0.01" class="pagesliders" id="sliderRange3">
             <br><br>
-          </div>
+          </div-->
 
-          <!-- fourth slider -->
+          <!-- fourth slider
           <div class="rangeslider">
             <span>Max Price-to-Earnings Ratio: <span id="value4"></span></span><br>
             <input type="range" min="-50" max="50" value ="0" step="0.01" class="pagesliders" id="sliderRange4">
             <br><br>
-          </div>
+          </div-->
 
-          <!-- fifth slider -->
+          <!-- fifth slider
           <div class="rangeslider">
             <span>Min Market Cap (in Billions): $<span id="value5"></span></span><br>
             <input type="range" min="0" max="100" value ="0" step="0.1" class="pagesliders" id="sliderRange5">
             <br><br>
-          </div>
+          </div-->
 
-          <!-- sixth slider -->
+          <!-- sixth slider
           <div class="rangeslider">
             <span>Max Market Cap (in Billions): $<span id="value6"></span></span><br>
             <input type="range" min="0" max="100" value ="0" step="0.1" class="pagesliders" id="sliderRange6">
             <br><br>
-          </div>
+          </div-->
 
-          <!-- stock trend buttons -->
+          <p style="width:350px; font-size:medium;">Min/Max Stock Price:</p>
+          <div style="width:350px;  display:flex; justify-content:space-between">
+            <input type="number" id="Min_SP" style="width:50px">
+            <div id=slider1 class="pagesliders" style="margin:10px; width:200px"> </div>
+            <input type="number" id="Max_SP" style="width:50px">
+          </div>
+          <p style="width:350px; font-size:medium; ">Min/Max Price-to-Earnings Ratio:</p>
+          <div style="width:350px; display:flex; justify-content:space-between">
+            <input type="number" id="Min_PE" style="width:50px">
+            <div id=slider2 class="pagesliders" style="margin:10px; width:200px"> </div>
+            <input type="number" id="Max_PE" style="width:50px">
+          </div>
+          <p style="width:350px; font-size:medium; ">Min/Max Market Cap (in Billions of dollars):</p>
+          <div style="width:350px; display:flex; justify-content:space-between">
+            <input type="number" id="Min_MC" style="width:50px">
+            <div id=slider3 class="pagesliders" style="margin:10px; width:200px"> </div>
+            <input type="number" id="Max_MC" style="width:50px">
+          </div>
+          <br>
           <div class='rangeslider'>
-            <text>Stock Trend Up/Down: </text>
+            <text>Stock Trend: </text>
             <input type="radio" id="stockUp" name="stockTrend" value="up">
             <label for="up">Up</label>
             <input type="radio" id="stockDown" name="stockTrend" value="down">
             <label for="down">Down</label>
           </div>
+          <script>
+            //Script for the slider here
+            $(function() {
+              $( "#slider1" ).slider({
+                range: true,
+                min: 0,
+                max: 5000,
+                values: [ 0, 5000 ],
+                slide: function( event, ui ) {
+                  $("#Min_SP").val(ui.values[0]);
+                  $("#Max_SP").val(ui.values[1]);
+                }
+              });
+              $("#Min_SP").val($("#slider1").slider("values",0));
+              $("#Max_SP").val($("#slider1").slider("values",1));
+              $("#Min_SP").on("input",function(){
+                $("#slider1").slider("values",0,$("#Min_SP").val())
+              });
+              $("#Max_SP").on("input",function(){
+                $("#slider1").slider("values",1,$("#Max_SP").val())
+              });
+            } );
+            $(function() {
+              $( "#slider2" ).slider({
+                range: true,
+                min: -50,
+                max: 50,
+                values: [ -5, 5 ],
+                slide: function( event, ui ) {
+                  $("#Min_PE").val(ui.values[0]);
+                  $("#Max_PE").val(ui.values[1]);
+                }
+              });
+              $("#Min_PE").val($("#slider2").slider("values",0));
+              $("#Max_PE").val($("#slider2").slider("values",1));
+              $("#Min_PE").on("input",function(){
+                $("#slider2").slider("values",0,$("#Min_PE").val())
+              });
+              $("#Max_PE").on("input",function(){
+                $("#slider2").slider("values",1,$("#Max_PE").val())
+              });
+            } );
+            $(function() {
+              $( "#slider3" ).slider({
+                range: true,
+                min: 0,
+                max: 100,
+                values: [ 0, 100 ],
+                slide: function( event, ui ) {
+                  $("#Min_MC").val(ui.values[0]);
+                  $("#Max_MC").val(ui.values[1]);
+                }
+              });
+              $("#Min_MC").val($("#slider3").slider("values",0));
+              $("#Max_MC").val($("#slider3").slider("values",1));
+              $("#Min_MC").on("input",function(){
+                $("#slider3").slider("values",0,$("#Min_MC").val())
+              });
+              $("#Max_MC").on("input",function(){
+                $("#slider3").slider("values",1,$("#Max_MC").val())
+              });
+            } );
 
+          </script>
           <br>
 
           <!-- reset button for sliders DOESNT WORK IF I REMOVE THE 6TH SLIDER-->
           <div>
             <input id="slidersReset" type="button" value="Reset">
           </div>
+          <script>
+            $('#slidersReset').click(function(){
+              $("#Min_SP").val(0);
+              $("#Max_SP").val(5000);
+              $("#Min_PE").val(-5);
+              $("#Max_PE").val(5);
+              $("#Min_MC").val(0);
+              $("#Max_MC").val(100);
+              $("#Min_SP").trigger("input");
+              $("#Max_PE").trigger("input");
+              $("#Min_PE").trigger("input");
+              $("#Max_SP").trigger("input");
+              $("#Min_MC").trigger("input");
+              $("#Max_MC").trigger("input");
+              //$('#stockUp').attr('checked',false);
+              //$('#stockDown').attr('checked',false);
+              document.getElementById("stockUp").checked = false;
+              document.getElementById("stockDown").checked = false;
+            });
+          </script>
 
           <div>
             <table border=1 width=200 cellpadding=10>
@@ -379,8 +485,7 @@
         </div>
 
         <!-- SCRIPTS -->
-        <script src="jquery-3.5.1.min.js"></script>
-        <script src="jquery.marquee.min.js"></script>
+
         <script>// Zoe's Headline code (I'd like this to be done first)
 
 
@@ -398,7 +503,7 @@
             }
             $("#NewsHeadline").append(`<a href='${u}' target=_blank>${h}</a>`);
             if(c!==9)
-              $("#NewsHeadline").append("   ||   ");
+              $("#NewsHeadline").append(" &nbsp;&nbsp;|| &nbsp;&nbsp;");
           }
           $('#NewsHeadline').marquee({
             pauseOnHover:true,
@@ -448,7 +553,7 @@
         }
         </script>
         <!-- script to display value of sliders  -->
-        <script>
+        <script>/*
         var rangeslider1 = document.getElementById("sliderRange1");
         var output1 = document.getElementById("value1");
         output1.innerHTML = rangeslider1.value;
@@ -495,9 +600,10 @@
 
         rangeslider6.oninput = function() {
           output6.innerHTML = this.value;
-        }
+        }*/
 
         // reset button for SLIDERS code
+        /*
         document.getElementById('slidersReset').onclick = function(){
           document.getElementById('sliderRange1').value = 0;
           document.getElementById('sliderRange2').value = 0;
@@ -514,7 +620,7 @@
           var ele = document.getElementsByName("stockTrend");
           for(var i=0;i<ele.length;i++)
           ele[i].checked = false;
-        };
+        };*/
 
 
         //<!--- the functions for print out slider values to text boxes-->
@@ -561,7 +667,7 @@
             document.getElementById("Stock 10 Symbol").innerHTML = data[9].symbol;
             document.getElementById("Stock 10 companyName").innerHTML = data[9].companyName;
             document.getElementById("Stock 10 Price").innerHTML = data[9].price;
-          }
+          });
         }
         </script>
 
