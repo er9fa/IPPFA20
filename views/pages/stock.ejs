@@ -121,6 +121,19 @@
     height: 50px;
   }
 
+  .flex-container {
+      display: flex;
+  }
+
+  .flex-child {
+      flex: 1;
+      border: 2px;
+  }
+
+  .flex-child:first-child {
+      margin-right: 20px;
+  }
+
   #API_tables {
     font-family:'Montserrat';
     font-size: small;
@@ -147,53 +160,73 @@
     <div> <input type = 'radio' name = 'content' id = 'ins_lontent' checked = 'true' onclick = "display()"/>
       <label for='ins_lontent' class="navmenu" id=ins_l style="background-color:gray">INSTRUCTIONS</label> </div>
 
-      <!-- news tab -->
-      <div> <input type = 'radio' name = 'content' id = 'news_lontent' checked = 'true' onclick = "display()"/>
-        <label for='news_lontent' class="navmenu" id=news_l>NEWS</label> </div>
+    <!-- news tab -->
+    <div> <input type = 'radio' name = 'content' id = 'news_lontent' checked = 'true' onclick = "display()"/>
+      <label for='news_lontent' class="navmenu" id=news_l>NEWS</label> </div>
 
-        <!-- stock finder tab -->
-        <div> <input type = 'radio' name = 'content' id = 'stk_lontent' checked = 'true' onclick = "display()"/>
-          <label for='stk_lontent' class="navmenu" id=stk_l>STOCK FINDER</label> </div>
-        </div>
-        <br>
+    <!-- stock finder tab -->
+    <div> <input type = 'radio' name = 'content' id = 'stk_lontent' checked = 'true' onclick = "display()"/>
+      <label for='stk_lontent' class="navmenu" id=stk_l>STOCK FINDER</label> </div>
+  </div>
+  <br>
+        <div class="flex-container">
+          <div id="instructions" class="flex-child" align="center">
+            <br><br>
+            <div class= 'displayBox'>
+              <h1>Welcome to the Stock Finder!</h1>
+              <p>Click on the "Stock Finder" tab to find the best stock to add to your investment portfolio. Customize your preferred stock price, PE ratio and net worth that align with your trading needs.
+                Use the "Stock Search" tab to view data on your favorite stocks, and compare to top competitors or other potential investments.
+                See what's happening in the Stock Market today with the "News" tab. View the top news stories affecting market trends before making your next investment.
+              </p>
+            </div>
+          </div>
 
-        <div id="instructions">
-          <br><br>
-          <div class= 'displayBox'>
-            <h1>Welcome to the Stock Finder!</h1>
-            <p>Click on the "Stock Finder" tab to find the best stock to add to your investment portfolio. Customize your preferred stock price, PE ratio and net worth that align with your trading needs.
-              Use the "Stock Search" tab to view data on your favorite stocks, and compare to top competitors or other potential investments.
-              See what's happening in the Stock Market today with the "News" tab. View the top news stories affecting market trends before making your next investment.
-            </p>
+          <div id="ins-twitter-timeline" class="flex-child" align="center">
+          <a class="twitter-timeline"
+            href="https://twitter.com/YahooFinance?ref_src=twsrc%5Etfw"
+            data-width=600px
+            data-height=600px>
+            Tweets by YahooFinance</a>
+          <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
           </div>
         </div>
 
-        <div id="news">
-          <br><br>
-          <div class="column">
-            <div id="title1"></div>
-            <img src=image1>
-            <div id="text1"></div>
+        <div class="flex-container">
+          <div id="news" class ="flex-child" align="center">
             <br><br>
-            <div id="title2"></div>
-            <img src=image2>
-            <div id="text2"></div>
-            <br><br>
-            <div id="title3"></div>
-            <img src=image3>
-            <div id="text3"></div>
-            <br><br>
-            <div id="title4"></div>
-            <img src=image4>
-            <div id="text4"></div>
-            <br><br>
-            <div id="title5"></div>
-            <img src=image5>
-            <div id="text5"></div>
+            <div class="column">
+              <div id="title1"></div>
+              <img src=image1>
+              <div id="text1"></div>
+              <br><br>
+              <div id="title2"></div>
+              <img src=image2>
+              <div id="text2"></div>
+              <br><br>
+              <div id="title3"></div>
+              <img src=image3>
+              <div id="text3"></div>
+              <br><br>
+              <div id="title4"></div>
+              <img src=image4>
+              <div id="text4"></div>
+              <br><br>
+              <div id="title5"></div>
+              <img src=image5>
+              <div id="text5"></div>
+            </div>
           </div>
 
-
+          <div id="news-twitter-timeline" class="flex-child" align="center">
+          <a class="twitter-timeline"
+            href="https://twitter.com/YahooFinance?ref_src=twsrc%5Etfw"
+            data-width=600px
+            data-height=600px>
+            Tweets by YahooFinance</a>
+          <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+          </div>
         </div>
+
         <script>
         fetch("https://financialmodelingprep.com/api/v3/stock_news?tickers=AAPL,FB,GOOG,AMZN&limit=50&apikey=ed2250092ff052db5573e965cb9c49c0").then(r => r.json()).then(data => {
           document.getElementById("title1").innerHTML = data[0].title
@@ -216,6 +249,9 @@
 
         });
         </script>
+
+
+
         <div id="stockfinder" style="display:none">
           <!-- adding compute button -->
           <br><br>
@@ -678,13 +714,17 @@
           let ins = document.getElementById('instructions'); // refers to content of instructions tab
           let news = document.getElementById('news'); // refers to content of news tab
           let stk = document.getElementById('stockfinder'); // refers to content of stock finder tab
+          let ins_twit = document.getElementById('ins-twitter-timeline');
+          let news_twit = document.getElementById('news-twitter-timeline');
 
           let ins_l = document.getElementById("ins_l");
           let news_l = document.getElementById("news_l");
           let stk_l = document.getElementById("stk_l");
           if (document.getElementById("ins_lontent").checked) { // instruction tab is selected
             ins.style.display = "block";
+            ins_twit.style.display = "block"
             news.style.display = "none";
+            news_twit.style.display = "none"
             stk.style.display = "none";
             ins_l.style["background-color"]="gray";
             news_l.style["background-color"]="";
@@ -693,7 +733,9 @@
 
           if (document.getElementById("news_lontent").checked) { // news tab is selected
             ins.style.display = "none";
+            ins_twit.style.display = "none"
             news.style.display = "block";
+            news_twit.style.display = "block"
             stk.style.display = "none";
             ins_l.style["background-color"]="";
             news_l.style["background-color"]="gray";
@@ -702,7 +744,9 @@
 
           if (document.getElementById("stk_lontent").checked) { // stock finder tab is selected
             ins.style.display = "none";
+            ins_twit.style.display = "none"
             news.style.display = "none";
+            news_twit.style.display = "none"
             stk.style.display = "block";
             ins_l.style["background-color"]="";
             news_l.style["background-color"]="";
