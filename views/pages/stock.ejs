@@ -127,7 +127,6 @@
 
   .flex-child {
       flex: 1;
-      border: 2px;
   }
 
   .flex-child:first-child {
@@ -305,7 +304,8 @@
             <input type="range" min="0" max="100" value ="0" step="0.1" class="pagesliders" id="sliderRange6">
             <br><br>
           </div-->
-          <div>
+        <div class="flex-container">
+          <div class="flex-child" style= "flex: 1 2 auto;">
             <p style="width:350px; font-size:medium;">Min/Max Stock Price:</p>
             <div style="width:350px;  display:flex; justify-content:space-between">
               <input type="number" id="Min_SP" style="width:50px">
@@ -396,9 +396,7 @@
             } );
 
           </script>
-          <br>
 
-          <!-- reset button for sliders DOESNT WORK IF I REMOVE THE 6TH SLIDER-->
           <div>
             <input id="slidersReset" type="button" value="Reset">
             <button type="button" onclick="getStock()">Compute</button>
@@ -425,7 +423,7 @@
           </script>
         </div>
 
-          <div>
+          <div class="flex-child" style=" flex: 2 1 auto;">
             <table border=1 width=200 cellpadding=10>
               <tr>
                 <td>
@@ -648,7 +646,7 @@
                 </td>
               </tr>
             </table>
-          </div>
+
 
 
           <div id='stockstats'>
@@ -671,12 +669,15 @@
 
           <hr>
         </div>
+        </div>
+
         <!-- adding footer news headline -->
         <div class = "footer">
           <strong>Top Market News Headlines:</strong>
           <div id="NewsHeadline">
           </div>
         </div>
+      </div>
 
         <!-- SCRIPTS -->
 
