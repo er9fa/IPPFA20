@@ -170,9 +170,7 @@
         <div id="news" style="display:none">To be added</div>
         <div id="stockfinder" style="display:none">
           <!-- adding compute button -->
-          <br><br><div class = "text-center">
-            <button type="button" onclick="getStock()">Compute</button>
-          </div>
+          <br><br>
 
 
 
@@ -223,33 +221,33 @@
             <input type="range" min="0" max="100" value ="0" step="0.1" class="pagesliders" id="sliderRange6">
             <br><br>
           </div-->
-
-          <p style="width:350px; font-size:medium;">Min/Max Stock Price:</p>
-          <div style="width:350px;  display:flex; justify-content:space-between">
-            <input type="number" id="Min_SP" style="width:50px">
-            <div id=slider1 class="pagesliders" style="margin:10px; width:200px"> </div>
-            <input type="number" id="Max_SP" style="width:50px">
-          </div>
-          <p style="width:350px; font-size:medium; ">Min/Max Price-to-Earnings Ratio:</p>
-          <div style="width:350px; display:flex; justify-content:space-between">
-            <input type="number" id="Min_PE" style="width:50px">
-            <div id=slider2 class="pagesliders" style="margin:10px; width:200px"> </div>
-            <input type="number" id="Max_PE" style="width:50px">
-          </div>
-          <p style="width:350px; font-size:medium; ">Min/Max Market Cap (in Billions of dollars):</p>
-          <div style="width:350px; display:flex; justify-content:space-between">
-            <input type="number" id="Min_MC" style="width:50px">
-            <div id=slider3 class="pagesliders" style="margin:10px; width:200px"> </div>
-            <input type="number" id="Max_MC" style="width:50px">
-          </div>
-          <br>
-          <div class='rangeslider'>
-            <text>Stock Trend: </text>
-            <input type="radio" id="stockUp" name="stockTrend" value="up">
-            <label for="up">Up</label>
-            <input type="radio" id="stockDown" name="stockTrend" value="down">
-            <label for="down">Down</label>
-          </div>
+          <div>
+            <p style="width:350px; font-size:medium;">Min/Max Stock Price:</p>
+            <div style="width:350px;  display:flex; justify-content:space-between">
+              <input type="number" id="Min_SP" style="width:50px">
+              <div id=slider1 class="pagesliders" style="margin:10px; width:200px"> </div>
+              <input type="number" id="Max_SP" style="width:50px">
+            </div>
+            <p style="width:350px; font-size:medium; ">Min/Max Price-to-Earnings Ratio:</p>
+            <div style="width:350px; display:flex; justify-content:space-between">
+              <input type="number" id="Min_PE" style="width:50px">
+              <div id=slider2 class="pagesliders" style="margin:10px; width:200px"> </div>
+              <input type="number" id="Max_PE" style="width:50px">
+            </div>
+            <p style="width:350px; font-size:medium; ">Min/Max Market Cap (in Billions of dollars):</p>
+            <div style="width:350px; display:flex; justify-content:space-between">
+              <input type="number" id="Min_MC" style="width:50px">
+              <div id=slider3 class="pagesliders" style="margin:10px; width:200px"> </div>
+              <input type="number" id="Max_MC" style="width:50px">
+            </div>
+            <br>
+            <div class='rangeslider'>
+              <text>Stock Trend: </text>
+              <input type="radio" id="stockUp" name="stockTrend" value="up">
+              <label for="up">Up</label>
+              <input type="radio" id="stockDown" name="stockTrend" value="down">
+              <label for="down">Down</label>
+            </div>
           <script>
             //Script for the slider here
             $(function() {
@@ -319,6 +317,7 @@
           <!-- reset button for sliders DOESNT WORK IF I REMOVE THE 6TH SLIDER-->
           <div>
             <input id="slidersReset" type="button" value="Reset">
+            <button type="button" onclick="getStock()">Compute</button>
           </div>
           <script>
             $('#slidersReset').click(function(){
@@ -340,9 +339,30 @@
               document.getElementById("stockDown").checked = false;
             });
           </script>
+        </div>
 
           <div>
             <table border=1 width=200 cellpadding=10>
+              <tr>
+                <td>
+                  <p>Stock Symbol</p>
+                </td>
+                <td>
+                  <p>Company Name</p>
+                </td>
+                <td>
+                  <p>Current Stock Price</p>
+                </td>
+                <td>
+                  <p>Market Cap</p>
+                </td>
+                <td>
+                  <p>Last Annual Dividend</p>
+                </td>
+                <td>
+                  <p>Sector</p>
+                </td>
+              </tr>
               <tr>
                 <td>
                   <p id="Stock 1 Symbol"></p>
@@ -352,6 +372,15 @@
                 </td>
                 <td>
                   <p id="Stock 1 Price"</p>
+                </td>
+                <td>
+                  <p id="Stock 1 Market Cap"></p>
+                </td>
+                <td>
+                  <p id="Stock 1 Last Annual Dividend"</p>
+                </td>
+                <td>
+                  <p id="Stock 1 Sector"</p>
                 </td>
               </tr>
               <tr>
@@ -364,6 +393,15 @@
                 <td>
                   <p id="Stock 2 Price"</p>
                 </td>
+                <td>
+                  <p id="Stock 2 Market Cap"></p>
+                </td>
+                <td>
+                  <p id="Stock 2 Last Annual Dividend"</p>
+                </td>
+                <td>
+                  <p id="Stock 2 Sector"</p>
+                </td>
               </tr>
               <tr>
                 <td>
@@ -374,6 +412,15 @@
                 </td>
                 <td>
                   <p id="Stock 3 Price"</p>
+                </td>
+                <td>
+                  <p id="Stock 3 Market Cap"></p>
+                </td>
+                <td>
+                  <p id="Stock 3 Last Annual Dividend"</p>
+                </td>
+                <td>
+                  <p id="Stock 3 Sector"</p>
                 </td>
               </tr>
               <tr>
@@ -386,6 +433,15 @@
                 <td>
                   <p id="Stock 4 Price"</p>
                 </td>
+                <td>
+                  <p id="Stock 4 Market Cap"></p>
+                </td>
+                <td>
+                  <p id="Stock 4 Last Annual Dividend"</p>
+                </td>
+                <td>
+                  <p id="Stock 4 Sector"</p>
+                </td>
               </tr>
               <tr>
                 <td>
@@ -396,6 +452,15 @@
                 </td>
                 <td>
                   <p id="Stock 5 Price"</p>
+                </td>
+                <td>
+                  <p id="Stock 5 Market Cap"></p>
+                </td>
+                <td>
+                  <p id="Stock 5 Last Annual Dividend"</p>
+                </td>
+                <td>
+                  <p id="Stock 5 Sector"</p>
                 </td>
               </tr>
               <tr>
@@ -408,6 +473,15 @@
                 <td>
                   <p id="Stock 6 Price"</p>
                 </td>
+                <td>
+                  <p id="Stock 6 Market Cap"></p>
+                </td>
+                <td>
+                  <p id="Stock 6 Last Annual Dividend"</p>
+                </td>
+                <td>
+                  <p id="Stock 6 Sector"</p>
+                </td>
               </tr>
               <tr>
                 <td>
@@ -418,6 +492,15 @@
                 </td>
                 <td>
                   <p id="Stock 7 Price"</p>
+                </td>
+                <td>
+                  <p id="Stock 7 Market Cap"></p>
+                </td>
+                <td>
+                  <p id="Stock 7 Last Annual Dividend"</p>
+                </td>
+                <td>
+                  <p id="Stock 7 Sector"</p>
                 </td>
               </tr>
               <tr>
@@ -430,6 +513,15 @@
                 <td>
                   <p id="Stock 8 Price"</p>
                 </td>
+                <td>
+                  <p id="Stock 8 Market Cap"></p>
+                </td>
+                <td>
+                  <p id="Stock 8 Last Annual Dividend"</p>
+                </td>
+                <td>
+                  <p id="Stock 8 Sector"</p>
+                </td>
               </tr>
               <tr>
                 <td>
@@ -441,6 +533,15 @@
                 <td>
                   <p id="Stock 9 Price"</p>
                 </td>
+                <td>
+                  <p id="Stock 9 Market Cap"></p>
+                </td>
+                <td>
+                  <p id="Stock 9 Last Annual Dividend"</p>
+                </td>
+                <td>
+                  <p id="Stock 9 Sector"</p>
+                </td>
               </tr>
               <tr>
                 <td>
@@ -451,6 +552,15 @@
                 </td>
                 <td>
                   <p id="Stock 10 Price"</p>
+                </td>
+                <td>
+                  <p id="Stock 10 Market Cap"></p>
+                </td>
+                <td>
+                  <p id="Stock 10 Last Annual Dividend"</p>
+                </td>
+                <td>
+                  <p id="Stock 10 Sector"</p>
                 </td>
               </tr>
             </table>
@@ -632,41 +742,71 @@
         }
 
         function getStock() {
-          var minMarketCap = sliderRange5 * 1000000000
-          var maxMarketCap = sliderRange6 * 1000000000
-          var stringMin = minMarketCap.toString()
-          var stringMax = maxMarketCap.toString()
-          fetch("https://financialmodelingprep.com/api/v3/stock-screener?marketCapMoreThan="+ stringMin +"&marketCapLessThan="+ stringMax + "&sector=Technology&exchange=NASDAQ&dividendMoreThan=0&limit=100&apikey=83de5b39af0c5c7e1b5c156e8bc04eaf").then(r => r.json()).then(data=>{
+          var minMC = $("#slider3").slider("values",0,$("#Min_MC").val()) * 1000000000;
+          var maxMC = $("#slider3").slider("values",1,$("#Max_MC").val()) * 1000000000;
+          var stringMin = minMC.toString();
+          var stringMax = maxMC.toString();
+          fetch("https://financialmodelingprep.com/api/v3/stock-screener?marketCapMoreThan="+stringMin+"&marketCapLessThan="+stringMax+"&sector=Technology&exchange=NASDAQ&dividendMoreThan=0&limit=100&apikey=83de5b39af0c5c7e1b5c156e8bc04eaf").then(r => r.json()).then(data=>{
             document.getElementById("Stock 1 Symbol").innerHTML = data[0].symbol;
             document.getElementById("Stock 1 companyName").innerHTML = data[0].companyName;
             document.getElementById("Stock 1 Price").innerHTML = data[0].price;
+            document.getElementById("Stock 1 Market Cap").innerHTML = data[0].marketCap;
+            document.getElementById("Stock 1 Last Annual Dividend").innerHTML = data[0].lastAnnualDividend;
+            document.getElementById("Stock 1 Sector").innerHTML = data[0].sector;
             document.getElementById("Stock 2 Symbol").innerHTML = data[1].symbol;
             document.getElementById("Stock 2 companyName").innerHTML = data[1].companyName;
             document.getElementById("Stock 2 Price").innerHTML = data[1].price;
+            document.getElementById("Stock 2 Market Cap").innerHTML = data[1].marketCap;
+            document.getElementById("Stock 2 Last Annual Dividend").innerHTML = data[1].lastAnnualDividend;
+            document.getElementById("Stock 2 Sector").innerHTML = data[1].sector;
             document.getElementById("Stock 3 Symbol").innerHTML = data[2].symbol;
             document.getElementById("Stock 3 companyName").innerHTML = data[2].companyName;
             document.getElementById("Stock 3 Price").innerHTML = data[2].price;
+            document.getElementById("Stock 3 Market Cap").innerHTML = data[2].marketCap;
+            document.getElementById("Stock 3 Last Annual Dividend").innerHTML = data[2].lastAnnualDividend;
+            document.getElementById("Stock 3 Sector").innerHTML = data[2].sector;
             document.getElementById("Stock 4 Symbol").innerHTML = data[3].symbol;
             document.getElementById("Stock 4 companyName").innerHTML = data[3].companyName;
             document.getElementById("Stock 4 Price").innerHTML = data[3].price;
+            document.getElementById("Stock 4 Market Cap").innerHTML = data[3].marketCap;
+            document.getElementById("Stock 4 Last Annual Dividend").innerHTML = data[3].lastAnnualDividend;
+            document.getElementById("Stock 4 Sector").innerHTML = data[3].sector;
             document.getElementById("Stock 5 Symbol").innerHTML = data[4].symbol;
             document.getElementById("Stock 5 companyName").innerHTML = data[4].companyName;
             document.getElementById("Stock 5 Price").innerHTML = data[4].price;
+            document.getElementById("Stock 5 Market Cap").innerHTML = data[4].marketCap;
+            document.getElementById("Stock 5 Last Annual Dividend").innerHTML = data[4].lastAnnualDividend;
+            document.getElementById("Stock 5 Sector").innerHTML = data[4].sector;
             document.getElementById("Stock 6 Symbol").innerHTML = data[5].symbol;
             document.getElementById("Stock 6 companyName").innerHTML = data[5].companyName;
             document.getElementById("Stock 6 Price").innerHTML = data[5].price;
+            document.getElementById("Stock 6 Market Cap").innerHTML = data[5].marketCap;
+            document.getElementById("Stock 6 Last Annual Dividend").innerHTML = data[5].lastAnnualDividend;
+            document.getElementById("Stock 6 Sector").innerHTML = data[5].sector;
             document.getElementById("Stock 7 Symbol").innerHTML = data[6].symbol;
             document.getElementById("Stock 7 companyName").innerHTML = data[6].companyName;
             document.getElementById("Stock 7 Price").innerHTML = data[6].price;
+            document.getElementById("Stock 7 Market Cap").innerHTML = data[6].marketCap;
+            document.getElementById("Stock 7 Last Annual Dividend").innerHTML = data[6].lastAnnualDividend;
+            document.getElementById("Stock 7 Sector").innerHTML = data[6].sector;
             document.getElementById("Stock 8 Symbol").innerHTML = data[7].symbol;
             document.getElementById("Stock 8 companyName").innerHTML = data[7].companyName;
             document.getElementById("Stock 8 Price").innerHTML = data[7].price;
+            document.getElementById("Stock 8 Market Cap").innerHTML = data[7].marketCap;
+            document.getElementById("Stock 8 Last Annual Dividend").innerHTML = data[7].lastAnnualDividend;
+            document.getElementById("Stock 8 Sector").innerHTML = data[7].sector;
             document.getElementById("Stock 9 Symbol").innerHTML = data[8].symbol;
             document.getElementById("Stock 9 companyName").innerHTML = data[8].companyName;
             document.getElementById("Stock 9 Price").innerHTML = data[8].price;
+            document.getElementById("Stock 9 Market Cap").innerHTML = data[8].marketCap;
+            document.getElementById("Stock 9 Last Annual Dividend").innerHTML = data[8].lastAnnualDividend;
+            document.getElementById("Stock 9 Sector").innerHTML = data[8].sector;
             document.getElementById("Stock 10 Symbol").innerHTML = data[9].symbol;
             document.getElementById("Stock 10 companyName").innerHTML = data[9].companyName;
             document.getElementById("Stock 10 Price").innerHTML = data[9].price;
+            document.getElementById("Stock 10 Market Cap").innerHTML = data[9].marketCap;
+            document.getElementById("Stock 10 Last Annual Dividend").innerHTML = data[9].lastAnnualDividend;
+            document.getElementById("Stock 10 Sector").innerHTML = data[9].sector;
           });
         }
         </script>
