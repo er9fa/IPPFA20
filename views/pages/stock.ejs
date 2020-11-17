@@ -162,10 +162,13 @@
     <!-- news tab -->
     <div> <input type = 'radio' name = 'content' id = 'news_lontent' checked = 'true' onclick = "display()"/>
       <label for='news_lontent' class="navmenu" id=news_l>NEWS</label> </div>
-
+      <!-- preview stocks tab-->
+    <div> <input type = 'radio' name = 'content' id = 'prev_lontent' checked = 'true' onclick = "display()"/>
+      <label for='prev_lontent' class="navmenu" id=prev_l>PREVIEW STOCKS</label> </div>
     <!-- stock finder tab -->
     <div> <input type = 'radio' name = 'content' id = 'stk_lontent' checked = 'true' onclick = "display()"/>
       <label for='stk_lontent' class="navmenu" id=stk_l>STOCK FINDER</label> </div>
+
   </div>
   <br>
         <div class="flex-container">
@@ -640,13 +643,16 @@
                 </td>
               </tr>
             </table>
+          </div>
+          </div>
+        </div>
 
 
-
+        <div id="preview" style="display:none">
           <div id='stockstats'>
-            <h3 class=text-center>View Stock Info</h3>
+            <h3 class=text-center>Preview Stocks</h3>
             <div class=text-center>
-              <label for="symbol">Stock symbol:</label> <input type=text id='symbol' size=5>
+              <label for="symbol">Enter stock symbol:</label> <input type=text id='symbol' size=5>
               <button type=button id='symbolbutton' onclick="stockbutton()"
               disabled>Add</button>
               <br>
@@ -661,17 +667,15 @@
           </div>
           <p id=tablemessage class="text-center"></p>
 
-          <hr>
-        </div>
-        </div>
+      </div>
 
         <!-- adding footer news headline -->
-        <div class = "footer">
-          <strong>Top Market News Headlines:</strong>
-          <div id="NewsHeadline">
-          </div>
-        </div>
+    <div class = "footer">
+      <strong>Top Market News Headlines:</strong>
+      <div id="NewsHeadline">
       </div>
+    </div>
+
 
         <!-- SCRIPTS -->
 
@@ -708,43 +712,62 @@
         function display() {
           let ins = document.getElementById('instructions'); // refers to content of instructions tab
           let news = document.getElementById('news'); // refers to content of news tab
+          let prev = document.getElementById('preview')
           let stk = document.getElementById('stockfinder'); // refers to content of stock finder tab
           let ins_twit = document.getElementById('ins-twitter-timeline');
           let news_twit = document.getElementById('news-twitter-timeline');
 
           let ins_l = document.getElementById("ins_l");
           let news_l = document.getElementById("news_l");
+          let prev_l = document.getElementById("prev_l")
           let stk_l = document.getElementById("stk_l");
           if (document.getElementById("ins_lontent").checked) { // instruction tab is selected
             ins.style.display = "block";
             ins_twit.style.display = "block"
             news.style.display = "none";
             news_twit.style.display = "none"
+            prev.style.display= "none";
             stk.style.display = "none";
             ins_l.style["background-color"]="gray";
             news_l.style["background-color"]="";
+            prev_l.style["background-color"]="";
             stk_l.style["background-color"]="";
           }
 
-          if (document.getElementById("news_lontent").checked) { // news tab is selected
+          else if (document.getElementById("news_lontent").checked) { // news tab is selected
             ins.style.display = "none";
             ins_twit.style.display = "none"
             news.style.display = "block";
-            news_twit.style.display = "block"
+            news_twit.style.display = "block";
+            prev.style.display= "none";
             stk.style.display = "none";
             ins_l.style["background-color"]="";
             news_l.style["background-color"]="gray";
+            prev_l.style["background-color"]="";
             stk_l.style["background-color"]="";
           }
-
-          if (document.getElementById("stk_lontent").checked) { // stock finder tab is selected
+          else if (document.getElementById("prev_lontent").checked){
             ins.style.display = "none";
             ins_twit.style.display = "none"
             news.style.display = "none";
             news_twit.style.display = "none"
+            prev.style.display= "block";
+            stk.style.display = "none";
+            ins_l.style["background-color"]="";
+            news_l.style["background-color"]="";
+            prev_l.style["background-color"]="gray";
+            stk_l.style["background-color"]="";
+          }
+          else if (document.getElementById("stk_lontent").checked) { // stock finder tab is selected
+            ins.style.display = "none";
+            ins_twit.style.display = "none"
+            news.style.display = "none";
+            news_twit.style.display = "none"
+            prev.style.display= "none";
             stk.style.display = "block";
             ins_l.style["background-color"]="";
             news_l.style["background-color"]="";
+            prev_l.style["background-color"]="";
             stk_l.style["background-color"]="gray";
           }
         }
