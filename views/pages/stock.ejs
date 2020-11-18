@@ -301,25 +301,25 @@
             <input type="range" min="0" max="100" value ="0" step="0.1" class="pagesliders" id="sliderRange6">
             <br><br>
           </div-->
-        <div class="flex-container">
-          <div class="flex-child" style= "flex: 1 2 auto;">
-            <p style="width:350px; font-size:medium;">Min/Max Stock Price:</p>
-            <div style="width:350px;  display:flex; justify-content:space-between">
-              <input type="number" id="Min_SP" style="width:50px">
-              <div id=slider1 class="pagesliders" style="margin:10px; width:200px"> </div>
-              <input type="number" id="Max_SP" style="width:50px">
+        <div id="stock_flex" class="flex-container" style="width:50%; margin-left: auto; margin-right: auto;">
+          <div class="flex-child" style= "flex: 1 1 auto;">
+            <p style="font-size:medium;">Min/Max Stock Price:</p>
+            <div style="display:flex; justify-content:space-between">
+              <input type="number" id="Min_SP" style="width:70px">
+              <div id=slider1 class="pagesliders" style="margin:10px; width:70%"> </div>
+              <input type="number" id="Max_SP" style="width:70px">
             </div>
-            <p style="width:350px; font-size:medium; ">Min/Max Price-to-Earnings Ratio:</p>
-            <div style="width:350px; display:flex; justify-content:space-between">
-              <input type="number" id="Min_PE" style="width:50px">
-              <div id=slider2 class="pagesliders" style="margin:10px; width:200px"> </div>
-              <input type="number" id="Max_PE" style="width:50px">
+            <p style="font-size:medium; ">Min/Max Price-to-Earnings Ratio:</p>
+            <div style="display:flex; justify-content:space-between">
+              <input type="number" id="Min_PE" style="width:70px">
+              <div id=slider2 class="pagesliders" style="margin:10px; width:70%"> </div>
+              <input type="number" id="Max_PE" style="width:70px">
             </div>
-            <p style="width:350px; font-size:medium; ">Min/Max Market Cap (in Billions of dollars):</p>
-            <div style="width:350px; display:flex; justify-content:space-between">
-              <input type="number" id="Min_MC" style="width:50px">
-              <div id=slider3 class="pagesliders" style="margin:10px; width:200px"> </div>
-              <input type="number" id="Max_MC" style="width:50px">
+            <p style="font-size:medium; ">Min/Max Market Cap (in Billions of dollars):</p>
+            <div style="display:flex; justify-content:space-between">
+              <input type="number" id="Min_MC" style="width:70px">
+              <div id=slider3 class="pagesliders" style="margin:10px; width:70%"> </div>
+              <input type="number" id="Max_MC" style="width:70px">
             </div>
             <br>
             <div class='rangeslider'>
@@ -338,74 +338,99 @@
                 max: 5000,
                 values: [ 0, 5000 ],
                 slide: function( event, ui ) {
-                  $("#Min_SP").val(ui.values[0]);
-                  $("#Max_SP").val(ui.values[1]);
+                  $("#Min_SP").val(s1(ui.values[0]));
+                  $("#Max_SP").val(s1(ui.values[1]));
                 }
               });
-              $("#Min_SP").val($("#slider1").slider("values",0));
-              $("#Max_SP").val($("#slider1").slider("values",1));
+              $("#Min_SP").val(s1($("#slider1").slider("values",0)));
+              $("#Max_SP").val(s1($("#slider1").slider("values",1)));
               $("#Min_SP").on("input",function(){
-                $("#slider1").slider("values",0,$("#Min_SP").val())
+                $("#slider1").slider("values",0,s1i($("#Min_SP").val()))
               });
               $("#Max_SP").on("input",function(){
-                $("#slider1").slider("values",1,$("#Max_SP").val())
+                $("#slider1").slider("values",1,s1i($("#Max_SP").val()))
               });
             } );
             $(function() {
               $( "#slider2" ).slider({
                 range: true,
-                min: -50,
-                max: 50,
-                values: [ -5, 5 ],
+                min: -500,
+                max: 500,
+                values: [ -300, 300 ],
                 slide: function( event, ui ) {
-                  $("#Min_PE").val(ui.values[0]);
-                  $("#Max_PE").val(ui.values[1]);
+                  $("#Min_PE").val(s2(ui.values[0]));
+                  $("#Max_PE").val(s2(ui.values[1]));
                 }
               });
-              $("#Min_PE").val($("#slider2").slider("values",0));
-              $("#Max_PE").val($("#slider2").slider("values",1));
+              $("#Min_PE").val(s2($("#slider2").slider("values",0)));
+              $("#Max_PE").val(s2($("#slider2").slider("values",1)));
               $("#Min_PE").on("input",function(){
-                $("#slider2").slider("values",0,$("#Min_PE").val())
+                $("#slider2").slider(s2i("values",0,$("#Min_PE").val()))
               });
               $("#Max_PE").on("input",function(){
-                $("#slider2").slider("values",1,$("#Max_PE").val())
+                $("#slider2").slider(s2i("values",1,$("#Max_PE").val()))
               });
             } );
             $(function() {
               $( "#slider3" ).slider({
                 range: true,
                 min: 0,
-                max: 100,
-                values: [ 0, 100 ],
+                max: 300,
+                values: [ 0, 300 ],
                 slide: function( event, ui ) {
-                  $("#Min_MC").val(ui.values[0]);
-                  $("#Max_MC").val(ui.values[1]);
+                  $("#Min_MC").val(s3(ui.values[0]));
+                  $("#Max_MC").val(s3(ui.values[1]));
                 }
               });
-              $("#Min_MC").val($("#slider3").slider("values",0));
-              $("#Max_MC").val($("#slider3").slider("values",1));
+              $("#Min_MC").val(s3($("#slider3").slider("values",0)));
+              $("#Max_MC").val(s3($("#slider3").slider("values",1)));
               $("#Min_MC").on("input",function(){
-                $("#slider3").slider("values",0,$("#Min_MC").val())
+                $("#slider3").slider("values",0,s3i($("#Min_MC").val()))
               });
               $("#Max_MC").on("input",function(){
-                $("#slider3").slider("values",1,$("#Max_MC").val())
+                $("#slider3").slider("values",1,s3i($("#Max_MC").val()))
               });
             } );
-
+            function s1(val){
+              val/=5000;
+              return 5000*val**2;
+            }
+            function s1i(val){
+              val/=5000;
+              return Math.sqrt(val)*5000;
+            }
+            function s2(val){
+              val/=500;
+              return 500*val**3;
+            }
+            function s2i(val){
+              val/=500;
+              return 500*(val**(1/3));
+            }
+            function s3(val){
+              val/=300;
+              return 300*val**4;
+            }
+            function s3i(val){
+              val/=300;
+              return (val**.25)*300;
+            }
           </script>
-
-          <div>
+          <br>
+          <div style="text-align:center">
             <input id="slidersReset" type="button" value="Reset">
-            <button type="button" onclick="getStock()">Compute</button>
+            <button type="button" onclick="$('#stock_flex').css('width','100%'); getStock(); $('#screener_table').show()">Compute</button>
           </div>
           <script>
             $('#slidersReset').click(function(){
+              $('#screener_table').hide();
+              $('#stock_flex').css('width',"50%");
               $("#Min_SP").val(0);
               $("#Max_SP").val(5000);
-              $("#Min_PE").val(-5);
-              $("#Max_PE").val(5);
+              $("#Min_PE").val(s2(-300));
+              $("#Max_PE").val(s2(300));
               $("#Min_MC").val(0);
-              $("#Max_MC").val(100);
+              $("#Max_MC").val(300);
               $("#Min_SP").trigger("input");
               $("#Max_PE").trigger("input");
               $("#Min_PE").trigger("input");
@@ -420,8 +445,8 @@
           </script>
         </div>
 
-          <div class="flex-child" style=" flex: 2 1 auto;">
-            <table border=1 width=200 cellpadding=10>
+          <div id="screener_table" class="flex-child" style=" flex: 2 1 auto; display:none;">
+            <table border=1 cellpadding=10 style="width:80%">
               <tr>
                 <td>
                   <p>Stock Symbol</p>
@@ -844,12 +869,14 @@
 
 
         //<!--- the functions for print out slider values to text boxes-->
+        /*
         function slider1Function() {
           document.getElementById("firstVal").value = document.getElementById("sliderRange1").value;
         }
         function slider2Function() {
           document.getElementById("secondVal").value = document.getElementById("sliderRange2").value;
         }
+  */
 
         function getStock() {
           var minMC = $("#slider3").slider("values",0,$("#Min_MC").val()) * 1000000000;
