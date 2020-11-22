@@ -305,21 +305,23 @@
           <div class="flex-child" style= "flex: 1 1 auto;">
             <p style="font-size:medium;">Min/Max Stock Price:</p>
             <div style="display:flex; justify-content:space-between">
-              <input type="number" id="Min_SP" style="width:70px">
+              <input type="text" id="Min_SP" style="width:70px">
               <div id=slider1 class="pagesliders" style="margin:10px; width:70%"> </div>
-              <input type="number" id="Max_SP" style="width:70px">
+              <input type="text" id="Max_SP" style="width:70px">
             </div>
             <p style="font-size:medium; ">Min/Max Price-to-Earnings Ratio:</p>
             <div style="display:flex; justify-content:space-between">
-              <input type="number" id="Min_PE" style="width:70px">
+              <input type="text" id="Min_PE" style="width:70px">
               <div id=slider2 class="pagesliders" style="margin:10px; width:70%"> </div>
-              <input type="number" id="Max_PE" style="width:70px">
+              <input type="text" id="Max_PE" style="width:70px">
             </div>
             <p style="font-size:medium; ">Min/Max Market Cap (in Billions of dollars):</p>
             <div style="display:flex; justify-content:space-between">
-              <div id="Min_MC" style="width:70px; margin:auto; text-align: center"></div>
+              <input type="text" id="Min_MC" style="width:70px">
+              <!--div id="Min_MC" style="width:70px; margin:auto; text-align: center"></div-->
               <div id=slider3 class="pagesliders" style="margin:10px; width:70%"> </div>
-              <div id="Max_MC" style="width:70px; margin:auto; text-align: center"></div>
+              <input type="text" id="Max_MC" style="width:70px">
+              <!--div id="Max_MC" style="width:70px; margin:auto; text-align: center"></div-->
             </div>
             <br>
             <div class='rangeslider'>
@@ -335,19 +337,21 @@
               $( "#slider1" ).slider({
                 range: true,
                 min: 0,
-                max: 5000,
-                values: [ 0, 5000 ],
+                max: 2000,
+                values: [ 0, 2000 ],
                 slide: function( event, ui ) {
-                  $("#Min_SP").val(s1(ui.values[0]));
-                  $("#Max_SP").val(s1(ui.values[1]));
                   if(ui.values[0]===ui.values[1])
                     $('#slidersCompute').prop('disabled', true);
                   else
                     $('#slidersCompute').prop('disabled', false);
+                  $("#Min_SP").val(ui.values[0]!==$("#slider1").slider( "option", "min" ) ? s1(ui.values[0]) : "No Min");
+                  $("#Max_SP").val(ui.values[1]!==$("#slider1").slider( "option", "max" ) ? s1(ui.values[1]) : "No Max");
                 }
               });
-              $("#Min_SP").val(s1($("#slider1").slider("values",0)));
-              $("#Max_SP").val(s1($("#slider1").slider("values",1)));
+              //$("#Min_SP").val(s1($("#slider1").slider("values",0)));
+              //$("#Max_SP").val(s1($("#slider1").slider("values",1)));
+              $("#Min_SP").val("No Min");
+              $("#Max_SP").val("No Max");
               $("#Min_SP").on("input",function(){
                 $("#slider1").slider("values",0,s1i($("#Min_SP").val()))
               });
@@ -358,20 +362,20 @@
             $(function() {
               $( "#slider2" ).slider({
                 range: true,
-                min: -500,
-                max: 500,
-                values: [ -300, 300 ],
+                min: 0,
+                max: 400,
+                values: [ 0, 400 ],
                 slide: function( event, ui ) {
-                  $("#Min_PE").val(s2(ui.values[0]));
-                  $("#Max_PE").val(s2(ui.values[1]));
                   if(ui.values[0]===ui.values[1])
                     $('#slidersCompute').prop('disabled', true);
                   else
                     $('#slidersCompute').prop('disabled', false);
+                  $("#Min_PE").val(ui.values[0]!==$("#slider2").slider( "option", "min" ) ? s2(ui.values[0]) : "No Min");
+                  $("#Max_PE").val(ui.values[1]!==$("#slider2").slider( "option", "max" ) ? s2(ui.values[1]) : "No Max");
                   }
               });
-              $("#Min_PE").val(s2($("#slider2").slider("values",0)));
-              $("#Max_PE").val(s2($("#slider2").slider("values",1)));
+              $("#Min_PE").val("No Min");
+              $("#Max_PE").val("No Max");
               $("#Min_PE").on("input",function(){
                 $("#slider2").slider(s2i("values",0,$("#Min_PE").val()))
               });
@@ -386,16 +390,17 @@
                 max: 6,
                 values: [ 0, 6 ],
                 slide: function( event, ui ) {
-                  $("#Min_MC").html(s3(ui.values[0]));
-                  $("#Max_MC").html(s3(ui.values[1]));
                   if(ui.values[0]===ui.values[1])
                     $('#slidersCompute').prop('disabled', true);
                   else
                     $('#slidersCompute').prop('disabled', false);
+                  $("#Min_MC").val(s3(ui.values[0]));
+                  $("#Max_MC").val(s3(ui.values[1]));
+
                 }
               });
-              $("#Min_MC").html(s3($("#slider3").slider("values",0)));
-              $("#Max_MC").html(s3($("#slider3").slider("values",1)));
+              $("#Min_MC").val(s3($("#slider3").slider("values",0)));
+              $("#Max_MC").val(s3($("#slider3").slider("values",1)));
               /*$("#Min_MC").on("input",function(){
                 $("#slider3").slider("values",0,s3i($("#Min_MC").val()))
               });
@@ -404,23 +409,23 @@
               });*/
             } );
             function s1(val){
-              val/=5000;
-              return Math.round(5000*val**2);
+              val/=2000;
+              return Math.round(2000*val**2);
             }
             function s1i(val){
-              val/=5000;
-              return Math.sqrt(val)*5000;
+              val/=2000;
+              return Math.sqrt(val)*2000;
             }
             function s2(val){
-              val/=500;
-              return Math.round(500*val**3);
+              val/=400
+              return Math.round(400*val**2 + 10);
             }
             function s2i(val){
-              val/=500;
-              return 500*(val**(1/3));
+              val = (val-10)/400
+              return 400*(val**(1/2));
             }
             function s3(val){
-              let values = ["$0","$50 M","$300 M","$2 B","$10 B","$200 B","Infinite"];
+              let values = ["No Min","0.05","0.3","2","10","200","No Max"];
               return values[val];
             }
           </script>
@@ -433,16 +438,16 @@
             $('#slidersReset').click(function(){
               $('#screener_table').hide();
               $('#stock_flex').css('width',"50%");
-              $("#Min_SP").val(0);
-              $("#Max_SP").val(5000);
-              $("#Min_PE").val(s2(-300));
-              $("#Max_PE").val(s2(300));
-              $("#Min_MC").val("0");
-              $("#Max_MC").val("Infinite");
-              $("#Min_SP").trigger("input");
-              $("#Max_PE").trigger("input");
-              $("#Min_PE").trigger("input");
-              $("#Max_SP").trigger("input");
+              $("#Min_SP").val("No Min");
+              $("#Max_SP").val("No Max");
+              $("#Min_PE").val("No Min");
+              $("#Max_PE").val("No Max");
+              $("#Min_MC").val("No Min");
+              $("#Max_MC").val("No Max");
+              $("#slider1").slider("values",0,0);
+              $("#slider1").slider("values",1,2000);
+              $("#slider2").slider("values",0,0);
+              $("#slider2").slider("values",1,400);
               $("#slider3").slider("values",0,0);
               $("#slider3").slider("values",1,6);
               //$('#stockUp').attr('checked',false);
@@ -805,17 +810,49 @@
         }
         </script>
         <!-- script to display value of sliders  -->
-        <script src="screener.js"> </script>
+        <script src="screener.js"></script>
         <script>
         const generateLink = () =>{
           let link = "https://finviz.com/screener.ashx?v=111&o=-price&";
-          //link+=
+          //Slider1:
+          const min1 = Number($("#Min_SP").val());
+          const max1 = Number($("#Max_SP").val());
+          const min2 = Number($("#Min_PE").val());
+          const max2 = Number($("#Max_PE").val());
+          const min3 = Number($("#Min_MC").val());
+          const max3 = Number($("#Max_MC").val());
+          if(min1 || max1){ //falsy
+            if(!max1)
+              link += `sh_price_o${min1},`;
+            else if(!min1)
+              link += `sh_price_u${max1},`;
+            else
+              link += `sh_price_${min1}to${max1},`;
+          }
+          if(min2 || max2){
+            if(!max2)
+              link+=`fa_pe_o${min2},`;
+            else if(!min2)
+              link+=`fa_pe_u${max2},`;
+            else
+              link+=`fa_pe_${min2}to${max2},`
+          }
+          if(min3 || max3){
+            if(!max3)
+              max3 = "";
+            if(!min3)
+              min3 = "";
+            link += `f=cap_${min3}to${max3},`;
+          }
+          return link;
         }
-        function getStock() {
+
+        async function getStock() {
           //let minMC = $("#slider3").slider("values",0,$("#Min_MC").val()) * 1000000000;
           //let maxMC = $("#slider3").slider("values",1,$("#Max_MC").val()) * 1000000000;
-          let stringMin = minMC.toString();
-          let stringMax = maxMC.toString();
+          //let stringMin = minMC.toString();
+          //let stringMax = maxMC.toString();
+          tickers = await screener(generateLink());
           //please use a for loop.
           fetch("https://financialmodelingprep.com/api/v3/stock-screener?marketCapMoreThan="+stringMin+"&marketCapLessThan="+stringMax+"&sector=Technology&exchange=NASDAQ&dividendMoreThan=0&limit=100&apikey=83de5b39af0c5c7e1b5c156e8bc04eaf").then(r => r.json()).then(data=>{
             document.getElementById("Stock 1 Symbol").innerHTML = data[0].symbol;
