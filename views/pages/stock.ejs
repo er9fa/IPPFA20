@@ -405,7 +405,7 @@
             } );
             function s1(val){
               val/=5000;
-              return 5000*val**2;
+              return Math.round(5000*val**2);
             }
             function s1i(val){
               val/=5000;
@@ -413,7 +413,7 @@
             }
             function s2(val){
               val/=500;
-              return 500*val**3;
+              return Math.round(500*val**3);
             }
             function s2i(val){
               val/=500;
@@ -437,14 +437,14 @@
               $("#Max_SP").val(5000);
               $("#Min_PE").val(s2(-300));
               $("#Max_PE").val(s2(300));
-              $("#Min_MC").val(0);
-              $("#Max_MC").val(300);
+              $("#Min_MC").val("0");
+              $("#Max_MC").val("Infinite");
               $("#Min_SP").trigger("input");
               $("#Max_PE").trigger("input");
               $("#Min_PE").trigger("input");
               $("#Max_SP").trigger("input");
-              $("#Min_MC").trigger("input");
-              $("#Max_MC").trigger("input");
+              $("#slider3").slider("values",0,0);
+              $("#slider3").slider("values",1,6);
               //$('#stockUp').attr('checked',false);
               //$('#stockDown').attr('checked',false);
               document.getElementById("stockUp").checked = false;
@@ -807,11 +807,15 @@
         <!-- script to display value of sliders  -->
         <script src="screener.js"> </script>
         <script>
+        const generateLink = () =>{
+          let link = "https://finviz.com/screener.ashx?v=111&o=-price&";
+          //link+=
+        }
         function getStock() {
-          var minMC = $("#slider3").slider("values",0,$("#Min_MC").val()) * 1000000000;
-          var maxMC = $("#slider3").slider("values",1,$("#Max_MC").val()) * 1000000000;
-          var stringMin = minMC.toString();
-          var stringMax = maxMC.toString();
+          //let minMC = $("#slider3").slider("values",0,$("#Min_MC").val()) * 1000000000;
+          //let maxMC = $("#slider3").slider("values",1,$("#Max_MC").val()) * 1000000000;
+          let stringMin = minMC.toString();
+          let stringMax = maxMC.toString();
           //please use a for loop.
           fetch("https://financialmodelingprep.com/api/v3/stock-screener?marketCapMoreThan="+stringMin+"&marketCapLessThan="+stringMax+"&sector=Technology&exchange=NASDAQ&dividendMoreThan=0&limit=100&apikey=83de5b39af0c5c7e1b5c156e8bc04eaf").then(r => r.json()).then(data=>{
             document.getElementById("Stock 1 Symbol").innerHTML = data[0].symbol;
