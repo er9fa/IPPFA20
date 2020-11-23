@@ -3,12 +3,15 @@
 
 <head>
   <!-- bringing in some fonts from https://artisanthemes.io/best-google-fonts-combinations-modern-agency-website/-->
-  <link href="https://fonts.googleapis.com/css?family=Lora:400,700|Montserrat:300" rel="stylesheet">
+  <!--<link href="https://fonts.googleapis.com/css?family=Lora:400,700|Montserrat:300" rel="stylesheet">-->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:900|Work+Sans:300" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
   <meta charset="utf-8">
   <!--script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script-->
   <!-- page title -->
   <div class='center'>
-    <h1>Stock Finder</h1>
+    <h1 style="font-weight: 1000; font-size: 50px;">Stock Finder</h1>
   </div>
 
   <script
@@ -27,9 +30,15 @@
   <style>
   /* page background */
   body {
-    background-color: #353840;
-    color: #ffce00;
-    font-family: 'Montserrat', sans-serif;
+    background-color: #D6EAF8;
+    color: #566573;
+    font-family: 'Raleway', sans-serif; /*font used to be Montserrat, background: #353840, color: #ffce00*/
+    font-weight: 300;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+   font-family: 'Raleway', sans-serif;
+   font-weight: 500;
   }
 
   /* center aligning everything for the object */
@@ -55,13 +64,14 @@
   .navmenu {
     padding: 8px 50px;
     background: transparent;
-    color: #ffce00;
-    font-weight: 100;
-    font-family: 'Montserrat', sans-serif;
+    color: #EC7063;
+    font-weight: 700;
+    font-family: 'Raleway', sans-serif;
     font-size: 20px;
     text-align: center;
     border-radius: 5px;
     border: 2px solid white;
+    text-transform: uppercase;
   }
   #wrapper {
     display: flex;
@@ -81,7 +91,7 @@
   /* appearance of slider bar */
   .pagesliders {
     -webkit-appearance: none;
-    background: #F48F2A;
+    background: #EC7063;
     /*width: 15%;*/
     height: 10px;
     border-radius: 100px; /* rounding the slider bars */
@@ -101,13 +111,13 @@
 
   /* appearance of box to display text in */
   .displayBox {
-    width: 400px;
+    width: 500px;
     border-radius: 20px;
     height: 400px;
     margin: auto;
     text-align: center;
-    background-color: #ffce00;
-    color: #353840;
+    background-color: #F1948A;
+    color: #566573;
     border: 2px solid white;
   }
 
@@ -122,7 +132,7 @@
     width: 100%;
     position: fixed;
     text-align: center;
-    background-color: gray;
+    background-color: #EAF2F8;
     color: white;
     bottom: 0;
     left: 0;
@@ -165,7 +175,7 @@
   <div id="wrapper" style = "margin-top: -30px">
     <!-- instruction tab -->
     <div> <input type = 'radio' name = 'content' id = 'ins_lontent' checked = 'true' onclick = "display()"/>
-      <label for='ins_lontent' class="navmenu" id=ins_l style="background-color:gray">INSTRUCTIONS</label> </div>
+      <label for='ins_lontent' class="navmenu" id=ins_l style="background-color:#EAF2F8">INSTRUCTIONS</label> </div>
 
     <!-- news tab -->
     <div> <input type = 'radio' name = 'content' id = 'news_lontent' checked = 'true' onclick = "display()"/>
@@ -180,29 +190,31 @@
   </div>
   <br>
         <div class="flex-container">
-          <div id="instructions" class="flex-child" align="center">
+          <div id="instructions" align="center" style="flex: 3">
             <br><br>
             <div class= 'displayBox'>
               <h1>Welcome to the Stock Finder!</h1>
-              <p>Click on the "Stock Finder" tab to find the best stock to add to your investment portfolio. Customize your preferred stock price, PE ratio and net worth that align with your trading needs.
-                Use the "Stock Search" tab to view data on your favorite stocks, and compare to top competitors or other potential investments.
-                See what's happening in the Stock Market today with the "News" tab. View the top news stories affecting market trends before making your next investment.
+              <p style="margin: 5%" align="justify">- Click on the "Stock Finder" tab to find the best stock to add to your investment portfolio.
+                <br><br>- Customize your preferred stock price, PE ratio and net worth that align with your trading needs.
+                <br><br>- Use the "Stock Search" tab to view data on your favorite stocks, and compare to top competitors or other potential investments.
+                <br><br>- See what's happening in the Stock Market today with the "News" tab.
+                <br><br>- View the top news stories affecting market trends before making your next investment.
               </p>
             </div>
           </div>
 
-          <div id="ins-twitter-timeline" class="flex-child" align="center">
+          <div id="ins-twitter-timeline" style="position: fixed; right: 0; height: 75%">
           <a class="twitter-timeline"
-            href="https://twitter.com/YahooFinance?ref_src=twsrc%5Etfw"
-            data-width=600px
-            data-height=600px>
+            data-theme="light"
+            height="100%"
+            href="https://twitter.com/YahooFinance?ref_src=twsrc%5Etfw">
             Tweets by YahooFinance</a>
-          <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
           </div>
-        </div>
 
-        <div class="flex-container">
-          <div id="news" class ="flex-child" style="display:none">
+
+        <!-- <div class="flex-container"> -->
+          <div id="news" style="display:none; flex: 3">
             <div class="column">
               <div id="title0"></div>
               <br>
@@ -213,16 +225,6 @@
               <div id="title3"></div>
             </div>
           </div>
-
-          <div id="news-twitter-timeline" class="flex-child" align="center" style="display:none">
-          <a class="twitter-timeline"
-            href="https://twitter.com/YahooFinance?ref_src=twsrc%5Etfw"
-            data-width=600px
-            data-height=600px>
-            Tweets by YahooFinance</a>
-          <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-          </div>
-        </div>
 
         <script>
         fetch("https://finnhub.io/api/v1/news?category=general&token=btnr6jn48v6p0j27hpd0").then(r => r.json()).then(data => {
@@ -239,6 +241,17 @@
           }
         });
         </script>
+      </div>
+        <!-- <div id="news-twitter-timeline" class="flex-child" align="center" style="display: none">
+        <a class="twitter-timeline"
+          data-theme="dark"
+          height="100%"
+          href="https://twitter.com/YahooFinance?ref_src=twsrc%5Etfw">
+          Tweets by YahooFinance</a>
+          <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        </div> -->
+
+      <!-- </div> -->
 
 
 
@@ -446,6 +459,7 @@
               //$('#stockDown').attr('checked',false);
               document.getElementById("stockUp").checked = false;
               document.getElementById("stockDown").checked = false;
+              document.getElementById('ins-twitter-timeline').style.display = "block";
             });
           </script>
         </div>
@@ -706,7 +720,7 @@
 
         <!-- adding footer news headline -->
     <div class = "footer">
-      <strong>Top Market News Headlines:</strong>
+      <strong style="color: #566573">Top Market News Headlines:</strong>
       <div id="NewsHeadline">
       </div>
     </div>
@@ -754,14 +768,15 @@
           let news_l = document.getElementById("news_l");
           let prev_l = document.getElementById("prev_l")
           let stk_l = document.getElementById("stk_l");
+
           if (document.getElementById("ins_lontent").checked) { // instruction tab is selected
             ins.style.display = "block";
             ins_twit.style.display = "block"
             news.style.display = "none";
-            news_twit.style.display = "none"
+            //news_twit.style.display = "none";
             prev.style.display= "none";
             stk.style.display = "none";
-            ins_l.style["background-color"]="gray";
+            ins_l.style["background-color"]="#EAF2F8";
             news_l.style["background-color"]="";
             prev_l.style["background-color"]="";
             stk_l.style["background-color"]="";
@@ -769,39 +784,37 @@
 
           else if (document.getElementById("news_lontent").checked) { // news tab is selected
             ins.style.display = "none";
-            ins_twit.style.display = "none"
+            ins_twit.style.display = "block"
             news.style.display = "block";
-            news_twit.style.display = "block";
+            //news_twit.style.display = "block";
             prev.style.display= "none";
             stk.style.display = "none";
             ins_l.style["background-color"]="";
-            news_l.style["background-color"]="gray";
+            news_l.style["background-color"]="#EAF2F8";
             prev_l.style["background-color"]="";
             stk_l.style["background-color"]="";
           }
           else if (document.getElementById("prev_lontent").checked){
             ins.style.display = "none";
-            ins_twit.style.display = "none"
+            ins_twit.style.display = "block"
             news.style.display = "none";
-            news_twit.style.display = "none"
             prev.style.display= "block";
             stk.style.display = "none";
             ins_l.style["background-color"]="";
             news_l.style["background-color"]="";
-            prev_l.style["background-color"]="gray";
+            prev_l.style["background-color"]="#EAF2F8";
             stk_l.style["background-color"]="";
           }
           else if (document.getElementById("stk_lontent").checked) { // stock finder tab is selected
             ins.style.display = "none";
-            ins_twit.style.display = "none"
+            ins_twit.style.display = "block"
             news.style.display = "none";
-            news_twit.style.display = "none"
             prev.style.display= "none";
             stk.style.display = "block";
             ins_l.style["background-color"]="";
             news_l.style["background-color"]="";
             prev_l.style["background-color"]="";
-            stk_l.style["background-color"]="gray";
+            stk_l.style["background-color"]="#EAF2F8";
           }
         }
         </script>
@@ -859,6 +872,9 @@
           //let stringMin = minMC.toString();
           //let stringMax = maxMC.toString();
           //tickers = await screener(generateLink());
+          document.getElementById('ins-twitter-timeline').style.display = "none";
+          tickers = await screener(generateLink());
+
           //please use a for loop.
           fetch("https://financialmodelingprep.com/api/v3/stock-screener?marketCapMoreThan=1000000&exchange=NASDAQ&limit=100&apikey=83de5b39af0c5c7e1b5c156e8bc04eaf").then(r => r.json()).then(data=>{
             for (var i = 0; i < 10; i++) {
@@ -970,6 +986,7 @@
         }
 
         function addTable(code){
+          document.getElementById('ins-twitter-timeline').style.display = "none";
           if(typeof code==="undefined")
           return;
           if(table_codes.includes(code)){
@@ -1092,6 +1109,7 @@ function tableclear(){
   num_tables=0;
   table_codes=[];
   document.getElementById("tablemessage").innerHTML = "";
+  document.getElementById('ins-twitter-timeline').style.display = "block";
 }
 
 /*
