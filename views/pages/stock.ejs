@@ -873,7 +873,7 @@
           //let stringMax = maxMC.toString();
           //tickers = await screener(generateLink());
           document.getElementById('ins-twitter-timeline').style.display = "none";
-          tickers = await screener(generateLink());
+          //tickers = await screener(generateLink());
 
           //please use a for loop.
           fetch("https://financialmodelingprep.com/api/v3/stock-screener?marketCapMoreThan=1000000&exchange=NASDAQ&limit=100&apikey=83de5b39af0c5c7e1b5c156e8bc04eaf").then(r => r.json()).then(data=>{
