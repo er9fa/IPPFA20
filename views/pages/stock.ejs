@@ -209,6 +209,8 @@
               <div id="title1"></div>
               <br>
               <div id="title2"></div>
+              <br>
+              <div id="title3"></div>
             </div>
           </div>
 
@@ -224,28 +226,17 @@
 
         <script>
         fetch("https://finnhub.io/api/v1/news?category=general&token=btnr6jn48v6p0j27hpd0").then(r => r.json()).then(data => {
-          for(let i=0; i<3; i++){
+          for(let i=0; i<4; i++){
             var h=data[i].headline
             var u=data[i].url
             var t=data[i].summary
             var im=data[i].image
+            $("#title"+i).append(`<img src='${im}' align="left" style="width:33%"></img>`);
             $("#title"+i).append(`<a href='${u}' target=_blank style="color:#ffce00">${h}</a>`);
             $("#title"+i).append('<br>');
-            $("#title"+i).append(`<img src='${im}' style="width:33%"></img>`);
-            $("#title"+i).append('<br>');
-            $("#title"+i).append(`<p style="color:white">${t}</p>`);
+            $("#title"+i).append(`<p style="color:white; font-size:12px">${t}</p>`);
             $("#title"+i).append('<br>');
           }
-          // let h=data[0].headline
-          // let u=data[0].url
-          // let t=data[0].summary
-          // let i=data[0].image
-          // $("#title1").append(`<a href='${u}' target=_blank>${h}</a>`);
-          // $("#title1").append('<br>');
-          // $("#title1").append(`<img src='${i}' style="width:33%"></img>`);
-          // $("#title1").append('<br>');
-          // $("#title1").append(`<p>${t}</p>`);
-          // $("#title1").append('<br>');
         });
         </script>
 
