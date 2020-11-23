@@ -437,6 +437,7 @@
           <div style="text-align:center">
             <input id="slidersReset" type="button" value="Reset">
             <button id=slidersCompute type="button" onclick="$('#stock_flex').css('width','100%'); getStock(); $('#screener_table').show()">Compute</button>
+            <button id=slidersCompute type="button" onclick="$('#stock_flex').css('width','100%'); clearStock(); $('#screener_table').show()">Clear</button>
           </div>
           <script>
             $('#slidersReset').click(function(){
@@ -465,226 +466,230 @@
 
           <div id="screener_table" class="flex-child" style=" flex: 2 1 auto; display:none;">
             <table border=1 cellpadding=10 style="width:80%">
-              <tr>
-                <td>
-                  <p>Stock Symbol</p>
-                </td>
-                <td>
-                  <p>Company Name</p>
-                </td>
-                <td>
-                  <p>Current Stock Price</p>
-                </td>
-                <td>
-                  <p>Market Cap</p>
-                </td>
-                <td>
-                  <p>Last Annual Dividend</p>
-                </td>
-                <td>
-                  <p>Sector</p>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <p id="Stock 1 Symbol"></p>
-                </td>
-                <td>
-                  <p id="Stock 1 companyName"</p>
-                </td>
-                <td>
-                  <p id="Stock 1 Price"</p>
-                </td>
-                <td>
-                  <p id="Stock 1 Market Cap"></p>
-                </td>
-                <td>
-                  <p id="Stock 1 Last Annual Dividend"</p>
-                </td>
-                <td>
-                  <p id="Stock 1 Sector"</p>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <p id="Stock 2 Symbol"></p>
-                </td>
-                <td>
-                  <p id="Stock 2 companyName"</p>
-                </td>
-                <td>
-                  <p id="Stock 2 Price"</p>
-                </td>
-                <td>
-                  <p id="Stock 2 Market Cap"></p>
-                </td>
-                <td>
-                  <p id="Stock 2 Last Annual Dividend"</p>
-                </td>
-                <td>
-                  <p id="Stock 2 Sector"</p>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <p id="Stock 3 Symbol"></p>
-                </td>
-                <td>
-                  <p id="Stock 3 companyName"</p>
-                </td>
-                <td>
-                  <p id="Stock 3 Price"</p>
-                </td>
-                <td>
-                  <p id="Stock 3 Market Cap"></p>
-                </td>
-                <td>
-                  <p id="Stock 3 Last Annual Dividend"</p>
-                </td>
-                <td>
-                  <p id="Stock 3 Sector"</p>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <p id="Stock 4 Symbol"></p>
-                </td>
-                <td>
-                  <p id="Stock 4 companyName"</p>
-                </td>
-                <td>
-                  <p id="Stock 4 Price"</p>
-                </td>
-                <td>
-                  <p id="Stock 4 Market Cap"></p>
-                </td>
-                <td>
-                  <p id="Stock 4 Last Annual Dividend"</p>
-                </td>
-                <td>
-                  <p id="Stock 4 Sector"</p>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <p id="Stock 5 Symbol"></p>
-                </td>
-                <td>
-                  <p id="Stock 5 companyName"</p>
-                </td>
-                <td>
-                  <p id="Stock 5 Price"</p>
-                </td>
-                <td>
-                  <p id="Stock 5 Market Cap"></p>
-                </td>
-                <td>
-                  <p id="Stock 5 Last Annual Dividend"</p>
-                </td>
-                <td>
-                  <p id="Stock 5 Sector"</p>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <p id="Stock 6 Symbol"></p>
-                </td>
-                <td>
-                  <p id="Stock 6 companyName"</p>
-                </td>
-                <td>
-                  <p id="Stock 6 Price"</p>
-                </td>
-                <td>
-                  <p id="Stock 6 Market Cap"></p>
-                </td>
-                <td>
-                  <p id="Stock 6 Last Annual Dividend"</p>
-                </td>
-                <td>
-                  <p id="Stock 6 Sector"</p>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <p id="Stock 7 Symbol"></p>
-                </td>
-                <td>
-                  <p id="Stock 7 companyName"</p>
-                </td>
-                <td>
-                  <p id="Stock 7 Price"</p>
-                </td>
-                <td>
-                  <p id="Stock 7 Market Cap"></p>
-                </td>
-                <td>
-                  <p id="Stock 7 Last Annual Dividend"</p>
-                </td>
-                <td>
-                  <p id="Stock 7 Sector"</p>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <p id="Stock 8 Symbol"></p>
-                </td>
-                <td>
-                  <p id="Stock 8 companyName"</p>
-                </td>
-                <td>
-                  <p id="Stock 8 Price"</p>
-                </td>
-                <td>
-                  <p id="Stock 8 Market Cap"></p>
-                </td>
-                <td>
-                  <p id="Stock 8 Last Annual Dividend"</p>
-                </td>
-                <td>
-                  <p id="Stock 8 Sector"</p>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <p id="Stock 9 Symbol"></p>
-                </td>
-                <td>
-                  <p id="Stock 9 companyName"</p>
-                </td>
-                <td>
-                  <p id="Stock 9 Price"</p>
-                </td>
-                <td>
-                  <p id="Stock 9 Market Cap"></p>
-                </td>
-                <td>
-                  <p id="Stock 9 Last Annual Dividend"</p>
-                </td>
-                <td>
-                  <p id="Stock 9 Sector"</p>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <p id="Stock 10 Symbol"></p>
-                </td>
-                <td>
-                  <p id="Stock 10 companyName"</p>
-                </td>
-                <td>
-                  <p id="Stock 10 Price"</p>
-                </td>
-                <td>
-                  <p id="Stock 10 Market Cap"></p>
-                </td>
-                <td>
-                  <p id="Stock 10 Last Annual Dividend"</p>
-                </td>
-                <td>
-                  <p id="Stock 10 Sector"</p>
-                </td>
-              </tr>
+              <thead>
+                <tr>
+                  <th>
+                    Stock Symbol
+                  </th>
+                  <th>
+                    Company Name
+                  </th>
+                  <th>
+                    Current Stock Price
+                  </th>
+                  <th>
+                    Market Cap
+                  </th>
+                  <th>
+                    Last Annual Dividend
+                  </th>
+                  <th>
+                    Sector
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <p id="Stock0Symbol"></p>
+                  </td>
+                  <td>
+                    <p id="Stock0companyName"></p>
+                  </td>
+                  <td>
+                    <p id="Stock0Price"></p>
+                  </td>
+                  <td>
+                    <p id="Stock0Market Cap"></p>
+                  </td>
+                  <td>
+                    <p id="Stock0Last Annual Dividend"></p>
+                  </td>
+                  <td>
+                    <p id="Stock0Sector"></p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p id="Stock1Symbol"></p>
+                  </td>
+                  <td>
+                    <p id="Stock1companyName"></p>
+                  </td>
+                  <td>
+                    <p id="Stock1Price"></p>
+                  </td>
+                  <td>
+                    <p id="Stock1Market Cap"></p>
+                  </td>
+                  <td>
+                    <p id="Stock1Last Annual Dividend"></p>
+                  </td>
+                  <td>
+                    <p id="Stock1Sector"></p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p id="Stock2Symbol"></p>
+                  </td>
+                  <td>
+                    <p id="Stock2companyName"></p>
+                  </td>
+                  <td>
+                    <p id="Stock2Price"></p>
+                  </td>
+                  <td>
+                    <p id="Stock2Market Cap"></p>
+                  </td>
+                  <td>
+                    <p id="Stock2Last Annual Dividend"></p>
+                  </td>
+                  <td>
+                    <p id="Stock2Sector"></p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p id="Stock3Symbol"></p>
+                  </td>
+                  <td>
+                    <p id="Stock3companyName"></p>
+                  </td>
+                  <td>
+                    <p id="Stock3Price"></p>
+                  </td>
+                  <td>
+                    <p id="Stock3Market Cap"></p>
+                  </td>
+                  <td>
+                    <p id="Stock3Last Annual Dividend"></p>
+                  </td>
+                  <td>
+                    <p id="Stock3Sector"></p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p id="Stock4Symbol"></p>
+                  </td>
+                  <td>
+                    <p id="Stock4companyName"></p>
+                  </td>
+                  <td>
+                    <p id="Stock4Price"></p>
+                  </td>
+                  <td>
+                    <p id="Stock4Market Cap"></p>
+                  </td>
+                  <td>
+                    <p id="Stock4Last Annual Dividend"></p>
+                  </td>
+                  <td>
+                    <p id="Stock4Sector"></p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p id="Stock5Symbol"></p>
+                  </td>
+                  <td>
+                    <p id="Stock5companyName"></p>
+                  </td>
+                  <td>
+                    <p id="Stock5Price"></p>
+                  </td>
+                  <td>
+                    <p id="Stock5Market Cap"></p>
+                  </td>
+                  <td>
+                    <p id="Stock5Last Annual Dividend"></p>
+                  </td>
+                  <td>
+                    <p id="Stock5Sector"></p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p id="Stock6Symbol"></p>
+                  </td>
+                  <td>
+                    <p id="Stock6companyName"></p>
+                  </td>
+                  <td>
+                    <p id="Stock6Price"></p>
+                  </td>
+                  <td>
+                    <p id="Stock6Market Cap"></p>
+                  </td>
+                  <td>
+                    <p id="Stock6Last Annual Dividend"></p>
+                  </td>
+                  <td>
+                    <p id="Stock6Sector"></p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p id="Stock7Symbol"></p>
+                  </td>
+                  <td>
+                    <p id="Stock7companyName"></p>
+                  </td>
+                  <td>
+                    <p id="Stock7Price"></p>
+                  </td>
+                  <td>
+                    <p id="Stock7Market Cap"></p>
+                  </td>
+                  <td>
+                    <p id="Stock7Last Annual Dividend"></p>
+                  </td>
+                  <td>
+                    <p id="Stock7Sector"></p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p id="Stock8Symbol"></p>
+                  </td>
+                  <td>
+                    <p id="Stock8companyName"></p>
+                  </td>
+                  <td>
+                    <p id="Stock8Price"></p>
+                  </td>
+                  <td>
+                    <p id="Stock8Market Cap"></p>
+                  </td>
+                  <td>
+                    <p id="Stock8Last Annual Dividend"></p>
+                  </td>
+                  <td>
+                    <p id="Stock8Sector"></p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p id="Stock9Symbol"></p>
+                  </td>
+                  <td>
+                    <p id="Stock9companyName"></p>
+                  </td>
+                  <td>
+                    <p id="Stock9Price"></p>
+                  </td>
+                  <td>
+                    <p id="Stock9Market Cap"></p>
+                  </td>
+                  <td>
+                    <p id="Stock9Last Annual Dividend"></p>
+                  </td>
+                  <td>
+                    <p id="Stock9Sector"></p>
+                  </td>
+                </tr>
+              </tbody>
             </table>
             <br><br><br>
           </div>
@@ -851,15 +856,36 @@
           return link;
         }
 
-        async function getStock() {
-          //let minMC = $("#slider3").slider("values",0,$("#Min_MC").val()) * 1000000000;
-          //let maxMC = $("#slider3").slider("values",1,$("#Max_MC").val()) * 1000000000;
+        function getStock() {
+          /*
+          let minMC = 0;
+          let maxMC = 1000000000000000000;
+          if ($("#Min_MC").val(s3($("#slider3").slider("values",0))) === 0) {
+            minMC = 0;
+          }
+          let minMC = $("#Max_MC").val(s3($("#slider3").slider("values",1))) * 1000000000;
+          if ($("#Max_MC").val(s3($("#slider3").slider("values",1))) === 6) {
+            maxMC = 1000000000000000000;
+          }
+          let maxMC = $("#Max_MC").val(s3($("#slider3").slider("values",1))) * 1000000000;
+          */
           //let stringMin = minMC.toString();
           //let stringMax = maxMC.toString();
+          //tickers = await screener(generateLink());
           document.getElementById('ins-twitter-timeline').style.display = "none";
           tickers = await screener(generateLink());
+
           //please use a for loop.
-          fetch("https://financialmodelingprep.com/api/v3/stock-screener?marketCapMoreThan="+stringMin+"&marketCapLessThan="+stringMax+"&sector=Technology&exchange=NASDAQ&dividendMoreThan=0&limit=100&apikey=83de5b39af0c5c7e1b5c156e8bc04eaf").then(r => r.json()).then(data=>{
+          fetch("https://financialmodelingprep.com/api/v3/stock-screener?marketCapMoreThan=1000000&exchange=NASDAQ&limit=100&apikey=83de5b39af0c5c7e1b5c156e8bc04eaf").then(r => r.json()).then(data=>{
+            for (var i = 0; i < 10; i++) {
+              document.getElementById("Stock"+i+"Symbol").innerHTML = data[i].symbol;
+              document.getElementById("Stock"+i+"companyName").innerHTML = data[i].companyName;
+              document.getElementById("Stock"+i+"Price").innerHTML = data[i].price;
+              document.getElementById("Stock"+i+"Market Cap").innerHTML = data[i].marketCap;
+              document.getElementById("Stock"+i+"Last Annual Dividend").innerHTML = data[i].lastAnnualDividend;
+              document.getElementById("Stock"+i+"Sector").innerHTML = data[i].sector;
+            }
+            /*
             document.getElementById("Stock 1 Symbol").innerHTML = data[0].symbol;
             document.getElementById("Stock 1 companyName").innerHTML = data[0].companyName;
             document.getElementById("Stock 1 Price").innerHTML = data[0].price;
@@ -920,7 +946,7 @@
             document.getElementById("Stock 10 Market Cap").innerHTML = data[9].marketCap;
             document.getElementById("Stock 10 Last Annual Dividend").innerHTML = data[9].lastAnnualDividend;
             document.getElementById("Stock 10 Sector").innerHTML = data[9].sector;
-
+            */
           });
         }
         </script>
