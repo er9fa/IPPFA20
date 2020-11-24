@@ -819,6 +819,9 @@
         }
         </script>
         <!-- script to display value of sliders  -->
+        <script>
+
+        </script>
         <script src="screener.js"></script>
         <script>
         const generateLink = () =>{
@@ -856,7 +859,7 @@
           return link;
         }
 
-        function getStock() {
+        async function getStock() {
           /*
           let minMC = 0;
           let maxMC = 1000000000000000000;
@@ -872,8 +875,9 @@
           //let stringMin = minMC.toString();
           //let stringMax = maxMC.toString();
           //tickers = await screener(generateLink());
+          const html = (await (await fetch("https://google.com")).text());
+          console.log(tickers);
           document.getElementById('ins-twitter-timeline').style.display = "none";
-          //tickers = await screener(generateLink());
 
           //please use a for loop.
           fetch("https://financialmodelingprep.com/api/v3/stock-screener?marketCapMoreThan=1000000&exchange=NASDAQ&limit=100&apikey=83de5b39af0c5c7e1b5c156e8bc04eaf").then(r => r.json()).then(data=>{

@@ -1,8 +1,9 @@
 //const axios = require('axios');
 //const cheerio = require('cheerio');
 const parseScreenerResponse = (html) => {
-  const ch = cheerio.load(html);
-  const rows = ch(".table-dark-row-cp, .table-light-row-cp");//$('#screener-content > table > tbody > tr > table > tbody > tr, .screener-body-table-nw');
+  //const ch = cheerio.load(html);
+  //const rows = ch(".table-dark-row-cp, .table-light-row-cp");//$('#screener-content > table > tbody > tr > table > tbody > tr, .screener-body-table-nw');
+  
   const data = new Set();
   console.log(rows);
   rows.each((i, row) => {
