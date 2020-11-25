@@ -2,14 +2,15 @@
 //const cheerio = require('cheerio');
 const parseScreenerResponse = (html) => {
   //const ch = cheerio.load(html);
-  //const rows = ch(".table-dark-row-cp, .table-light-row-cp");//$('#screener-content > table > tbody > tr > table > tbody > tr, .screener-body-table-nw');
-  
+  const rows = ch(".table-dark-row-cp, .table-light-row-cp");//$('#screener-content > table > tbody > tr > table > tbody > tr, .screener-body-table-nw');
+
   const data = new Set();
   console.log(rows);
   rows.each((i, row) => {
     const cell = ch(row).find('> td:nth-child(2)');
+    console.log(cell.text());
     if (cell.length) {
-      console.log(cell);
+
       data.add(cell.text());
     }
   });

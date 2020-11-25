@@ -825,14 +825,14 @@
         <script src="screener.js"></script>
         <script>
         const generateLink = () =>{
-          let link = "https://finviz.com/screener.ashx?v=111&o=-price&";
+          let link = "https://finviz.com/screener.ashx?v=111&o=price&";
           //Slider1:
-          const min1 = Number($("#Min_SP").val());
-          const max1 = Number($("#Max_SP").val());
-          const min2 = Number($("#Min_PE").val());
-          const max2 = Number($("#Max_PE").val());
-          const min3 = Number($("#Min_MC").val());
-          const max3 = Number($("#Max_MC").val());
+          let min1 = Number($("#Min_SP").val());
+          let max1 = Number($("#Max_SP").val());
+          let min2 = Number($("#Min_PE").val());
+          let max2 = Number($("#Max_PE").val());
+          let min3 = Number($("#Min_MC").val());
+          let max3 = Number($("#Max_MC").val());
           if(min1 || max1){ //falsy
             if(!max1)
               link += `sh_price_o${min1},`;
@@ -859,6 +859,16 @@
           return link;
         }
 
+        const parse = function(html){
+          const cells = ($(html)).find(".screener-link-primary");
+          //.table-dark-row-cp, .table-light-row-cp
+          //console.log(rows.html());
+          const data = [];
+          for(let i=0; i<10; i++){
+            data.push(cells.eq(i).html());
+          }
+          return data;
+        };
         async function getStock() {
           /*
           let minMC = 0;
@@ -874,12 +884,13 @@
           */
           //let stringMin = minMC.toString();
           //let stringMax = maxMC.toString();
-          //tickers = await screener(generateLink());
-          const html = (await (await fetch("https://google.com")).text());
+          const html = (await (await fetch("https://cors-anywhere.herokuapp.com/"+generateLink())).text());
+          const tickers = parse(html);
           console.log(tickers);
-          document.getElementById('ins-twitter-timeline').style.display = "none";
 
-          //please use a for loop.
+
+
+          /*
           fetch("https://financialmodelingprep.com/api/v3/stock-screener?marketCapMoreThan=1000000&exchange=NASDAQ&limit=100&apikey=83de5b39af0c5c7e1b5c156e8bc04eaf").then(r => r.json()).then(data=>{
             for (var i = 0; i < 10; i++) {
               document.getElementById("Stock"+i+"Symbol").innerHTML = data[i].symbol;
@@ -889,7 +900,30 @@
               document.getElementById("Stock"+i+"Last Annual Dividend").innerHTML = data[i].lastAnnualDividend;
               document.getElementById("Stock"+i+"Sector").innerHTML = data[i].sector;
             }
-          });
+          });*/
+          for(let i=0; i<tickers.length; i++){
+            fetch("https://financialmodelingprep.com/api/v3/quote/"+tickers[i]+"?apikey=83de5b39af0c5c7e1b5c156e8bc04eaf").then(r => r.json()).then(data=>{
+              /*$(`#Stock${i}Symbol`).html(data.symbol);
+              $(`#Stock${i}companyName`).html(data.companyName);
+              $(`#Stock${i}Price`).html(data.price);
+              $(`#Stock${i}Market Cap`).html(data.marketCap);
+              $(`#Stock${i}Last Annual Dividend`).html(data.lastAnnualDividend);
+              $(`#Stock${i}Sector`).html(data.sector);*/
+              data=data[0];
+              document.getElementById("Stock"+i+"Symbol").innerHTML = data.symbol;
+              document.getElementById("Stock"+i+"companyName").innerHTML = data.name;
+              document.getElementById("Stock"+i+"Price").innerHTML = data.price;
+              document.getElementById("Stock"+i+"Market Cap").innerHTML = data.marketCap;
+              //document.getElementById("Stock"+i+"Last Annual Dividend").innerHTML = data.lastAnnualDividend;
+              //document.getElementById("Stock"+i+"Sector").innerHTML = data.sector;
+            });
+            fetch("https://financialmodelingprep.com/api/v3/profile/"+tickers[i]+"?apikey=83de5b39af0c5c7e1b5c156e8bc04eaf").then(r => r.json()).then(data=>{
+              data=data[0];
+              document.getElementById("Stock"+i+"Last Annual Dividend").innerHTML = data.lastDiv;
+              document.getElementById("Stock"+i+"Sector").innerHTML = data.sector;
+            });
+          }
+          document.getElementById('ins-twitter-timeline').style.display = "none";
         }
         </script>
 
