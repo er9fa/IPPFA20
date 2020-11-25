@@ -901,7 +901,7 @@
             }
           });*/
           for(let i=0; i<tickers.length; i++){
-            fetch("https://financialmodelingprep.com/api/v3/quote/"+tickers[i]+"?apikey=83de5b39af0c5c7e1b5c156e8bc04eaf").then(r => r.json()).then(data=>{
+            fetch("https://financialmodelingprep.com/api/v3/quote/"+tickers[i]+"?apikey=3b6ef1b7be0d570de6d6f72d4ee46ea5").then(r => r.json()).then(data=>{
               /*$(`#Stock${i}Symbol`).html(data.symbol);
               $(`#Stock${i}companyName`).html(data.companyName);
               $(`#Stock${i}Price`).html(data.price);
@@ -916,7 +916,7 @@
               //document.getElementById("Stock"+i+"Last Annual Dividend").innerHTML = data.lastAnnualDividend;
               //document.getElementById("Stock"+i+"Sector").innerHTML = data.sector;
             });
-            fetch("https://financialmodelingprep.com/api/v3/profile/"+tickers[i]+"?apikey=83de5b39af0c5c7e1b5c156e8bc04eaf").then(r => r.json()).then(data=>{
+            fetch("https://financialmodelingprep.com/api/v3/profile/"+tickers[i]+"?apikey=3b6ef1b7be0d570de6d6f72d4ee46ea5").then(r => r.json()).then(data=>{
               data=data[0];
               document.getElementById("Stock"+i+"Last Annual Dividend").innerHTML = data.lastDiv;
               document.getElementById("Stock"+i+"Sector").innerHTML = data.sector;
