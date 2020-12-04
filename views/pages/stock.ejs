@@ -227,12 +227,12 @@
           </div>
 
         <script>
-        fetch("http://newsapi.org/v2/everything?q=Stocks&from=date&sortBy=popularity&apiKey=85a14d4c76e44ea3b77314111ece5719").then(r => r.json()).then(data => {
+        fetch("https://finnhub.io/api/v1/news?category=general&token=btnr6jn48v6p0j27hpd0").then(r => r.json()).then(data => {
           for(let i=0; i<4; i++){
-            var h=data.articles[i].title
-            var u=data.articles[i].url
-            var t=data.articles[i].description
-            var im=data.articles[i].urlToImage
+            var h=data[i].headline
+            var u=data[i].url
+            var t=data[i].summary
+            var im=data[i].image
             $("#title"+i).append(`<img src='${im}' align="left" style="width:25%"></img>`);
             $("#title"+i).append(`<a href='${u}' target=_blank style="color:#566573">${h}</a>`);
             $("#title"+i).append('<br>');
